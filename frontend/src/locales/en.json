@@ -1,0 +1,272 @@
+{
+  "profile": {
+    "name": "Justin Gabriel Moreira Matarrita",
+    "shortName": "Justin Moreira",
+    "initials": "JM",
+    "title": "Information Systems Engineer",
+    "tagline": "Building software with intention, clean architecture, and steady focus.",
+    "summary": "Advanced Information Systems Engineering student, passionate about analyzing complex problems and building reliable, maintainable solutions. Proactive, collaborative, and quick to adapt to new environments and technologies.",
+    "location": "Costa Rica",
+    "email": "jus111moreiramatarrita@gmail.com",
+    "phone": "+506 8625 3757",
+    "phoneRaw": "+50686253757",
+    "availability": "Available for internships and junior roles"
+  },
+  "nav": {
+    "items": [
+      { "id": "home", "label": "Home" },
+      { "id": "about", "label": "About" },
+      { "id": "skills", "label": "Skills" },
+      { "id": "experience", "label": "Experience" },
+      { "id": "projects", "label": "Projects" },
+      { "id": "education", "label": "Education" },
+      { "id": "contact", "label": "Contact" }
+    ],
+    "cta": "Let's talk",
+    "language": "Language",
+    "theme": "Theme",
+    "homeAria": "Home",
+    "toggleMenu": "Open or close menu",
+    "themeToggleDark": "Switch to dark mode",
+    "themeToggleLight": "Switch to light mode"
+  },
+  "hero": {
+    "eyebrow": "Portfolio - 2025",
+    "greeting": "Hi, I'm",
+    "lead": "I build software with",
+    "emphasis": "care",
+    "closing": "and clarity.",
+    "ctaWork": "See my work",
+    "ctaContact": "Contact me"
+  },
+  "about": {
+    "eyebrow": "About me",
+    "titleStart": "A curious engineer,",
+    "titleEmphasis": "happiest",
+    "titleEnd": "when ideas become systems that work.",
+    "paragraphs": [
+      "I am an advanced Information Systems Engineering student in Costa Rica. My work sits at the intersection of clean architecture, practical problem-solving, and constant collaboration—whether modeling data in MySQL, building a Laravel backend, or composing a React interface.",
+      "Beyond coding, I enjoy teaching. I have facilitated robotics workshops for high school students and supported classmates in Robotic Process Automation courses with UiPath. Explaining complex ideas in simple, calm language makes me a better engineer.",
+      "I value craftsmanship, honest communication, and delivering work I would still be happy to maintain a year from now."
+    ],
+    "stats": [
+      { "label": "Years studying", "value": "4+" },
+      { "label": "Technical stacks", "value": "6+" },
+      { "label": "Students supported", "value": "30+" },
+      { "label": "Languages", "value": "2" }
+    ],
+    "languagesLabel": "Languages",
+    "languages": [
+      { "name": "Spanish", "level": "Native" },
+      { "name": "English", "level": "Technical / professional reading" }
+    ]
+  },
+  "skills": {
+    "eyebrow": "Skills",
+    "title": "Tools I rely on.",
+    "description": "A toolkit shaped by university coursework, mentoring, and real engineering projects. Always learning, always refining.",
+    "proficiencies": [
+      { "name": "Java", "level": 85 },
+      { "name": "PHP / Laravel", "level": 82 },
+      { "name": "React", "level": 75 },
+      { "name": "Python", "level": 72 },
+      { "name": "MySQL / SQL", "level": 80 },
+      { "name": "Git & GitHub", "level": 88 }
+    ],
+    "groups": [
+      { "title": "Languages", "items": ["Java", "C", "C++", "Python", "PHP"] },
+      { "title": "Frameworks & Web", "items": ["Spring Boot", "Laravel", "React"] },
+      { "title": "Databases", "items": ["MySQL", "SQL queries", "Data modeling"] },
+      { "title": "Tools & version control", "items": ["Git", "GitHub", "UiPath (RPA)"] },
+      { "title": "Methodologies", "items": ["Scrum", "Kanban", "Project coordination"] },
+      { "title": "Soft skills", "items": ["Effective communication", "Teamwork", "Adaptability", "Mentoring"] }
+    ]
+  },
+  "experience": {
+    "eyebrow": "Experience",
+    "title": "Where I have learned, taught, and delivered results.",
+    "items": [
+      {
+        "role": "Final engineering project",
+        "org": "National University of Costa Rica",
+        "period": "Feb 2025 - May 2026",
+        "location": "Heredia, CR",
+        "bullets": [
+          "Leading development of an end-to-end management system for a veterinary clinic using Laravel.",
+          "Applied software engineering practices for requirements analysis, architectural design, and data modeling.",
+          "Coordinated team work with Scrum ceremonies and Kanban tracking."
+        ],
+        "tags": ["Laravel", "MySQL", "Scrum", "Architecture"]
+      },
+      {
+        "role": "Student assistant - Educational robotics",
+        "org": "National University of Costa Rica",
+        "period": "Oct 2023 - Present",
+        "location": "Heredia, CR",
+        "bullets": [
+          "Designed and facilitated educational robotics workshops for high school students.",
+          "Built robots and adapted teaching material to different learning levels.",
+          "Supported teams with practical problem-solving and continuous iteration."
+        ],
+        "tags": ["Teaching", "Robotics", "Mentoring"]
+      },
+      {
+        "role": "Student mentor - RPA with UiPath",
+        "org": "National University of Costa Rica",
+        "period": "Jun 2024 - Dec 2024",
+        "location": "Heredia, CR",
+        "bullets": [
+          "Supported classmates in the Robotic Process Automation (UiPath) course.",
+          "Provided technical guidance during automation project development.",
+          "Reviewed code and process design to ensure stable and repeatable workflows."
+        ],
+        "tags": ["UiPath", "RPA", "Mentoring"]
+      }
+    ]
+  },
+  "projects": {
+    "eyebrow": "Selected work",
+    "title": "Projects worth a closer look.",
+    "githubCta": "View all on GitHub",
+    "highlightsLabel": "Highlights",
+    "viewRepo": "View repository",
+    "close": "Close",
+    "items": [
+      {
+        "id": "vet-system",
+        "title": "Veterinary management system",
+        "subtitle": "University capstone project",
+        "description": "Comprehensive clinic platform: appointments, records, inventory, and billing. Built with Laravel and MySQL following a clean MVC architecture.",
+        "tech": ["Laravel", "PHP", "MySQL", "Blade", "Bootstrap"],
+        "highlights": [
+          "Relational schema design for patients, owners, and visits",
+          "Role-based access control implementation",
+          "Modular service layer to simplify testing"
+        ],
+        "year": "2025",
+        "repo": "https://github.com/jussmoreira",
+        "demo": null,
+        "cover": "https://images.unsplash.com/photo-1559190394-df5a28aab5c5?w=1200&q=80&auto=format&fit=crop"
+      },
+      {
+        "id": "rpa-uipath",
+        "title": "RPA automations with UiPath",
+        "subtitle": "Process automation portfolio",
+        "description": "Collection of automations that read structured data, validate it against business rules, and publish results to target systems. Used as mentoring support material.",
+        "tech": ["UiPath", "Excel automation", "REST APIs"],
+        "highlights": [
+          "~70% reduction in manual data-entry time",
+          "Reusable components for input validation",
+          "Documented guides for project handoff"
+        ],
+        "year": "2024",
+        "repo": "https://github.com/jussmoreira",
+        "demo": null,
+        "cover": "https://images.unsplash.com/photo-1581090700227-1e8e4d3a72d4?w=1200&q=80&auto=format&fit=crop"
+      },
+      {
+        "id": "spring-api",
+        "title": "REST API with Spring Boot",
+        "subtitle": "Java backend course",
+        "description": "RESTful service built with Spring Boot featuring CRUD endpoints, layered architecture (controller, service, repository), and validation.",
+        "tech": ["Java", "Spring Boot", "JPA", "MySQL"],
+        "highlights": [
+          "Layered architecture with DTO mapping",
+          "Bean validation and global error handling",
+          "Postman collection for testing"
+        ],
+        "year": "2024",
+        "repo": "https://github.com/jussmoreira",
+        "demo": null,
+        "cover": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80&auto=format&fit=crop"
+      },
+      {
+        "id": "react-dashboard",
+        "title": "React components lab",
+        "subtitle": "Frontend exploration",
+        "description": "A small dashboard to explore component composition, hooks, and clean state management in React. It helped deepen my UI engineering practice.",
+        "tech": ["React", "JavaScript", "CSS"],
+        "highlights": [
+          "Reusable form and table components",
+          "Hook-based data fetching",
+          "Responsive layout"
+        ],
+        "year": "2024",
+        "repo": "https://github.com/jussmoreira",
+        "demo": null,
+        "cover": "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80&auto=format&fit=crop"
+      }
+    ]
+  },
+  "education": {
+    "eyebrow": "Education",
+    "title": "Continuous study, deliberate practice.",
+    "description": "University training is the foundation of my development: from algorithmic fundamentals to architecture and project management. Outside class, I keep building, mentoring, and learning.",
+    "items": [
+      {
+        "degree": "Diploma in Computer Application Programming",
+        "school": "National University of Costa Rica",
+        "period": "2025",
+        "notes": "Programming fundamentals, software design, databases, and web development."
+      },
+      {
+        "degree": "Information Systems Engineering - In progress",
+        "school": "National University of Costa Rica",
+        "period": "In progress",
+        "notes": "Advanced student. Focused on software architecture, data modeling, and project management."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "titleStart": "Let's build something",
+    "titleEmphasis": "together",
+    "titleEnd": ".",
+    "description": "I'm open to internships, junior roles, and collaborative projects. The fastest way to reach me is by email or phone; I usually reply in under a day.",
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message"
+    },
+    "placeholders": {
+      "name": "Your full name",
+      "email": "you@company.com",
+      "subject": "What's this about?",
+      "message": "Tell me a bit about your project, role, or idea..."
+    },
+    "submit": "Send message",
+    "sending": "Sending...",
+    "localNote": "Your email app will open with the message ready to send.",
+    "socialLabels": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "validation": {
+      "required": "Please complete your name, email, and message.",
+      "invalidEmail": "That email doesn't look valid - please check it again.",
+      "success": "Your email app opened with the message ready to send.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "footer": {
+    "reachOut": "Contact",
+    "elsewhere": "Elsewhere",
+    "backToTop": "Back to top",
+    "copyright": "© {{year}} {{name}}. Crafted with care in Costa Rica.",
+    "socialLabels": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "email": "Email"
+    }
+  },
+  "errorBoundary": {
+    "eyebrow": "Unexpected error",
+    "title": "Something broke, but your work is still safe.",
+    "description": "The app hit a problem while rendering this view. You can try again or go back to the home screen and keep going.",
+    "retry": "Try again",
+    "home": "Go home",
+    "detailsLabel": "Technical details",
+    "fallbackDetails": "We couldn't recover the error message."
+  }
+}
