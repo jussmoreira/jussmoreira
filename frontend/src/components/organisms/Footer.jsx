@@ -1,7 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
-import { portfolioAssets } from "../../mock";
+import { OrcidIcon } from "@/components/atoms/orcid-icon";
+import { WhatsappIcon } from "@/components/atoms/whatsapp-icon";
+import { siteAssets } from "@/config/site";
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -60,7 +62,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-3">
               <a
-                href={portfolioAssets.socials.linkedin}
+                href={siteAssets.socials.linkedin}
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 rounded-lg border border-white/10 bg-white/5 flex items-center justify-center hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--inverse))] transition-colors"
@@ -69,13 +71,31 @@ export default function Footer() {
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
-                href={portfolioAssets.socials.github}
+                href={siteAssets.socials.github}
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 rounded-lg border border-white/10 bg-white/5 flex items-center justify-center hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--inverse))] transition-colors"
                 aria-label={socialLabels.github}
               >
                 <Github className="w-4 h-4" />
+              </a>
+              <a
+                href={siteAssets.socials.orcid}
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 rounded-lg border border-white/10 bg-white/5 flex items-center justify-center hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--inverse))] transition-colors"
+                aria-label={socialLabels.orcid}
+              >
+                <OrcidIcon className="w-4 h-4" />
+              </a>
+              <a
+                href={siteAssets.socials.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 rounded-lg border border-white/10 bg-white/5 flex items-center justify-center hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--inverse))] transition-colors"
+                aria-label={socialLabels.whatsapp}
+              >
+                <WhatsappIcon className="w-4 h-4" />
               </a>
               <a
                 href={`mailto:${profile.email}`}
