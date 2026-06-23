@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ArrowUpRight, Menu, Moon, SunMedium, X } from "lucide-react";
-import { Button } from "../atoms/button";
+import { Button } from "@/components/atoms/button";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "../../contexts/ThemeContext";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -11,7 +11,11 @@ export default function Navbar() {
   const { t, i18n } = useTranslation();
   const { isDark, toggleTheme } = useTheme();
 
-  const navItems = t("nav.items", { returnObjects: true }) || [];
+  const navItems = useMemo(() => {
+    const items = t("nav.items", { returnObjects: true });
+    return Array.isArray(items) ? items : [];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [t, i18n.resolvedLanguage]);
   const profile = t("profile", { returnObjects: true });
 
   useEffect(() => {
@@ -22,7 +26,8 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sections = (t("nav.items", { returnObjects: true }) || [])
+    if (typeof IntersectionObserver === "undefined") return undefined;
+    const sections = navItems
       .map((item) => document.getElementById(item.id))
       .filter(Boolean);
     const io = new IntersectionObserver(
@@ -37,7 +42,7 @@ export default function Navbar() {
     );
     sections.forEach((section) => io.observe(section));
     return () => io.disconnect();
-  }, [i18n.resolvedLanguage, t]);
+  }, [navItems]);
 
   const go = (id) => {
     setOpen(false);
@@ -118,12 +123,17 @@ export default function Navbar() {
           className="md:hidden p-2 text-foreground"
           onClick={() => setOpen((value) => !value)}
           aria-label={t("nav.toggleMenu")}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
       <div
+        id="mobile-menu"
+        inert={!open ? true : undefined}
+        aria-hidden={!open}
         className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ${
           open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         } bg-background border-b border-border`}

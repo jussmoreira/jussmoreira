@@ -2,10 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+/* Las fuentes (Playfair Display + Inter) se cargan en public/index.html con
+   <link> y preconnect; evitamos @import en CSS porque bloquea el render. */
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Skip link accesible: oculto hasta recibir foco por teclado */
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -3rem;
+  z-index: 100;
+  padding: 0.5rem 0.875rem;
+  border-radius: 0.5rem;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-size: 0.875rem;
+  transition: top 200ms ease;
+}
+.skip-link:focus {
+  top: 0.75rem;
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
 }
 
 body {
@@ -74,6 +94,17 @@ code {
   100% { transform: translateX(-50%); }
 }
 .marquee-track { animation: marquee 38s linear infinite; }
+
+/* Respeta a quienes prefieren menos movimiento (a11y) */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .marquee-track { animation: none; }
+}
 
 @layer base {
   :root {
