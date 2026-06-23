@@ -128,10 +128,10 @@
         "id": "vet-system",
         "title": "Veterinary management system",
         "subtitle": "University capstone project",
-        "description": "Comprehensive clinic platform: appointments, records, inventory, and billing. Built with Laravel and MySQL following a clean MVC architecture.",
+        "description": "Veterinary clinic platform: appointment booking, appointment history, product catalog, and services. Built with Laravel and MySQL following a clean MVC architecture.",
         "tech": ["Laravel", "PHP", "MySQL", "Blade", "Bootstrap"],
         "highlights": [
-          "Relational schema design for patients, owners, and visits",
+          "Relational modeling of appointments, services and the product catalog",
           "Role-based access control implementation",
           "Modular service layer to simplify testing"
         ],

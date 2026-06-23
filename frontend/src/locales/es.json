@@ -128,10 +128,10 @@
         "id": "vet-system",
         "title": "Sistema de gestión veterinaria",
         "subtitle": "Proyecto final universitario",
-        "description": "Plataforma integral para clínicas: citas, expedientes, inventario y facturación. Construida con Laravel y MySQL usando una arquitectura MVC limpia.",
+        "description": "Plataforma para clínicas veterinarias: agenda de citas, historial de citas, catálogo de productos y servicios. Construida con Laravel y MySQL usando una arquitectura MVC limpia.",
         "tech": ["Laravel", "PHP", "MySQL", "Blade", "Bootstrap"],
         "highlights": [
-          "Diseño de esquema relacional para pacientes, dueños y visitas",
+          "Modelado relacional de citas, servicios y catálogo de productos",
           "Implementación de control de acceso por roles",
           "Capa de servicios modular para facilitar pruebas"
         ],
