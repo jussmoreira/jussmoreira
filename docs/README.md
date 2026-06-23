@@ -1,6 +1,6 @@
 # Documentación del proyecto — Portafolio `jussmoreira`
 
-Esta carpeta contiene la documentación viva del proyecto: estándares de arquitectura, convenciones de ingeniería y reportes de calidad. Está pensada para ser **modular** (un tema por archivo), **granular** y **mantenible**.
+Esta carpeta contiene la documentación viva del proyecto: estándares de arquitectura y convenciones de ingeniería. Está pensada para ser **modular** (un tema por archivo), **granular** y **mantenible**.
 
 ## Índice
 
@@ -21,13 +21,10 @@ La fuente de verdad sobre cómo se construye y se mantiene el frontend. Todo PR 
 | 09 | [Testing](02-architecture/09-testing.md) | Estrategia de pruebas |
 | 10 | [Tooling y convenciones](02-architecture/10-tooling-conventions.md) | ESLint, Prettier, scripts |
 
-### `qa/` — Reportes de calidad
-- [QA-Report-portfolio.md](qa/QA-Report-portfolio.md) — Auditoría QA integral del código actual.
-
 ## Cómo usar esta documentación
 
 - **Al abrir un PR:** verificá tu cambio contra los documentos de `02-architecture/` relevantes.
-- **Al revisar un PR (QA):** usá estos estándares como criterio objetivo; documentá hallazgos siguiendo el formato del reporte en `qa/`.
+- **Al revisar un PR (QA):** usá estos estándares como criterio objetivo y documentá los hallazgos contra cada regla.
 - **Al introducir una convención nueva:** primero actualizá el documento correspondiente, luego el código. La doc precede al patrón.
 
 > Estándar de referencia: buenas prácticas globales de React 19 + Atomic Design, alineadas con lo que el repositorio ya hace bien.
