@@ -4,6 +4,7 @@ import { Button } from "@/components/atoms/button";
 import { SafeImage } from "@/components/atoms/image";
 import { OrcidIcon } from "@/components/atoms/orcid-icon";
 import { WhatsappIcon } from "@/components/atoms/whatsapp-icon";
+import { RotatingText } from "@/components/atoms/rotating-text";
 import { useTranslation } from "react-i18next";
 import { siteAssets } from "@/config/site";
 
@@ -52,9 +53,10 @@ export default function Hero() {
             <span className="italic text-primary">{profile.shortName}</span>.
             <br />
             {t("hero.lead")} {" "}
-            <span className="underline decoration-[hsl(var(--accent))] decoration-4 underline-offset-4">
-              {t("hero.emphasis")}
-            </span>{" "}
+            <RotatingText
+              words={t("hero.rotatingWords", { returnObjects: true })}
+              className="underline decoration-[hsl(var(--accent))] decoration-4 underline-offset-4"
+            />{" "}
             {t("hero.closing")}
           </h1>
 

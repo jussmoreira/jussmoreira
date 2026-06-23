@@ -103,6 +103,27 @@ code {
 .animate-float { animation: floaty 10s ease-in-out infinite; }
 .animate-float-slow { animation: floaty 14s ease-in-out infinite; }
 
+/* Palabra rotativa del Hero: entra con fade + slide */
+@keyframes rotateWordIn {
+  0% { opacity: 0; transform: translateY(0.35em); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.rotating-word { animation: rotateWordIn 500ms cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* Micro-nudge de las flechas en los CTA al hover */
+.btn-warm svg,
+.btn-ghost-warm svg {
+  transition: transform 220ms ease;
+}
+.btn-warm:hover .lucide-arrow-up-right,
+.btn-ghost-warm:hover .lucide-arrow-up-right {
+  transform: translate(2px, -2px);
+}
+.btn-warm:hover .lucide-arrow-down-right,
+.btn-ghost-warm:hover .lucide-arrow-down-right {
+  transform: translate(2px, 2px);
+}
+
 /* Respeta a quienes prefieren menos movimiento (a11y) */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -113,8 +134,19 @@ code {
   }
   .marquee-track,
   .animate-float,
-  .animate-float-slow {
+  .animate-float-slow,
+  .rotating-word {
     animation: none;
+  }
+  .btn-warm svg,
+  .btn-ghost-warm svg {
+    transition: none;
+  }
+  .btn-warm:hover .lucide-arrow-up-right,
+  .btn-ghost-warm:hover .lucide-arrow-up-right,
+  .btn-warm:hover .lucide-arrow-down-right,
+  .btn-ghost-warm:hover .lucide-arrow-down-right {
+    transform: none;
   }
 }
 

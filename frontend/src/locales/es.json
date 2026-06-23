@@ -34,7 +34,7 @@
     "eyebrow": "Portafolio - 2025",
     "greeting": "Hola, soy",
     "lead": "Construyo software con",
-    "emphasis": "cuidado",
+    "rotatingWords": ["cuidado", "intención", "propósito", "foco"],
     "closing": "y claridad.",
     "ctaWork": "Ver mi trabajo",
     "ctaContact": "Contáctame"
