@@ -1,47 +1,10 @@
 import React, { useEffect } from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Portfolio from "./components/pages/Portfolio";
-import { Toaster } from "./components/molecules/sonner";
+import "@/App.css";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Portfolio from "@/components/pages/Portfolio";
 import { useTranslation } from "react-i18next";
-import { ErrorBoundary } from "./components/molecules/ErrorBoundary";
-
-function useReveal(dependency) {
-  useEffect(() => {
-    const elements = Array.from(document.querySelectorAll(".reveal"));
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    const revealIfVisible = (element) => {
-      const rect = element.getBoundingClientRect();
-      const visible = rect.top < window.innerHeight * 0.88 && rect.bottom > 0;
-
-      if (visible) {
-        element.classList.add("in-view");
-        return true;
-      }
-
-      return false;
-    };
-
-    elements.forEach((element) => {
-      if (!element.classList.contains("in-view") && !revealIfVisible(element)) {
-        io.observe(element);
-      }
-    });
-
-    return () => io.disconnect();
-  }, [dependency]);
-}
+import { ErrorBoundary } from "@/components/molecules/ErrorBoundary";
+import { useReveal } from "@/hooks/useReveal";
 
 function Page() {
   const { i18n } = useTranslation();
@@ -64,10 +27,10 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Page />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
       </ErrorBoundary>
-      <Toaster richColors position="bottom-right" />
     </div>
   );
 }
