@@ -10,7 +10,7 @@
     "email": "jus111moreiramatarrita@gmail.com",
     "phone": "+506 8625 3757",
     "phoneRaw": "+50686253757",
-    "availability": "Disponible para pasantías y puestos junior"
+    "availability": "Disponible para trabajar"
   },
   "nav": {
     "items": [
@@ -74,9 +74,9 @@
       { "name": "Git & GitHub", "level": 88 }
     ],
     "groups": [
-      { "title": "Lenguajes", "items": ["Java", "C", "C++", "Python", "PHP"] },
+      { "title": "Lenguajes", "items": ["Java", "C#", "C++", "C", "Python", "Kotlin"] },
       { "title": "Frameworks y Web", "items": ["Spring Boot", "Laravel", "React"] },
-      { "title": "Bases de datos", "items": ["MySQL", "Consultas SQL", "Modelado de datos"] },
+      { "title": "Bases de datos", "items": ["PostgreSQL", "MySQL", "Oracle"] },
       { "title": "Herramientas y control de versiones", "items": ["Git", "GitHub", "UiPath (RPA)"] },
       { "title": "Metodologías", "items": ["Scrum", "Kanban", "Coordinación de proyectos"] },
       { "title": "Interpersonales", "items": ["Comunicación efectiva", "Trabajo en equipo", "Adaptabilidad", "Mentoría"] }
@@ -190,7 +190,7 @@
     "titleStart": "Construyamos algo",
     "titleEmphasis": "juntos",
     "titleEnd": ".",
-    "description": "Estoy abierto a pasantías, puestos junior y proyectos colaborativos. La forma más rápida de contactarme es por correo o teléfono; normalmente respondo en menos de un día.",
+    "description": "Estoy abierto a nuevas oportunidades y proyectos colaborativos. La forma más rápida de contactarme es por correo o teléfono; normalmente respondo en menos de un día.",
     "socialLabels": {
       "linkedin": "LinkedIn",
       "github": "GitHub",
