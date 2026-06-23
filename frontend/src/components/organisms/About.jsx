@@ -1,7 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { GraduationCap, Languages, Sparkles, Users } from "lucide-react";
-import { useCountUp, useInViewOnce } from "../../hooks/useCountUp";
+import { useCountUp } from "@/hooks/useCountUp";
+import { useInViewOnce } from "@/hooks/useInViewOnce";
 
 const statIcons = [GraduationCap, Sparkles, Users, Languages];
 
@@ -34,7 +35,7 @@ export default function About() {
   const languages = Array.isArray(about.languages) ? about.languages : [];
 
   return (
-    <section id="about" className="section-pad relative">
+    <section id="about" className="relative pt-10 md:pt-14 pb-24">
       <div className="container-narrow grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5 reveal">
           <div className="flex items-center gap-3 mb-4">

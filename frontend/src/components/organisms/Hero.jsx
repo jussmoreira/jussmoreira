@@ -1,8 +1,11 @@
 import React from "react";
 import { ArrowDownRight, Github, Linkedin, Mail, MapPin } from "lucide-react";
-import { Button } from "../atoms/button";
+import { Button } from "@/components/atoms/button";
+import { SafeImage } from "@/components/atoms/image";
+import { OrcidIcon } from "@/components/atoms/orcid-icon";
+import { WhatsappIcon } from "@/components/atoms/whatsapp-icon";
 import { useTranslation } from "react-i18next";
-import { portfolioAssets } from "../../mock";
+import { siteAssets } from "@/config/site";
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -18,7 +21,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-32 md:pt-40 pb-20 md:pb-28 overflow-hidden"
+      className="relative pt-32 md:pt-40 pb-8 md:pb-12 overflow-hidden"
     >
       <div
         aria-hidden
@@ -89,7 +92,7 @@ export default function Hero() {
               {profile.email}
             </a>
             <a
-              href={portfolioAssets.socials.linkedin}
+              href={siteAssets.socials.linkedin}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 link-underline hover:text-primary"
@@ -98,13 +101,31 @@ export default function Hero() {
               LinkedIn
             </a>
             <a
-              href={portfolioAssets.socials.github}
+              href={siteAssets.socials.github}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 link-underline hover:text-primary"
             >
               <Github className="w-4 h-4 text-accent" />
               GitHub
+            </a>
+            <a
+              href={siteAssets.socials.orcid}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 link-underline hover:text-primary"
+            >
+              <OrcidIcon className="w-4 h-4" />
+              ORCID
+            </a>
+            <a
+              href={siteAssets.socials.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 link-underline hover:text-primary"
+            >
+              <WhatsappIcon className="w-4 h-4 text-accent" />
+              WhatsApp
             </a>
           </div>
         </div>
@@ -119,11 +140,14 @@ export default function Hero() {
               }}
             />
             <div className="relative rounded-[24px] overflow-hidden border border-border shadow-[0_30px_80px_-30px_hsl(var(--foreground)/0.45)] bg-card">
-              <img
-                src={portfolioAssets.photo}
+              <SafeImage
+                src={siteAssets.photo}
                 alt={profile.name}
+                width={420}
+                height={525}
                 className="w-full h-auto object-cover aspect-[4/5]"
                 loading="eager"
+                fetchPriority="high"
               />
               <div className="absolute bottom-3 left-3 right-3 bg-background/85 backdrop-blur px-4 py-3 rounded-xl border border-border">
                 <div className="text-xs uppercase tracking-[0.18em] text-accent">

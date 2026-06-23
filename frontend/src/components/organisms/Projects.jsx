@@ -7,8 +7,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from "../molecules/dialog";
-import { Button } from "../atoms/button";
+} from "@/components/molecules/dialog";
+import { Button } from "@/components/atoms/button";
+import { SafeImage } from "@/components/atoms/image";
 
 export default function Projects() {
   const { t } = useTranslation();
@@ -60,9 +61,11 @@ export default function Projects() {
               className="reveal text-left card-warm rounded-2xl overflow-hidden group"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
-                <img
+                <SafeImage
                   src={project.cover}
                   alt={project.title}
+                  width={1200}
+                  height={750}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
@@ -100,13 +103,20 @@ export default function Projects() {
       </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-2xl bg-card border-border p-0 overflow-hidden">
+        <DialogContent className="max-w-2xl max-h-[90dvh] flex flex-col gap-0 bg-card border-border p-0 overflow-hidden">
           {active && (
-            <div>
-              <div className="relative aspect-[16/9] overflow-hidden">
-                <img src={active.cover} alt={active.title} className="w-full h-full object-cover" />
+            <div className="flex flex-col min-h-0">
+              <div className="relative aspect-[16/9] max-h-[40vh] flex-none overflow-hidden">
+                <SafeImage
+                  src={active.cover}
+                  alt={active.title}
+                  width={1200}
+                  height={675}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="p-6">
+              <div className="p-6 overflow-y-auto min-h-0">
                 <DialogHeader>
                   <DialogTitle className="font-display text-2xl text-foreground">
                     {active.title}
