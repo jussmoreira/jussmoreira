@@ -42,7 +42,7 @@ export default function Hero() {
       />
 
       <div className="container-narrow grid lg:grid-cols-12 gap-12 items-center relative">
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-7 hero-stagger">
           <div className="reveal flex items-center gap-3 mb-6">
             <span className="divider-dot" />
             <span className="eyebrow">{t("hero.eyebrow")}</span>
