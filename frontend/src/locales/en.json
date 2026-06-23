@@ -65,14 +65,6 @@
     "eyebrow": "Skills",
     "title": "Tools I rely on.",
     "description": "A toolkit shaped by university coursework, mentoring, and real engineering projects. Always learning, always refining.",
-    "proficiencies": [
-      { "name": "Java", "level": 85 },
-      { "name": "PHP / Laravel", "level": 82 },
-      { "name": "React", "level": 75 },
-      { "name": "Python", "level": 72 },
-      { "name": "MySQL / SQL", "level": 80 },
-      { "name": "Git & GitHub", "level": 88 }
-    ],
     "groups": [
       { "title": "Languages", "items": ["Java", "C#", "C++", "C", "Python", "PHP", "Kotlin"] },
       { "title": "Frameworks & Web", "items": ["Spring Boot", "Laravel", ".NET", "React"] },

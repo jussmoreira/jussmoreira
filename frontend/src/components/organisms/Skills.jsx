@@ -8,8 +8,6 @@ import {
   KanbanSquare,
   HeartHandshake,
 } from "lucide-react";
-import { useCountUp } from "@/hooks/useCountUp";
-import { useInViewOnce } from "@/hooks/useInViewOnce";
 
 const icons = {
   Languages: Code2,
@@ -25,33 +23,12 @@ const icons = {
   "Interpersonales": HeartHandshake,
 };
 
-function ProficiencyCard({ proficiency, inView }) {
-  const animatedLevel = useCountUp(proficiency.level, inView, 800);
-
-  return (
-    <div className="card-warm rounded-xl p-5">
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-medium text-foreground">{proficiency.name}</span>
-        <span className="text-xs text-accent">{animatedLevel}%</span>
-      </div>
-      <div className="h-1.5 rounded-full bg-border overflow-hidden">
-        <div
-          className="h-full rounded-full bg-gradient-to-r from-accent to-primary transition-[width] duration-700"
-          style={{ width: `${animatedLevel}%` }}
-        />
-      </div>
-    </div>
-  );
-}
-
 export default function Skills() {
   const { t } = useTranslation();
   const skills = t("skills", { returnObjects: true });
-  const { ref, inView } = useInViewOnce({ threshold: 0.3 });
 
   if (!skills || typeof skills !== "object") return null;
 
-  const proficiencies = Array.isArray(skills.proficiencies) ? skills.proficiencies : [];
   const groups = Array.isArray(skills.groups) ? skills.groups : [];
 
   return (
@@ -73,12 +50,6 @@ export default function Skills() {
           <p className="max-w-md text-muted-foreground text-[15px] leading-relaxed">
             {skills.description}
           </p>
-        </div>
-
-        <div ref={ref} className="reveal grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-          {proficiencies.map((proficiency) => (
-            <ProficiencyCard key={proficiency.name} proficiency={proficiency} inView={inView} />
-          ))}
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
