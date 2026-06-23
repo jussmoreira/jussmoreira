@@ -149,22 +149,6 @@
         "cover": "https://images.unsplash.com/photo-1559190394-df5a28aab5c5?w=1200&q=80&auto=format&fit=crop"
       },
       {
-        "id": "rpa-uipath",
-        "title": "RPA automations with UiPath",
-        "subtitle": "Process automation portfolio",
-        "description": "Collection of automations that read structured data, validate it against business rules, and publish results to target systems. Used as mentoring support material.",
-        "tech": ["UiPath", "Excel automation", "REST APIs"],
-        "highlights": [
-          "~70% reduction in manual data-entry time",
-          "Reusable components for input validation",
-          "Documented guides for project handoff"
-        ],
-        "year": "2024",
-        "repo": "https://github.com/jussmoreira",
-        "demo": null,
-        "cover": "https://images.unsplash.com/photo-1581090700227-1e8e4d3a72d4?w=1200&q=80&auto=format&fit=crop"
-      },
-      {
         "id": "spring-api",
         "title": "REST API with Spring Boot",
         "subtitle": "Java backend course",
@@ -179,22 +163,6 @@
         "repo": "https://github.com/jussmoreira",
         "demo": null,
         "cover": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80&auto=format&fit=crop"
-      },
-      {
-        "id": "react-dashboard",
-        "title": "React components lab",
-        "subtitle": "Frontend exploration",
-        "description": "A small dashboard to explore component composition, hooks, and clean state management in React. It helped deepen my UI engineering practice.",
-        "tech": ["React", "JavaScript", "CSS"],
-        "highlights": [
-          "Reusable form and table components",
-          "Hook-based data fetching",
-          "Responsive layout"
-        ],
-        "year": "2024",
-        "repo": "https://github.com/jussmoreira",
-        "demo": null,
-        "cover": "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80&auto=format&fit=crop"
       }
     ]
   },
@@ -223,30 +191,11 @@
     "titleEmphasis": "together",
     "titleEnd": ".",
     "description": "I'm open to internships, junior roles, and collaborative projects. The fastest way to reach me is by email or phone; I usually reply in under a day.",
-    "labels": {
-      "name": "Name",
-      "email": "Email",
-      "subject": "Subject",
-      "message": "Message"
-    },
-    "placeholders": {
-      "name": "Your full name",
-      "email": "you@company.com",
-      "subject": "What's this about?",
-      "message": "Tell me a bit about your project, role, or idea..."
-    },
-    "submit": "Send message",
-    "sending": "Sending...",
-    "localNote": "Your email app will open with the message ready to send.",
     "socialLabels": {
       "linkedin": "LinkedIn",
-      "github": "GitHub"
-    },
-    "validation": {
-      "required": "Please complete your name, email, and message.",
-      "invalidEmail": "That email doesn't look valid - please check it again.",
-      "success": "Your email app opened with the message ready to send.",
-      "error": "Something went wrong. Please try again."
+      "github": "GitHub",
+      "orcid": "ORCID",
+      "whatsapp": "WhatsApp"
     }
   },
   "footer": {
@@ -257,6 +206,8 @@
     "socialLabels": {
       "linkedin": "LinkedIn",
       "github": "GitHub",
+      "orcid": "ORCID",
+      "whatsapp": "WhatsApp",
       "email": "Email"
     }
   },
@@ -268,5 +219,8 @@
     "home": "Go home",
     "detailsLabel": "Technical details",
     "fallbackDetails": "We couldn't recover the error message."
+  },
+  "a11y": {
+    "skipToContent": "Skip to content"
   }
 }

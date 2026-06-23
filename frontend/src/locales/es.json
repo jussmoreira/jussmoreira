@@ -149,22 +149,6 @@
         "cover": "https://images.unsplash.com/photo-1559190394-df5a28aab5c5?w=1200&q=80&auto=format&fit=crop"
       },
       {
-        "id": "rpa-uipath",
-        "title": "Automatizaciones RPA con UiPath",
-        "subtitle": "Portafolio de automatización de procesos",
-        "description": "Colección de automatizaciones que leen datos estructurados, los validan contra reglas de negocio y publican resultados en sistemas destino. Se usó como material de apoyo durante la mentoría.",
-        "tech": ["UiPath", "Automatización de Excel", "REST APIs"],
-        "highlights": [
-          "Reducción del tiempo de captura manual en ~70%",
-          "Componentes reutilizables para validación de entrada",
-          "Guías documentadas para la transferencia del proyecto"
-        ],
-        "year": "2024",
-        "repo": "https://github.com/jussmoreira",
-        "demo": null,
-        "cover": "https://images.unsplash.com/photo-1581090700227-1e8e4d3a72d4?w=1200&q=80&auto=format&fit=crop"
-      },
-      {
         "id": "spring-api",
         "title": "API REST con Spring Boot",
         "subtitle": "Curso de backend en Java",
@@ -179,22 +163,6 @@
         "repo": "https://github.com/jussmoreira",
         "demo": null,
         "cover": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80&auto=format&fit=crop"
-      },
-      {
-        "id": "react-dashboard",
-        "title": "Laboratorio de componentes React",
-        "subtitle": "Exploración frontend",
-        "description": "Un tablero pequeño para explorar composición de componentes, hooks y una gestión de estado limpia en React. Sirvió para profundizar mi práctica de UI engineering.",
-        "tech": ["React", "JavaScript", "CSS"],
-        "highlights": [
-          "Componentes reutilizables de formularios y tablas",
-          "Obtención de datos basada en hooks",
-          "Diseño responsive"
-        ],
-        "year": "2024",
-        "repo": "https://github.com/jussmoreira",
-        "demo": null,
-        "cover": "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80&auto=format&fit=crop"
       }
     ]
   },
@@ -223,30 +191,11 @@
     "titleEmphasis": "juntos",
     "titleEnd": ".",
     "description": "Estoy abierto a pasantías, puestos junior y proyectos colaborativos. La forma más rápida de contactarme es por correo o teléfono; normalmente respondo en menos de un día.",
-    "labels": {
-      "name": "Nombre",
-      "email": "Correo",
-      "subject": "Asunto",
-      "message": "Mensaje"
-    },
-    "placeholders": {
-      "name": "Tu nombre completo",
-      "email": "tu@empresa.com",
-      "subject": "¿De qué se trata?",
-      "message": "Cuéntame un poco sobre tu proyecto, puesto o idea..."
-    },
-    "submit": "Enviar mensaje",
-    "sending": "Enviando...",
-    "localNote": "Se abrirá tu correo con el mensaje listo para enviar.",
     "socialLabels": {
       "linkedin": "LinkedIn",
-      "github": "GitHub"
-    },
-    "validation": {
-      "required": "Completa tu nombre, correo y mensaje.",
-      "invalidEmail": "Ese correo no parece válido - revisa de nuevo.",
-      "success": "Se abrió tu correo con el mensaje listo para enviar.",
-      "error": "Algo salió mal. Inténtalo de nuevo."
+      "github": "GitHub",
+      "orcid": "ORCID",
+      "whatsapp": "WhatsApp"
     }
   },
   "footer": {
@@ -257,6 +206,8 @@
     "socialLabels": {
       "linkedin": "LinkedIn",
       "github": "GitHub",
+      "orcid": "ORCID",
+      "whatsapp": "WhatsApp",
       "email": "Correo"
     }
   },
@@ -268,5 +219,8 @@
     "home": "Volver al inicio",
     "detailsLabel": "Detalles técnicos",
     "fallbackDetails": "No pudimos recuperar el mensaje del error."
+  },
+  "a11y": {
+    "skipToContent": "Saltar al contenido"
   }
 }
