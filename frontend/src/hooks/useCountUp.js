@@ -1,38 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-export function useInViewOnce({ threshold = 0.35, rootMargin = "0px" } = {}) {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element || inView) {
-      return undefined;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold, rootMargin },
-    );
-
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, [inView, threshold, rootMargin]);
-
-  return { ref, inView };
-}
-
+/**
+ * Anima un valor numérico de 0 a `target` con easing, usando requestAnimationFrame.
+ * La animación arranca cuando `start` es verdadero (p. ej. al entrar en viewport).
+ */
 export function useCountUp(target, start, duration = 900) {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
     if (!start) {
       setValue(0);
+      return undefined;
+    }
+
+    if (typeof window === "undefined" || typeof window.requestAnimationFrame !== "function") {
+      // Sin rAF disponible: fijar el valor final de forma determinista.
+      setValue(target);
       return undefined;
     }
 

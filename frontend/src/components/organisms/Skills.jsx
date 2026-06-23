@@ -8,7 +8,8 @@ import {
   KanbanSquare,
   HeartHandshake,
 } from "lucide-react";
-import { useCountUp, useInViewOnce } from "../../hooks/useCountUp";
+import { useCountUp } from "@/hooks/useCountUp";
+import { useInViewOnce } from "@/hooks/useInViewOnce";
 
 const icons = {
   Languages: Code2,
