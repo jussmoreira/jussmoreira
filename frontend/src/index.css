@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Las fuentes (Playfair Display + Inter) se cargan en public/index.html con
+   <link> y preconnect; evitamos @import en CSS porque bloquea el render. */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Skip link accesible: oculto hasta recibir foco por teclado */
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -3rem;
+  z-index: 100;
+  padding: 0.5rem 0.875rem;
+  border-radius: 0.5rem;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-size: 0.875rem;
+  transition: top 200ms ease;
+}
+.skip-link:focus {
+  top: 0.75rem;
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+code {
+  font-family: 'JetBrains Mono', source-code-pro, Menlo, Monaco, Consolas, monospace;
+}
+
+::selection {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+/* Subtle grain overlay utility */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* Animated underline link */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width 300ms ease;
+}
+.link-underline:hover::after { width: 100%; }
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* Entrada escalonada del Hero: los elementos aparecen en cascada */
+.hero-stagger > .reveal:nth-child(2) { transition-delay: 80ms; }
+.hero-stagger > .reveal:nth-child(3) { transition-delay: 160ms; }
+.hero-stagger > .reveal:nth-child(4) { transition-delay: 240ms; }
+.hero-stagger > .reveal:nth-child(5) { transition-delay: 320ms; }
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 38s linear infinite; }
+
+/* Blobs ambientales del Hero: flotación suave */
+@keyframes floaty {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -16px, 0); }
+}
+.animate-float { animation: floaty 10s ease-in-out infinite; }
+.animate-float-slow { animation: floaty 14s ease-in-out infinite; }
+
+/* Palabra rotativa del Hero: cross-fade suave (no mueve el layout) */
+@keyframes wordIn {
+  0% { opacity: 0; transform: translateY(0.2em); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes wordOut {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-0.2em); }
+}
+.rotating-word-in { animation: wordIn 600ms cubic-bezier(0.22, 1, 0.36, 1); }
+.rotating-word-out { animation: wordOut 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+/* Micro-nudge de las flechas en los CTA al hover */
+.btn-warm svg,
+.btn-ghost-warm svg {
+  transition: transform 220ms ease;
+}
+.btn-warm:hover .lucide-arrow-up-right,
+.btn-ghost-warm:hover .lucide-arrow-up-right {
+  transform: translate(2px, -2px);
+}
+.btn-warm:hover .lucide-arrow-down-right,
+.btn-ghost-warm:hover .lucide-arrow-down-right {
+  transform: translate(2px, 2px);
+}
+
+/* Respeta a quienes prefieren menos movimiento (a11y) */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .marquee-track,
+  .animate-float,
+  .animate-float-slow,
+  .rotating-word-in,
+  .rotating-word-out {
+    animation: none;
+  }
+  .btn-warm svg,
+  .btn-ghost-warm svg {
+    transition: none;
+  }
+  .btn-warm:hover .lucide-arrow-up-right,
+  .btn-ghost-warm:hover .lucide-arrow-up-right,
+  .btn-warm:hover .lucide-arrow-down-right,
+  .btn-ghost-warm:hover .lucide-arrow-down-right {
+    transform: none;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 36 38% 96%;
+    --foreground: 22 14% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 22 14% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 22 14% 14%;
+    --primary: 22 33% 24%;
+    --primary-foreground: 36 38% 96%;
+    --secondary: 33 28% 88%;
+    --secondary-foreground: 22 33% 24%;
+    --muted: 33 22% 92%;
+    --muted-foreground: 22 10% 38%;
+    --accent: 32 35% 60%;
+    --accent-foreground: 22 33% 18%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 36 38% 96%;
+    --border: 30 18% 84%;
+    --input: 30 18% 84%;
+    --ring: 22 33% 24%;
+    --inverse: 22 14% 14%;
+    --inverse-foreground: 36 38% 96%;
+    --inverse-muted: 30 12% 72%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 22 14% 9%;
+    --foreground: 36 38% 96%;
+    --card: 22 14% 12%;
+    --card-foreground: 36 38% 96%;
+    --popover: 22 14% 12%;
+    --popover-foreground: 36 38% 96%;
+    --primary: 36 38% 92%;
+    --primary-foreground: 22 33% 18%;
+    --secondary: 22 14% 18%;
+    --secondary-foreground: 36 38% 92%;
+    --muted: 22 14% 18%;
+    --muted-foreground: 30 12% 70%;
+    --accent: 32 35% 60%;
+    --accent-foreground: 22 14% 12%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 36 38% 96%;
+    --border: 22 14% 22%;
+    --input: 22 14% 22%;
+    --ring: 32 35% 60%;
+    --inverse: 34 18% 12%;
+    --inverse-foreground: 36 38% 96%;
+    --inverse-muted: 30 12% 68%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+}
