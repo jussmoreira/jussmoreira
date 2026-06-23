@@ -80,8 +80,8 @@ code {
 /* Reveal on scroll */
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 700ms ease, transform 700ms ease;
+  transform: translateY(18px) scale(0.985);
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal.in-view {
   opacity: 1;
@@ -95,6 +95,14 @@ code {
 }
 .marquee-track { animation: marquee 38s linear infinite; }
 
+/* Blobs ambientales del Hero: flotación suave */
+@keyframes floaty {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -16px, 0); }
+}
+.animate-float { animation: floaty 10s ease-in-out infinite; }
+.animate-float-slow { animation: floaty 14s ease-in-out infinite; }
+
 /* Respeta a quienes prefieren menos movimiento (a11y) */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -103,7 +111,11 @@ code {
     transform: none;
     transition: none;
   }
-  .marquee-track { animation: none; }
+  .marquee-track,
+  .animate-float,
+  .animate-float-slow {
+    animation: none;
+  }
 }
 
 @layer base {

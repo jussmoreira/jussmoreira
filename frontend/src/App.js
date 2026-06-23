@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Portfolio from "@/components/pages/Portfolio";
 import { useTranslation } from "react-i18next";
 import { ErrorBoundary } from "@/components/molecules/ErrorBoundary";
+import { ScrollProgress } from "@/components/atoms/scroll-progress";
 import { useReveal } from "@/hooks/useReveal";
 
 function Page() {
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <div className="App">
+      <ScrollProgress />
       <ErrorBoundary language={language} copy={errorCopy}>
         <BrowserRouter>
           <Routes>

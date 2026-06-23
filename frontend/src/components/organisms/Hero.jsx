@@ -25,7 +25,7 @@ export default function Hero() {
     >
       <div
         aria-hidden
-        className="absolute -top-24 -right-24 w-[380px] h-[380px] rounded-full opacity-60 blur-3xl"
+        className="animate-float absolute -top-24 -right-24 w-[380px] h-[380px] rounded-full opacity-60 blur-3xl"
         style={{
           background:
             "radial-gradient(circle at 30% 30%, hsl(var(--accent) / 0.45) 0%, hsl(var(--secondary) / 0.72) 45%, transparent 70%)",
@@ -33,7 +33,7 @@ export default function Hero() {
       />
       <div
         aria-hidden
-        className="absolute -bottom-32 -left-20 w-[320px] h-[320px] rounded-full opacity-40 blur-3xl"
+        className="animate-float-slow absolute -bottom-32 -left-20 w-[320px] h-[320px] rounded-full opacity-40 blur-3xl"
         style={{
           background:
             "radial-gradient(circle at 50% 50%, hsl(var(--accent) / 0.24) 0%, transparent 70%)",
