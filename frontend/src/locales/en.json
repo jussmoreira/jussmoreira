@@ -74,8 +74,8 @@
       { "name": "Git & GitHub", "level": 88 }
     ],
     "groups": [
-      { "title": "Languages", "items": ["Java", "C#", "C++", "C", "Python", "Kotlin"] },
-      { "title": "Frameworks & Web", "items": ["Spring Boot", "Laravel", "React"] },
+      { "title": "Languages", "items": ["Java", "C#", "C++", "C", "Python", "PHP", "Kotlin"] },
+      { "title": "Frameworks & Web", "items": ["Spring Boot", "Laravel", ".NET", "React"] },
       { "title": "Databases", "items": ["PostgreSQL", "MySQL", "Oracle"] },
       { "title": "Tools & version control", "items": ["Git", "GitHub", "UiPath (RPA)"] },
       { "title": "Methodologies", "items": ["Scrum", "Kanban", "Project coordination"] },
