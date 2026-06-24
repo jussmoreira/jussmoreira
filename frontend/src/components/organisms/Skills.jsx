@@ -43,7 +43,7 @@ export default function Skills() {
               <span className="divider-dot" />
               <span className="eyebrow">{skills.eyebrow}</span>
             </div>
-            <h2 className="font-display text-4xl md:text-5xl text-foreground">
+            <h2 className="section-title font-display text-4xl md:text-5xl text-foreground">
               {skills.title}
             </h2>
           </div>
@@ -65,10 +65,11 @@ export default function Skills() {
                   <h3 className="font-display text-xl text-foreground">{group.title}</h3>
                 </div>
                 <ul className="flex flex-wrap gap-2">
-                  {group.items.map((item) => (
+                  {group.items.map((item, index) => (
                     <li
                       key={item}
-                      className="px-3 py-1.5 rounded-full text-sm bg-background border border-border text-muted-foreground"
+                      className="skill-chip px-3 py-1.5 rounded-full text-sm bg-background border border-border text-muted-foreground"
+                      style={{ "--chip-i": index }}
                     >
                       {item}
                     </li>

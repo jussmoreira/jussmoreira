@@ -5,6 +5,7 @@ import Portfolio from "@/components/pages/Portfolio";
 import { useTranslation } from "react-i18next";
 import { ErrorBoundary } from "@/components/molecules/ErrorBoundary";
 import { ScrollProgress } from "@/components/atoms/scroll-progress";
+import { CursorSpotlight } from "@/components/atoms/cursor-spotlight";
 import { useReveal } from "@/hooks/useReveal";
 
 function Page() {
@@ -25,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <ScrollProgress />
+      <CursorSpotlight />
       <ErrorBoundary language={language} copy={errorCopy}>
         <BrowserRouter>
           <Routes>

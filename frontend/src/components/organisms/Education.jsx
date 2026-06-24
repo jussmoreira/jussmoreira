@@ -18,7 +18,7 @@ export default function Education() {
             <span className="divider-dot" />
             <span className="eyebrow">{education.eyebrow}</span>
           </div>
-          <h2 className="font-display text-4xl md:text-5xl text-foreground leading-tight">
+          <h2 className="section-title font-display text-4xl md:text-5xl text-foreground leading-tight">
             {education.title}
           </h2>
           <p className="mt-5 text-muted-foreground leading-relaxed">

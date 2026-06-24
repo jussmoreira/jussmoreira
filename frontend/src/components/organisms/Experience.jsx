@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Briefcase, MapPin } from "lucide-react";
+import { useInViewOnce } from "@/hooks/useInViewOnce";
 
 export default function Experience() {
   const { t } = useTranslation();
@@ -9,6 +10,8 @@ export default function Experience() {
   if (!experience || typeof experience !== "object") return null;
 
   const items = Array.isArray(experience.items) ? experience.items : [];
+  const { ref: timelineRef, inView: timelineInView } = useInViewOnce({ threshold: 0.05 });
+  const noMotion = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
   return (
     <section id="experience" className="section-pad">
@@ -18,15 +21,20 @@ export default function Experience() {
             <span className="divider-dot" />
             <span className="eyebrow">{experience.eyebrow}</span>
           </div>
-          <h2 className="font-display text-4xl md:text-5xl text-foreground">
+          <h2 className="section-title font-display text-4xl md:text-5xl text-foreground">
             {experience.title}
           </h2>
         </div>
 
-        <ol className="relative">
+        <ol ref={timelineRef} className="relative">
           <div
             aria-hidden
             className="absolute left-[18px] md:left-1/2 top-2 bottom-2 w-px bg-border md:-translate-x-1/2"
+            style={{
+              transformOrigin: "top",
+              transform: noMotion || timelineInView ? "scaleY(1)" : "scaleY(0)",
+              transition: noMotion ? "none" : "transform 1200ms cubic-bezier(0.22, 1, 0.36, 1)",
+            }}
           />
           {items.map((item, index) => (
             <li

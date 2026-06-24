@@ -42,7 +42,7 @@ export default function About() {
             <span className="divider-dot" />
             <span className="eyebrow">{about.eyebrow}</span>
           </div>
-          <h2 className="font-display text-4xl md:text-5xl leading-tight text-foreground">
+          <h2 className="section-title font-display text-4xl md:text-5xl leading-tight text-foreground">
             {about.titleStart} <em className="text-primary">{about.titleEmphasis}</em>{" "}
             {about.titleEnd}
           </h2>

@@ -38,7 +38,7 @@ export default function Projects() {
               <span className="divider-dot" />
               <span className="eyebrow">{projects.eyebrow}</span>
             </div>
-            <h2 className="font-display text-4xl md:text-5xl text-foreground">
+            <h2 className="section-title font-display text-4xl md:text-5xl text-foreground">
               {projects.title}
             </h2>
           </div>
@@ -58,7 +58,7 @@ export default function Projects() {
             <button
               key={project.id}
               onClick={() => openProject(project)}
-              className="reveal text-left card-warm rounded-2xl overflow-hidden group"
+              className="reveal text-left card-warm rounded-2xl overflow-hidden group transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
                 <SafeImage

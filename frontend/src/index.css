@@ -121,6 +121,61 @@ code {
 .rotating-word-in { animation: wordIn 600ms cubic-bezier(0.22, 1, 0.36, 1); }
 .rotating-word-out { animation: wordOut 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 
+/* Section heading accent underline — se dibuja al entrar al viewport */
+@keyframes underlineDraw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.section-title {
+  position: relative;
+}
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 52px;
+  height: 2px;
+  background: hsl(var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.in-view .section-title::after,
+.section-title.in-view::after {
+  animation: underlineDraw 600ms cubic-bezier(0.22, 1, 0.36, 1) 350ms forwards;
+}
+
+/* Staggered chip pop-in: cada chip de Skills aparece en cascada al entrar la card */
+@keyframes chipIn {
+  from { opacity: 0; transform: scale(0.8) translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+.reveal.in-view .skill-chip {
+  animation: chipIn 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--chip-i, 0) * 55ms + 200ms);
+}
+
+/* Shimmer sweep en el botón CTA principal */
+@keyframes btnShimmer {
+  0%, 20% { transform: translateX(-250%); }
+  60%     { transform: translateX(500%); }
+  100%    { transform: translateX(500%); }
+}
+.btn-warm {
+  position: relative;
+  overflow: hidden;
+}
+.btn-warm::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.18), transparent);
+  transform: translateX(-250%);
+  animation: btnShimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
 /* Micro-nudge de las flechas en los CTA al hover */
 .btn-warm svg,
 .btn-ghost-warm svg {
@@ -147,7 +202,13 @@ code {
   .animate-float,
   .animate-float-slow,
   .rotating-word-in,
-  .rotating-word-out {
+  .rotating-word-out,
+  .skill-chip,
+  .btn-warm::after {
+    animation: none;
+  }
+  .section-title::after {
+    transform: scaleX(1);
     animation: none;
   }
   .btn-warm svg,

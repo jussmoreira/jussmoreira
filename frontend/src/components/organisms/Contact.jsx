@@ -22,7 +22,7 @@ export default function Contact() {
           <span className="divider-dot" />
           <span className="eyebrow">{contact.eyebrow}</span>
         </div>
-        <h2 className="reveal font-display text-4xl md:text-5xl text-foreground leading-tight">
+        <h2 className="reveal section-title font-display text-4xl md:text-5xl text-foreground leading-tight">
           {contact.titleStart} <em className="text-primary">{contact.titleEmphasis}</em>
           {contact.titleEnd}
         </h2>
