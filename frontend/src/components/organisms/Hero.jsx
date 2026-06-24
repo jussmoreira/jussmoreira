@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowDownRight, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowDownRight, ChevronDown, Download, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/atoms/button";
 import { SafeImage } from "@/components/atoms/image";
 import { OrcidIcon } from "@/components/atoms/orcid-icon";
@@ -14,6 +14,16 @@ export default function Hero() {
 
   const h1Ref = useRef(null);
   const [h1MinHeight, setH1MinHeight] = useState(0);
+  const [cvOpen, setCvOpen] = useState(false);
+  const cvRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (cvRef.current && !cvRef.current.contains(e.target)) setCvOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // Fijar la altura máxima del h1 para que la imagen no se mueva cuando
   // palabras más largas causan un salto de línea adicional
@@ -94,6 +104,38 @@ export default function Hero() {
             >
               {t("hero.ctaContact")}
             </Button>
+
+            <div ref={cvRef} className="relative">
+              <Button
+                variant="outline"
+                onClick={() => setCvOpen((o) => !o)}
+                className="btn-ghost-warm h-12 px-6 rounded-full text-sm font-medium"
+              >
+                <Download className="w-4 h-4 mr-1" />
+                {t("hero.ctaCV")}
+                <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${cvOpen ? "rotate-180" : ""}`} />
+              </Button>
+              {cvOpen && (
+                <div className="absolute left-0 mt-2 w-44 rounded-xl border border-border bg-background shadow-lg z-50 overflow-hidden">
+                  <a
+                    href={siteAssets.cv.en}
+                    download
+                    onClick={() => setCvOpen(false)}
+                    className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    <span>🇺🇸</span> {t("hero.cvEN")}
+                  </a>
+                  <a
+                    href={siteAssets.cv.es}
+                    download
+                    onClick={() => setCvOpen(false)}
+                    className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    <span>🇨🇷</span> {t("hero.cvES")}
+                  </a>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="reveal mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted-foreground">

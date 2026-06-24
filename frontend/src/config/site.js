@@ -10,4 +10,8 @@ export const siteAssets = {
     orcid: "https://orcid.org/0009-0004-9248-1223",
     whatsapp: "https://wa.me/50686253757",
   },
+  cv: {
+    en: "/JustinMoreiraENG.pdf",
+    es: "/JustinMoreira.pdf",
+  },
 };

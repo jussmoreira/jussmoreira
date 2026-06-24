@@ -37,7 +37,10 @@
     "rotatingWords": ["cuidado", "intención", "propósito", "foco"],
     "closing": "y claridad.",
     "ctaWork": "Ver mi trabajo",
-    "ctaContact": "Contáctame"
+    "ctaContact": "Contáctame",
+    "ctaCV": "Descargar CV",
+    "cvEN": "English",
+    "cvES": "Español"
   },
   "about": {
     "eyebrow": "Sobre mí",
