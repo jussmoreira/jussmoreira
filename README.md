@@ -7,7 +7,7 @@
 - 👨‍💻 Check out my portfolio at **[jussmoreira-i58n.vercel.app](https://jussmoreira-i58n.vercel.app/)**
 - ⚡ Fun fact: I build robots, teach young people how to code, and inspire them to pursue STEAM careers
 - 📫 How to reach me **jus111moreiramatarrita@gmail.com**
-- 📄 My resume [link](URL)
+- 📄 Resume: [English](https://jussmoreira-i58n.vercel.app/JustinMoreiraENG.pdf) · [Español](https://jussmoreira-i58n.vercel.app/JustinMoreira.pdf)
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
