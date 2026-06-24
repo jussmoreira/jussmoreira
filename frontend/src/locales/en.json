@@ -87,9 +87,9 @@
         "period": "Feb 2025 - May 2026",
         "location": "Heredia, CR",
         "bullets": [
-          "Led development of an end-to-end management system for a veterinary clinic using Laravel.",
+          "Built an end-to-end management system for a veterinary clinic alongside the team using Laravel.",
           "Applied software engineering practices for requirements analysis, architectural design, and data modeling.",
-          "Coordinated team work with Scrum ceremonies and Kanban tracking."
+          "Guided the team through full Scrum adoption: sprint planning, daily stand-ups, reviews, and retrospectives."
         ],
         "tags": ["Laravel", "MySQL", "Scrum", "Architecture"]
       },

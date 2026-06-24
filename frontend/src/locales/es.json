@@ -87,9 +87,9 @@
         "period": "Feb 2025 - May 2026",
         "location": "Heredia, CR",
         "bullets": [
-          "Lideré el desarrollo de un sistema integral de gestión para una clínica veterinaria usando Laravel.",
+          "Desarrollé junto al equipo un sistema integral de gestión para una clínica veterinaria usando Laravel.",
           "Apliqué prácticas de ingeniería de software para análisis de requisitos, diseño arquitectónico y modelado de datos.",
-          "Coordiné el trabajo del equipo con ceremonias Scrum y seguimiento Kanban."
+          "Guié al equipo en la adopción de Scrum: planificación de sprints, dailies, revisiones y retrospectivas."
         ],
         "tags": ["Laravel", "MySQL", "Scrum", "Arquitectura"]
       },
