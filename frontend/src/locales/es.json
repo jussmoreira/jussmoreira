@@ -31,7 +31,7 @@
     "themeToggleLight": "Cambiar a modo claro"
   },
   "hero": {
-    "eyebrow": "Portafolio - 2025",
+    "eyebrow": "Portafolio",
     "greeting": "Hola, soy",
     "lead": "Construyo software con",
     "rotatingWords": ["cuidado", "intención", "propósito", "foco"],
@@ -84,7 +84,7 @@
         "period": "Feb 2025 - May 2026",
         "location": "Heredia, CR",
         "bullets": [
-          "Lidero el desarrollo de un sistema integral de gestión para una clínica veterinaria usando Laravel.",
+          "Lideré el desarrollo de un sistema integral de gestión para una clínica veterinaria usando Laravel.",
           "Apliqué prácticas de ingeniería de software para análisis de requisitos, diseño arquitectónico y modelado de datos.",
           "Coordiné el trabajo del equipo con ceremonias Scrum y seguimiento Kanban."
         ],
@@ -118,7 +118,7 @@
   },
   "projects": {
     "eyebrow": "Trabajo seleccionado",
-    "title": "Proyectos que vale la pena revisar de cerca.",
+    "title": "Proyectos que he trabajado.",
     "githubCta": "Ver todo en GitHub",
     "highlightsLabel": "Destacados",
     "viewRepo": "Ver repositorio",
@@ -160,8 +160,8 @@
   },
   "education": {
     "eyebrow": "Educación",
-    "title": "Estudio constante, práctica deliberada.",
-    "description": "La formación universitaria es la base de mi entrenamiento: desde fundamentos algorítmicos hasta arquitectura y gestión de proyectos. Fuera del aula, sigo construyendo, mentorando y leyendo.",
+    "title": "Mi formación académica.",
+    "description": "La formación universitaria es la base de mi entrenamiento: desde fundamentos algorítmicos hasta arquitectura y gestión de proyectos. Fuera del aula, sigo construyendo, enseñando y aprendiendo.",
     "items": [
       {
         "degree": "Diplomado en Programación de Aplicaciones Informáticas",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ArrowDownRight, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/atoms/button";
 import { SafeImage } from "@/components/atoms/image";
@@ -9,8 +9,28 @@ import { useTranslation } from "react-i18next";
 import { siteAssets } from "@/config/site";
 
 export default function Hero() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const profile = t("profile", { returnObjects: true });
+
+  const h1Ref = useRef(null);
+  const [h1MinHeight, setH1MinHeight] = useState(0);
+
+  // Fijar la altura máxima del h1 para que la imagen no se mueva cuando
+  // palabras más largas causan un salto de línea adicional
+  useEffect(() => {
+    const el = h1Ref.current;
+    if (!el) return;
+    const observer = new ResizeObserver(([entry]) => {
+      setH1MinHeight((prev) => Math.max(prev, entry.contentRect.height));
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Resetear al cambiar idioma para que se recalcule con las nuevas palabras
+  useEffect(() => {
+    setH1MinHeight(0);
+  }, [i18n.language]);
 
   const scrollTo = (id) => {
     const element = document.getElementById(id);
@@ -41,14 +61,13 @@ export default function Hero() {
         }}
       />
 
-      <div className="container-narrow grid lg:grid-cols-12 gap-12 items-center relative">
+      <div className="container-narrow grid lg:grid-cols-12 gap-12 items-start relative">
         <div className="lg:col-span-7 hero-stagger">
-          <div className="reveal flex items-center gap-3 mb-6">
-            <span className="divider-dot" />
-            <span className="eyebrow">{t("hero.eyebrow")}</span>
-          </div>
-
-          <h1 className="reveal font-display text-[44px] sm:text-6xl lg:text-7xl leading-[1.05] text-foreground">
+          <h1
+            ref={h1Ref}
+            style={h1MinHeight ? { minHeight: h1MinHeight } : undefined}
+            className="reveal font-display text-[44px] sm:text-6xl lg:text-7xl leading-[1.05] text-foreground"
+          >
             {t("hero.greeting")} {" "}
             <span className="italic text-primary">{profile.shortName}</span>.
             <br />
@@ -59,10 +78,6 @@ export default function Hero() {
             />{" "}
             {t("hero.closing")}
           </h1>
-
-          <p className="reveal mt-6 text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            {profile.summary}
-          </p>
 
           <div className="reveal mt-8 flex flex-wrap items-center gap-3">
             <Button
@@ -132,33 +147,30 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="lg:col-span-5 reveal">
-          <div className="relative mx-auto w-[280px] sm:w-[340px] lg:w-full max-w-[420px]">
+        <div className="order-first lg:order-none lg:col-span-5 reveal flex justify-center lg:justify-center lg:pt-4">
+          <div className="relative animate-float">
+            {/* Cometa: arco brillante que orbita la foto */}
             <div
-              className="absolute -inset-4 rounded-[28px] -z-10"
+              className="absolute rounded-full"
               style={{
+                inset: "-4px",
                 background:
-                  "linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--accent) / 0.85) 60%, hsl(var(--primary) / 0.7) 100%)",
+                  "conic-gradient(from 0deg, transparent 0%, transparent 55%, hsl(var(--accent) / 0.4) 68%, hsl(var(--accent)) 78%, hsl(var(--primary)) 85%, hsl(var(--accent) / 0.2) 92%, transparent 100%)",
+                filter: "blur(1.5px)",
+                animation: "spin 3.5s linear infinite",
               }}
             />
-            <div className="relative rounded-[24px] overflow-hidden border border-border shadow-[0_30px_80px_-30px_hsl(var(--foreground)/0.45)] bg-card">
+            {/* Foto circular */}
+            <div className="relative w-[240px] h-[240px] sm:w-[290px] sm:h-[290px] lg:w-[320px] lg:h-[320px] rounded-full overflow-hidden ring-[4px] ring-background shadow-[0_20px_60px_-10px_hsl(var(--foreground)/0.35)]">
               <SafeImage
                 src={siteAssets.photo}
                 alt={profile.name}
-                width={420}
-                height={525}
-                className="w-full h-auto object-cover aspect-[4/5]"
+                width={280}
+                height={280}
+                className="w-full h-full object-cover object-top"
                 loading="eager"
                 fetchPriority="high"
               />
-              <div className="absolute bottom-3 left-3 right-3 bg-background/85 backdrop-blur px-4 py-3 rounded-xl border border-border">
-                <div className="text-xs uppercase tracking-[0.18em] text-accent">
-                  {profile.title}
-                </div>
-                <div className="text-sm text-foreground mt-0.5">
-                  {profile.availability}
-                </div>
-              </div>
             </div>
           </div>
         </div>

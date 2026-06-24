@@ -31,7 +31,7 @@
     "themeToggleLight": "Switch to light mode"
   },
   "hero": {
-    "eyebrow": "Portfolio - 2025",
+    "eyebrow": "Portfolio",
     "greeting": "Hi, I'm",
     "lead": "I build software with",
     "rotatingWords": ["care", "intention", "purpose", "focus"],
@@ -84,7 +84,7 @@
         "period": "Feb 2025 - May 2026",
         "location": "Heredia, CR",
         "bullets": [
-          "Leading development of an end-to-end management system for a veterinary clinic using Laravel.",
+          "Led development of an end-to-end management system for a veterinary clinic using Laravel.",
           "Applied software engineering practices for requirements analysis, architectural design, and data modeling.",
           "Coordinated team work with Scrum ceremonies and Kanban tracking."
         ],
@@ -118,7 +118,7 @@
   },
   "projects": {
     "eyebrow": "Selected work",
-    "title": "Projects worth a closer look.",
+    "title": "Projects I've worked on.",
     "githubCta": "View all on GitHub",
     "highlightsLabel": "Highlights",
     "viewRepo": "View repository",
@@ -160,8 +160,8 @@
   },
   "education": {
     "eyebrow": "Education",
-    "title": "Continuous study, deliberate practice.",
-    "description": "University training is the foundation of my development: from algorithmic fundamentals to architecture and project management. Outside class, I keep building, mentoring, and learning.",
+    "title": "My academic background.",
+    "description": "University training is the foundation of my development: from algorithmic fundamentals to architecture and project management. Outside class, I keep building, teaching, and learning.",
     "items": [
       {
         "degree": "Diploma in Computer Application Programming",
