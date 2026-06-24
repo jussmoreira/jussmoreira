@@ -6,12 +6,12 @@ import { useInViewOnce } from "@/hooks/useInViewOnce";
 export default function Experience() {
   const { t } = useTranslation();
   const experience = t("experience", { returnObjects: true });
+  const { ref: timelineRef, inView: timelineInView } = useInViewOnce({ threshold: 0.05 });
+  const noMotion = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
   if (!experience || typeof experience !== "object") return null;
 
   const items = Array.isArray(experience.items) ? experience.items : [];
-  const { ref: timelineRef, inView: timelineInView } = useInViewOnce({ threshold: 0.05 });
-  const noMotion = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
   return (
     <section id="experience" className="section-pad">
