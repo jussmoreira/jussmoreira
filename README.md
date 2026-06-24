@@ -4,7 +4,7 @@
 - 🔭 I'm currently working on **backend web applications and management systems**
 - 💼 I'm looking for **my first professional opportunity as a backend developer**
 - 👯 I'm open to collaborate on **open source projects | backend applications | automation with RPA**
-- 👨‍💻 Check out my repositories here on GitHub
+- 👨‍💻 Check out my portfolio at **[jussmoreira-i58n.vercel.app](https://jussmoreira-i58n.vercel.app/)**
 - ⚡ Fun fact: I build robots, teach young people how to code, and inspire them to pursue STEAM careers
 - 📫 How to reach me **jus111moreiramatarrita@gmail.com**
 - 📄 My resume [link](URL)
