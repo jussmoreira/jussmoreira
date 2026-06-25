@@ -4,6 +4,7 @@ import { Button } from "@/components/atoms/button";
 import { SafeImage } from "@/components/atoms/image";
 import { OrcidIcon } from "@/components/atoms/orcid-icon";
 import { WhatsappIcon } from "@/components/atoms/whatsapp-icon";
+import { CredlyIcon } from "@/components/atoms/credly-icon";
 import { RotatingText } from "@/components/atoms/rotating-text";
 import { useTranslation } from "react-i18next";
 import { siteAssets } from "@/config/site";
@@ -185,6 +186,15 @@ export default function Hero() {
             >
               <WhatsappIcon className="w-4 h-4 text-accent" />
               WhatsApp
+            </a>
+            <a
+              href={siteAssets.socials.credly}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 link-underline hover:text-primary"
+            >
+              <CredlyIcon className="w-4 h-4 text-accent" />
+              Credly
             </a>
           </div>
         </div>

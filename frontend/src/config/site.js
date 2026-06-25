@@ -9,6 +9,7 @@ export const siteAssets = {
     github: "https://github.com/jussmoreira",
     orcid: "https://orcid.org/0009-0004-9248-1223",
     whatsapp: "https://wa.me/50686253757",
+    credly: "https://www.credly.com/users/justin-moreira-matarrita/badges",
   },
   cv: {
     en: "/JustinMoreiraENG.pdf",
