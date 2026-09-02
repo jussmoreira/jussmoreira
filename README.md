@@ -1,9 +1,13 @@
 <h1 align="center">Hello, I'm Justin Moreira</h1>
 <h3 align="center">Information Systems Engineering student @ UNA | Backend Developer | Laravel · Spring Boot</h3>
 
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=jussmoreira&label=Profile%20Views&color=0e75b6&style=flat-square" alt="jussmoreira profile views" />
+</p>
+
 - 🔭 I'm currently working on **backend web applications and management systems**
 - 💼 I'm looking for **my first professional opportunity as a backend developer**
-- 👯 I'm open to collaborate on **open source projects | backend applications | automation with RPA**
+- 💻 I'm open to collaborate on **open source projects | backend applications | automation with RPA**
 - 👨‍💻 Check out my portfolio at **[jussmoreira-i58n.vercel.app](https://jussmoreira-i58n.vercel.app/)**
 - ⚡ Fun fact: I build robots, teach young people how to code, and inspire them to pursue STEAM careers
 - 📫 How to reach me **jus111moreiramatarrita@gmail.com**
@@ -38,4 +42,9 @@
 <h4 align="left">Other</h4>
 <p align="left">
   <img src="https://skillicons.dev/icons?i=arduino" alt="other" />
+</p>
+
+<h3 align="left">📊 GitHub Stats & Activity</h3>
+<p align="left">
+  <img height="165" src="https://github-readme-streak-stats.herokuapp.com/?user=jussmoreira&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
 </p>
