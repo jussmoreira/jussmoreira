@@ -27,7 +27,7 @@
 - Si `craco.config.js` usa `require("dotenv")`, declarar `dotenv` en devDependencies (no depender de resolución transitiva).
 
 ## Limpieza de artefactos de scaffolding
-- Este proyecto nació en la plataforma Emergent. Ya no depende de ella: la foto de perfil vive en `public/` en vez de su CDN. No volver a enlazar assets a servicios de terceros que puedan desaparecer.
+- Este proyecto fue generado con la plataforma Emergent. Eliminar de producción lo que no se use: workarounds en `index.html`, plugins de health-check inexistentes, integraciones de "visual edits".
 
 ## Git / commits
 - **Conventional Commits**: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`, `perf:`, `style:`.

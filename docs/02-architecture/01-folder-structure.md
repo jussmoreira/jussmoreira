@@ -12,8 +12,8 @@ frontend/
 │   ├── i18n.js                 # Configuración de i18next
 │   ├── index.css / App.css     # Estilos globales + design tokens
 │   ├── components/
-│   │   ├── atoms/              # Elementos UI mínimos (button, external-link, image)
-│   │   ├── molecules/          # Composiciones simples (timeline-entry, ErrorBoundary)
+│   │   ├── atoms/              # Elementos UI mínimos (button, input, label…)
+│   │   ├── molecules/          # Composiciones simples (card, dialog, tabs…)
 │   │   ├── organisms/          # Secciones de página (Navbar, Hero, Contact…)
 │   │   └── pages/              # Ensamblaje de organisms (Portfolio)
 │   ├── contexts/               # Estado global por React Context (ThemeContext)
@@ -27,8 +27,8 @@ frontend/
 
 | Capa | Responsabilidad | Ejemplos | Puede importar |
 |------|-----------------|----------|----------------|
-| **atoms** | Elemento UI indivisible, sin lógica de negocio | `button`, `ExternalLink`, `SafeImage` | `lib/`, librerías |
-| **molecules** | Composición pequeña y reutilizable de atoms | `TimelineEntry`, `ErrorBoundary` | atoms, `lib/` |
+| **atoms** | Elemento UI indivisible, sin lógica de negocio | `button`, `input`, `label`, `badge`, `SafeImage` | `lib/`, librerías |
+| **molecules** | Composición pequeña y reutilizable de atoms | `card`, `dialog`, `tabs`, `ErrorBoundary` | atoms, `lib/` |
 | **organisms** | Sección autónoma de la página, con datos i18n y hooks | `Navbar`, `Hero`, `Contact`, `Footer` | molecules, atoms, `hooks/`, `contexts/`, `config/`, `locales` (vía i18n) |
 | **pages** | Ensamblaje de organisms en una vista | `Portfolio` | organisms |
 

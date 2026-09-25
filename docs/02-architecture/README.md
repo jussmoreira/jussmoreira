@@ -2,7 +2,7 @@
 
 ## Qué es este proyecto
 
-SPA (Single Page Application) de portafolio personal construida con **React 19**. Es **frontend-only**: no hay backend propio. La capa de "datos" es contenido estático servido vía internacionalización (i18n) y assets/constantes de configuración. El contacto se hace con enlaces directos (`mailto:`, `tel:`, WhatsApp); `localStorage` solo guarda el tema y el idioma elegidos.
+SPA (Single Page Application) de portafolio personal construida con **React 19**. Es **frontend-only**: no hay backend propio. La capa de "datos" es contenido estático servido vía internacionalización (i18n) y assets/constantes de configuración. El formulario de contacto opera con `mailto:` y persistencia local (`localStorage`), sin servidor.
 
 ## Stack
 
@@ -37,9 +37,9 @@ SPA (Single Page Application) de portafolio personal construida con **React 19**
 │   organisms (Navbar, Hero, About, Skills, Experience,     │
 │              Projects, Education, Contact, Footer)         │
 │                                   │                        │
-│        molecules (timeline-entry, ErrorBoundary)           │
+│            molecules (card, dialog, tabs, ...)             │
 │                                   │                        │
-│        atoms (button, external-link, image)                │
+│              atoms (button, input, label, ...)             │
 └─────────────────────────────────────────────────────────┘
         ▲                 ▲                    ▲
    contexts/          hooks/               locales/  config/
