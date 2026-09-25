@@ -4,7 +4,7 @@
 
 - **Tailwind CSS** para utilidades en el JSX.
 - **Design tokens** como CSS variables HSL en `index.css`, expuestas a Tailwind vía `tailwind.config.js` (`hsl(var(--token))`).
-- Clases globales semánticas reutilizables en `index.css` (`.card-warm`, `.btn-warm`, `.link-underline`, `.reveal`, `.section-pad`, `.container-narrow`, `.eyebrow`, `.divider-dot`).
+- Clases globales semánticas reutilizables en `index.css` (`.container-narrow`, `.section-grid` con `.section-body`, `.skip-link`). Los botones usan las variantes del atom `Button` (`default`, `outline`, `ghost`).
 
 ## Design tokens
 
@@ -41,11 +41,12 @@ className={cn("rounded-md border", isActive && "border-primary", className)}
 ```
 
 ## Tipografía
-- Display/headings: `Playfair Display` (clase `.font-display`, aplicada también a `h1,h2,h3`).
-- Cuerpo: `Inter`.
+- Títulos (`h1`, `h2`): `Newsreader` (utilidad `font-display`).
+- Cuerpo, `h3` y controles: `Inter` (utilidad `font-sans`, por defecto en `body`).
 - Las fuentes se cargan en `index.html` con `preconnect`. **No** usar `@import` de Google Fonts dentro de CSS (bloquea el render); declararlas en `<link>`.
 
 ## Buenas prácticas
 - Evitar estilos inline salvo valores dinámicos (gradientes con tokens, anchos calculados).
-- Respetar `prefers-reduced-motion` para animaciones largas cuando se agreguen nuevas.
+- Movimiento mínimo: solo transiciones de color y el efecto de presión de los botones. `index.css` las anula con `prefers-reduced-motion`, y `hoverOnlyWhenSupported` evita estados hover pegados en pantallas táctiles.
+- Nada de decoración que imite "diseño de IA": sin degradados, brillos, blobs, texto rotativo, contadores animados ni contenido que aparece al hacer scroll. El contenido debe estar visible desde el primer render.
 - Reutilizar las clases globales existentes antes de crear nuevas variantes.

@@ -22,7 +22,7 @@
 ## Internacionalización (i18n)
 
 - `i18next` con recursos `en` y `es`; idioma inicial: guardado (`jm_language_v1`) → idioma del navegador → `en` (fallback).
-- **Todo texto visible vive en los locales.** Esto incluye contenido generado dinámicamente: el asunto y cuerpo de un `mailto:` también se traducen (claves `contact.mailto.*`).
+- **Todo texto visible vive en los locales**, incluidos los textos solo para lectores de pantalla (`a11y.*`).
 - Acceso a objetos/listas con `t("clave", { returnObjects: true })` + guard de tipo.
 - Interpolación con `{{var}}` (`footer.copyright`). `escapeValue: false` es correcto porque React ya escapa; **nunca** inyectar contenido de locale con `dangerouslySetInnerHTML`.
 - **Paridad de claves:** `en.json` y `es.json` deben tener exactamente la misma estructura de claves. Validado por test (ver [09-testing](09-testing.md)).
@@ -34,7 +34,5 @@
 - Si en el futuro se añade backend o un formulario, encapsular las llamadas en una capa `services/` y no acoplar `fetch` directamente a los organisms.
 
 ## Hooks reutilizables (`src/hooks/`)
-- `useInViewOnce` — detecta entrada en viewport una sola vez (ref-based).
-- `useReveal` — anima los elementos `.reveal` al entrar en viewport (DOM-based, a nivel de página).
-- `useCountUp` — animación numérica con `requestAnimationFrame` y easing.
+- `useActiveSection` — devuelve el id de la sección visible para marcar el enlace activo de la navegación (`IntersectionObserver` con `disconnect()` en el cleanup).
 - Regla: cualquier patrón con `IntersectionObserver`/`requestAnimationFrame` se centraliza aquí, **no se duplica** en componentes.

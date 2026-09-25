@@ -17,7 +17,7 @@ Objetivo: **Core Web Vitals** en verde (LCP < 2.5s, CLS < 0.1, INP < 200ms) y bu
 ## Render y efectos
 - Desconectar observers/listeners/timers en el cleanup de efectos.
 - `IntersectionObserver` para animaciones de entrada (ya en uso) es preferible a listeners de `scroll` costosos; si se usa `scroll`, marcarlo `{ passive: true }` (ya aplicado en `Navbar`).
-- Evitar trabajo en el hilo principal durante animaciones; usar `requestAnimationFrame` (patrón de `useCountUp`).
+- No escuchar `scroll`/`mousemove` para efectos decorativos; para detectar secciones visibles usar `IntersectionObserver` (patrón de `useActiveSection`).
 
 ## CSS y fuentes
 - Cargar fuentes vía `<link>` en `index.html` con `preconnect`; evitar `@import` en CSS (bloquea render).
