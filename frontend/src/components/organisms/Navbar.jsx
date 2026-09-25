@@ -1,184 +1,101 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { ArrowUpRight, Menu, Moon, SunMedium, X } from "lucide-react";
-import { Button } from "@/components/atoms/button";
+import React, { useEffect, useState } from "react";
+import { Menu, Moon, SunMedium, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Button } from "@/components/atoms/button";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useActiveSection } from "@/hooks/useActiveSection";
+import { cn } from "@/lib/utils";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState("home");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const { isDark, toggleTheme } = useTheme();
-
-  const navItems = useMemo(() => {
-    const items = t("nav.items", { returnObjects: true });
-    return Array.isArray(items) ? items : [];
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [t, i18n.resolvedLanguage]);
-  const profile = t("profile", { returnObjects: true });
+  const nav = t("nav", { returnObjects: true });
+  const navItems = Array.isArray(nav?.items) ? nav.items : [];
+  const activeId = useActiveSection(navItems.map((item) => item.id));
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    if (typeof IntersectionObserver === "undefined") return undefined;
-    const sections = navItems
-      .map((item) => document.getElementById(item.id))
-      .filter(Boolean);
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
-    );
-    sections.forEach((section) => io.observe(section));
-    return () => io.disconnect();
-  }, [navItems]);
-
-  const go = (id) => {
-    setOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+    if (!isMenuOpen) return undefined;
+    const onKeyDown = (event) => event.key === "Escape" && setIsMenuOpen(false);
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isMenuOpen]);
 
   const toggleLanguage = () => {
     i18n.changeLanguage(i18n.resolvedLanguage?.startsWith("es") ? "en" : "es");
   };
 
-  const languageLabel = i18n.resolvedLanguage?.startsWith("es") ? "ES" : "EN";
+  const linkClass = (id) =>
+    cn(
+      "rounded-md px-2.5 py-1.5 text-sm transition-colors",
+      activeId === id ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+    );
+
+  const settings = (
+    <div className="flex items-center gap-1">
+      <Button
+        type="button"
+        variant="ghost"
+        size="icon"
+        onClick={toggleTheme}
+        aria-label={isDark ? nav.themeToggleLight : nav.themeToggleDark}
+      >
+        {isDark ? <SunMedium aria-hidden="true" /> : <Moon aria-hidden="true" />}
+      </Button>
+      <Button type="button" variant="ghost" size="icon" onClick={toggleLanguage} aria-label={nav.switchLanguage}>
+        {nav.languageShort}
+      </Button>
+    </div>
+  );
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-background/85 backdrop-blur border-b border-border" : "bg-transparent"
-      }`}
-    >
-      <div className="container-narrow flex items-center justify-between h-16 md:h-20">
-        <button
-          onClick={() => go("home")}
-          className="flex items-center gap-2 group"
-          aria-label={t("nav.homeAria")}
-        >
-          <span className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-display text-sm tracking-wider">
-            {profile.initials}
-          </span>
-          <span className="font-display text-lg leading-none">{profile.shortName}</span>
-        </button>
+    <header className="sticky top-0 z-50 border-b bg-background/90 backdrop-blur">
+      <div className="container-narrow flex h-16 items-center justify-between gap-6">
+        <a href="#home" className="font-display text-xl font-medium" aria-label={nav.homeAria}>
+          {t("profile.shortName")}
+        </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav aria-label={nav.label} className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
-            <button
+            <a
               key={item.id}
-              onClick={() => go(item.id)}
-              className={`text-sm tracking-wide link-underline transition-colors ${
-                active === item.id ? "text-primary" : "text-muted-foreground hover:text-primary"
-              }`}
+              href={`#${item.id}`}
+              aria-current={activeId === item.id ? "location" : undefined}
+              className={linkClass(item.id)}
             >
               {item.label}
-            </button>
+            </a>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
-          <Button
-            type="button"
-            variant="outline"
-            size="icon"
-            onClick={toggleTheme}
-            className="rounded-full border-border bg-card text-foreground hover:bg-accent hover:text-accent-foreground"
-            aria-label={isDark ? t("nav.themeToggleLight") : t("nav.themeToggleDark")}
-          >
-            {isDark ? <SunMedium className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            onClick={toggleLanguage}
-            className="h-10 rounded-full px-4 border-border bg-card text-foreground hover:bg-accent hover:text-accent-foreground"
-            aria-label={t("nav.language")}
-          >
-            {languageLabel}
-          </Button>
-          <Button
-            onClick={() => go("contact")}
-            className="btn-warm h-10 px-5 rounded-full font-medium"
-          >
-            {t("nav.cta")}
-            <ArrowUpRight className="w-4 h-4 ml-1" />
-          </Button>
-        </div>
+        <div className="hidden md:block">{settings}</div>
 
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setOpen((value) => !value)}
-          aria-label={t("nav.toggleMenu")}
-          aria-expanded={open}
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon"
+          className="md:hidden"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          aria-label={nav.toggleMenu}
+          aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
         >
-          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+          {isMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </Button>
       </div>
 
-      <div
-        id="mobile-menu"
-        inert={!open ? true : undefined}
-        aria-hidden={!open}
-        className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ${
-          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        } bg-background border-b border-border`}
-      >
-        <div className="container-narrow py-4 flex flex-col gap-2">
-          <div className="flex items-center gap-2 pb-2">
-            <Button
-              type="button"
-              variant="outline"
-              size="icon"
-              onClick={toggleTheme}
-              className="rounded-full border-border bg-card text-foreground hover:bg-accent hover:text-accent-foreground"
-              aria-label={isDark ? t("nav.themeToggleLight") : t("nav.themeToggleDark")}
-            >
-              {isDark ? <SunMedium className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={toggleLanguage}
-              className="h-10 rounded-full px-4 border-border bg-card text-foreground hover:bg-accent hover:text-accent-foreground"
-              aria-label={t("nav.language")}
-            >
-              {languageLabel}
-            </Button>
-          </div>
-
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => go(item.id)}
-              className="text-left py-2 text-foreground hover:text-primary"
-            >
-              {item.label}
-            </button>
-          ))}
-
-          <Button
-            onClick={() => go("contact")}
-            className="btn-warm rounded-full mt-2"
-          >
-            {t("nav.cta")} <ArrowUpRight className="w-4 h-4 ml-1" />
-          </Button>
+      {isMenuOpen && (
+        <div id="mobile-menu" className="container-narrow border-t py-3 md:hidden">
+          <nav aria-label={nav.label} className="flex flex-col">
+            {navItems.map((item) => (
+              <a key={item.id} href={`#${item.id}`} onClick={() => setIsMenuOpen(false)} className={cn(linkClass(item.id), "py-3 text-base")}>
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <div className="mt-2 border-t pt-3">{settings}</div>
         </div>
-      </div>
+      )}
     </header>
   );
 }

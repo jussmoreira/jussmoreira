@@ -2,19 +2,14 @@
   "profile": {
     "name": "Justin Gabriel Moreira Matarrita",
     "shortName": "Justin Moreira",
-    "initials": "JM",
-    "title": "Ingeniero en Sistemas de Información",
-    "tagline": "Construyendo software con intención, arquitectura limpia y pulso sereno.",
-    "summary": "Estudiante avanzado de Ingeniería en Sistemas de Información, apasionado por analizar problemas complejos y crear soluciones confiables y mantenibles. Proactivo, colaborativo y rápido para adaptarme a nuevos entornos y tecnologías.",
+    "title": "Desarrollador backend",
     "location": "Costa Rica",
     "email": "jus111moreiramatarrita@gmail.com",
     "phone": "+506 8625 3757",
-    "phoneRaw": "+50686253757",
-    "availability": "Disponible para trabajar"
+    "phoneRaw": "+50686253757"
   },
   "nav": {
     "items": [
-      { "id": "home", "label": "Inicio" },
       { "id": "about", "label": "Sobre mí" },
       { "id": "skills", "label": "Habilidades" },
       { "id": "experience", "label": "Experiencia" },
@@ -22,200 +17,170 @@
       { "id": "education", "label": "Educación" },
       { "id": "contact", "label": "Contacto" }
     ],
-    "cta": "Hablemos",
-    "language": "Idioma",
-    "theme": "Tema",
+    "label": "Secciones",
     "homeAria": "Inicio",
-    "toggleMenu": "Abrir o cerrar menú",
+    "toggleMenu": "Menú",
+    "languageShort": "EN",
+    "switchLanguage": "Ver en inglés",
     "themeToggleDark": "Cambiar a modo oscuro",
     "themeToggleLight": "Cambiar a modo claro"
   },
   "hero": {
-    "eyebrow": "Portafolio",
-    "greeting": "Hola, soy",
-    "lead": "Construyo software con",
-    "rotatingWords": ["cuidado", "intención", "propósito", "foco"],
-    "closing": "y claridad.",
-    "ctaWork": "Ver mi trabajo",
-    "ctaContact": "Contáctame",
+    "lead": "Estudiante avanzado de Ingeniería en Sistemas de Información en la Universidad Nacional de Costa Rica. Construyo aplicaciones web y sistemas de gestión con Laravel y Spring Boot, y enseño robótica a estudiantes de colegio.",
+    "ctaWork": "Ver proyectos",
     "ctaCV": "Descargar CV",
-    "cvEN": "English",
-    "cvES": "Español"
+    "cvOther": "Versión en inglés",
+    "linksLabel": "Perfiles"
   },
   "about": {
-    "eyebrow": "Sobre mí",
-    "titleStart": "Un ingeniero curioso,",
-    "titleEmphasis": "feliz",
-    "titleEnd": "cuando las ideas se convierten en sistemas que funcionan.",
+    "title": "Sobre mí",
     "paragraphs": [
-      "Soy un estudiante avanzado de Ingeniería en Sistemas de Información en Costa Rica. Mi trabajo está en la intersección de la arquitectura limpia, la resolución práctica de problemas y la colaboración constante, ya sea modelando datos en MySQL, construyendo un backend en Laravel o componiendo una interfaz en React.",
-      "Más allá de programar, me gusta enseñar. He facilitado talleres de robótica para estudiantes de colegio y he acompañado a otros compañeros en cursos de Automatización Robótica de Procesos con UiPath. Explicar ideas complejas en un lenguaje simple y tranquilo me convierte en un mejor ingeniero.",
-      "Valoro la artesanía, la comunicación honesta y entregar trabajo que yo mismo mantendría con gusto dentro de un año."
-    ],
-    "stats": [
-      { "label": "Años estudiando", "value": "4+" },
-      { "label": "Stack técnicos", "value": "6+" },
-      { "label": "Estudiantes acompañados", "value": "30+" },
-      { "label": "Idiomas", "value": "2" }
+      "Estudio Ingeniería en Sistemas de Información en la Universidad Nacional de Costa Rica. Me interesa sobre todo el backend: modelar datos, diseñar la arquitectura de una aplicación y escribir código que otra persona pueda mantener.",
+      "También enseño. Desde 2023 doy talleres de robótica educativa a estudiantes de colegio, y en 2024 acompañé a compañeros en el curso de automatización robótica de procesos con UiPath. Explicar un tema con palabras simples me obliga a entenderlo bien.",
+      "Busco mi primera oportunidad profesional como desarrollador backend, en un equipo donde pueda aprender y aportar desde el primer día."
     ],
     "languagesLabel": "Idiomas",
     "languages": [
       { "name": "Español", "level": "Nativo" },
-      { "name": "Inglés", "level": "Lectura técnica / profesional" }
+      { "name": "Inglés", "level": "Lectura técnica y profesional" }
     ]
   },
   "skills": {
-    "eyebrow": "Habilidades",
-    "title": "Las herramientas a las que recurro.",
-    "description": "Un conjunto de herramientas forjado entre cursos universitarios, mentorías y proyectos reales de ingeniería. Siempre aprendiendo, siempre afinando.",
+    "title": "Habilidades",
     "groups": [
-      { "title": "Lenguajes", "items": ["Java", "C#", "C++", "C", "Python", "PHP", "Kotlin"] },
-      { "title": "Frameworks y Web", "items": ["Spring Boot", "Laravel", ".NET", "React"] },
-      { "title": "Bases de datos", "items": ["PostgreSQL", "MySQL", "Oracle"] },
-      { "title": "Herramientas y control de versiones", "items": ["Git", "GitHub", "UiPath (RPA)"] },
-      { "title": "Metodologías", "items": ["Scrum", "Kanban", "Coordinación de proyectos"] },
-      { "title": "Interpersonales", "items": ["Comunicación efectiva", "Trabajo en equipo", "Adaptabilidad", "Mentoría"] }
+      { "title": "Lenguajes", "items": ["Java", "PHP", "C#", "Python", "Kotlin", "C++", "C"] },
+      { "title": "Frameworks", "items": ["Spring Boot", "Laravel", ".NET", "React"] },
+      { "title": "Bases de datos", "items": ["MySQL", "PostgreSQL", "Oracle"] },
+      { "title": "Herramientas", "items": ["Git", "GitHub", "UiPath (RPA)"] },
+      { "title": "Metodologías", "items": ["Scrum", "Kanban", "Coordinación de proyectos"] }
     ]
   },
   "experience": {
-    "eyebrow": "Experiencia",
-    "title": "Donde he aprendido, enseñado y entregado resultados.",
+    "title": "Experiencia",
     "items": [
       {
-        "role": "Proyecto final de ingeniería",
+        "role": "Proyecto final de graduación",
         "org": "Universidad Nacional de Costa Rica",
-        "period": "Feb 2025 - May 2026",
-        "location": "Heredia, CR",
+        "period": "feb. 2025 – may. 2026",
+        "location": "Heredia",
         "bullets": [
-          "Desarrollé junto al equipo un sistema integral de gestión para una clínica veterinaria usando Laravel.",
-          "Apliqué prácticas de ingeniería de software para análisis de requisitos, diseño arquitectónico y modelado de datos.",
-          "Guié al equipo en la adopción de Scrum: planificación de sprints, dailies, revisiones y retrospectivas."
+          "Desarrollé junto al equipo un sistema de gestión para una clínica veterinaria con Laravel.",
+          "Participé en el análisis de requisitos, el diseño de la arquitectura y el modelado de datos.",
+          "Guié al equipo en la adopción de Scrum: planificación de sprints, reuniones diarias, revisiones y retrospectivas."
         ],
-        "tags": ["Laravel", "MySQL", "Scrum", "Arquitectura"]
+        "tags": ["Laravel", "MySQL", "Scrum"]
       },
       {
-        "role": "Asistente estudiantil - Robótica educativa",
+        "role": "Asistente estudiantil de robótica educativa",
         "org": "Universidad Nacional de Costa Rica",
-        "period": "Oct 2023 - Presente",
-        "location": "Heredia, CR",
+        "period": "oct. 2023 – actualidad",
+        "location": "Heredia",
         "bullets": [
-          "Diseñé y facilité talleres de robótica educativa para estudiantes de colegio.",
-          "Construí robots y adapté material didáctico a distintos niveles de aprendizaje.",
-          "Acompañé equipos con resolución práctica de problemas e iteración continua."
+          "Diseño e imparto talleres de robótica educativa para estudiantes de colegio.",
+          "Construyo robots y adapto el material didáctico a distintos niveles.",
+          "Acompaño a los equipos mientras prueban, fallan y mejoran sus prototipos."
         ],
-        "tags": ["Enseñanza", "Robótica", "Mentoría"]
+        "tags": ["Enseñanza", "Robótica", "Arduino"]
       },
       {
-        "role": "Mentor estudiantil - RPA con UiPath",
+        "role": "Mentor estudiantil de RPA con UiPath",
         "org": "Universidad Nacional de Costa Rica",
-        "period": "Jun 2024 - Dec 2024",
-        "location": "Heredia, CR",
+        "period": "jun. 2024 – dic. 2024",
+        "location": "Heredia",
         "bullets": [
-          "Acompañé a compañeros en el curso de Automatización Robótica de Procesos (UiPath).",
-          "Atendí dudas y expliqué conceptos del curso para reforzar el aprendizaje.",
-          "Orienté en los ejercicios y en el avance de sus automatizaciones."
+          "Acompañé a compañeros en el curso de automatización robótica de procesos con UiPath.",
+          "Resolví dudas y expliqué los conceptos del curso.",
+          "Revisé sus ejercicios y el avance de sus automatizaciones."
         ],
         "tags": ["UiPath", "RPA", "Mentoría"]
       }
     ]
   },
   "projects": {
-    "eyebrow": "Trabajo seleccionado",
-    "title": "Proyectos que he trabajado.",
-    "githubCta": "Ver todo en GitHub",
-    "highlightsLabel": "Destacados",
-    "viewRepo": "Ver repositorio",
-    "close": "Cerrar",
+    "title": "Proyectos",
+    "githubCta": "Más en GitHub",
+    "viewRepo": "Código",
     "items": [
       {
         "id": "vet-system",
         "title": "Sistema de gestión veterinaria",
-        "subtitle": "Proyecto final universitario",
-        "description": "Plataforma para clínicas veterinarias: agenda de citas, historial de citas, catálogo de productos y servicios. Construida con Laravel y MySQL usando una arquitectura MVC limpia.",
+        "subtitle": "Proyecto final de graduación",
+        "description": "Plataforma para una clínica veterinaria: agenda de citas, historial clínico y catálogo de productos y servicios. Laravel y MySQL con arquitectura MVC.",
         "tech": ["Laravel", "PHP", "MySQL", "Blade", "Bootstrap"],
         "highlights": [
-          "Modelado relacional de citas, servicios y catálogo de productos",
-          "Implementación de control de acceso por roles",
-          "Capa de servicios modular para facilitar pruebas"
+          "Modelo relacional de citas, servicios y catálogo de productos",
+          "Control de acceso por roles",
+          "Capa de servicios separada para facilitar las pruebas"
         ],
         "year": "2025",
-        "repo": "https://github.com/jussmoreira",
-        "demo": null,
+        "repo": null,
         "cover": "/projects/agroveterinaria-rio-frio.png"
       },
       {
         "id": "spring-api",
         "title": "API REST con Spring Boot",
         "subtitle": "Curso de backend en Java",
-        "description": "Servicio RESTful construido en Spring Boot con endpoints CRUD, arquitectura por capas (controlador, servicio, repositorio) y validación.",
+        "description": "Servicio REST con operaciones CRUD, arquitectura por capas (controlador, servicio y repositorio) y validación de datos.",
         "tech": ["Java", "Spring Boot", "JPA", "MySQL"],
         "highlights": [
-          "Arquitectura por capas con mapeo DTO",
-          "Validación de beans y manejo global de errores",
-          "Colección de Postman para pruebas"
+          "Arquitectura por capas con DTO",
+          "Validación con Bean Validation y manejo global de errores",
+          "Colección de Postman para probar cada endpoint"
         ],
         "year": "2024",
-        "repo": "https://github.com/jussmoreira",
-        "demo": null,
-        "cover": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80&auto=format&fit=crop"
+        "repo": null,
+        "cover": null
       }
     ]
   },
   "education": {
-    "eyebrow": "Educación",
-    "title": "Mi formación académica.",
-    "description": "La formación universitaria es la base de mi entrenamiento: desde fundamentos algorítmicos hasta arquitectura y gestión de proyectos. Fuera del aula, sigo construyendo, enseñando y aprendiendo.",
+    "title": "Educación",
     "items": [
+      {
+        "degree": "Ingeniería en Sistemas de Información",
+        "school": "Universidad Nacional de Costa Rica",
+        "period": "En curso",
+        "notes": "Arquitectura de software, modelado de datos y gestión de proyectos."
+      },
       {
         "degree": "Diplomado en Programación de Aplicaciones Informáticas",
         "school": "Universidad Nacional de Costa Rica",
         "period": "2025",
         "notes": "Fundamentos de programación, diseño de software, bases de datos y desarrollo web."
-      },
-      {
-        "degree": "Ingeniería en Sistemas de Información - En curso",
-        "school": "Universidad Nacional de Costa Rica",
-        "period": "En progreso",
-        "notes": "Estudiante avanzado. Enfoque en arquitectura de software, modelado de datos y gestión de proyectos."
       }
     ]
   },
   "contact": {
-    "eyebrow": "Contacto",
-    "titleStart": "Construyamos algo",
-    "titleEmphasis": "juntos",
-    "titleEnd": ".",
-    "description": "Estoy abierto a nuevas oportunidades y proyectos colaborativos. La forma más rápida de contactarme es por correo o teléfono; normalmente respondo en menos de un día.",
-    "socialLabels": {
-      "linkedin": "LinkedIn",
-      "github": "GitHub",
-      "orcid": "ORCID",
-      "whatsapp": "WhatsApp"
-    }
-  },
-  "footer": {
-    "reachOut": "Contacto",
-    "elsewhere": "Redes",
-    "backToTop": "Volver arriba",
-    "copyright": "© {{year}} {{name}}. Hecho con cuidado en Costa Rica.",
+    "title": "Contacto",
+    "description": "Busco mi primer puesto como desarrollador backend y estoy abierto a proyectos en colaboración. Escríbeme por correo o WhatsApp; suelo responder en menos de un día.",
+    "labels": {
+      "email": "Correo",
+      "phone": "Teléfono",
+      "location": "Ubicación",
+      "profiles": "Perfiles"
+    },
     "socialLabels": {
       "linkedin": "LinkedIn",
       "github": "GitHub",
       "orcid": "ORCID",
       "whatsapp": "WhatsApp",
-      "email": "Correo"
+      "credly": "Credly"
     }
   },
+  "footer": {
+    "backToTop": "Volver arriba",
+    "copyright": "© {{year}} {{name}}"
+  },
   "errorBoundary": {
-    "eyebrow": "Error inesperado",
-    "title": "Algo se rompió, pero tu trabajo sigue a salvo.",
-    "description": "La aplicación encontró un problema al renderizar esta vista. Puedes intentar de nuevo o volver al inicio para continuar navegando.",
-    "retry": "Intentar otra vez",
+    "title": "Algo salió mal al mostrar esta página.",
+    "description": "Intenta de nuevo o vuelve al inicio.",
+    "retry": "Intentar de nuevo",
     "home": "Volver al inicio",
     "detailsLabel": "Detalles técnicos",
-    "fallbackDetails": "No pudimos recuperar el mensaje del error."
+    "fallbackDetails": "No se pudo recuperar el mensaje del error."
   },
   "a11y": {
-    "skipToContent": "Saltar al contenido"
+    "skipToContent": "Saltar al contenido",
+    "opensInNewTab": "(se abre en otra pestaña)"
   }
 }
