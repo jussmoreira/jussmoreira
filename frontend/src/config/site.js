@@ -2,7 +2,8 @@
 // Nota: aquí NO va texto visible para el usuario (eso vive en src/locales/).
 
 export const siteAssets = {
-  photo: "/justin-moreira.jpg",
+  photo:
+    "https://customer-assets.emergentagent.com/job_justin-dev/artifacts/tpzku8rx_575791307_24570445635967533_5104935807653781484_n.jpg",
   socials: {
     linkedin: "https://www.linkedin.com/in/justin-moreira-matarrita",
     github: "https://github.com/jussmoreira",

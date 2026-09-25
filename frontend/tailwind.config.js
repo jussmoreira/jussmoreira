@@ -1,21 +1,12 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: ["class"],
-    future: {
-      hoverOnlyWhenSupported: true,
-    },
     content: [
     "./src/**/*.{js,jsx,ts,tsx}",
     "./public/index.html"
   ],
   theme: {
   	extend: {
-  		fontFamily: {
-  			sans: ['Inter', ...defaultTheme.fontFamily.sans],
-  			display: ['Newsreader', 'Georgia', ...defaultTheme.fontFamily.serif]
-  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
@@ -87,5 +78,5 @@ module.exports = {
   		}
   	}
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };

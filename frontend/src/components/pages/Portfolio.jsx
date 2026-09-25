@@ -14,7 +14,7 @@ export default function Portfolio() {
   const { t } = useTranslation();
 
   return (
-    <>
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
       <a href="#main-content" className="skip-link">
         {t("a11y.skipToContent")}
       </a>
@@ -29,6 +29,6 @@ export default function Portfolio() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
