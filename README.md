@@ -5,43 +5,51 @@
   <img src="https://komarev.com/ghpvc/?username=jussmoreira&label=Profile%20Views&color=0e75b6&style=flat-square" alt="jussmoreira profile views" />
 </p>
 
-- 🔭 I'm currently working on **backend web applications and management systems**
-- 💼 I'm looking for **my first professional opportunity as a backend developer**
-- 💻 I'm open to collaborate on **open source projects | backend applications | automation with RPA**
-- 👨‍💻 Check out my portfolio at **[jussmoreira-i58n.vercel.app](https://jussmoreira-i58n.vercel.app/)**
-- ⚡ Fun fact: I build robots, teach young people how to code, and inspire them to pursue STEAM careers
-- 📫 How to reach me **jus111moreiramatarrita@gmail.com**
-- 📄 Resume: [English](https://jussmoreira-i58n.vercel.app/JustinMoreiraENG.pdf) · [Español](https://jussmoreira-i58n.vercel.app/JustinMoreira.pdf)
-
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://www.linkedin.com/in/justin-moreira-matarrita/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="justinmoreiramatarrita" height="30" width="40" /></a>
-<a href="https://github.com/jussmoreira" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="jussmoreira" height="30" width="40" /></a>
+<p align="center">
+  <a href="https://jussmoreira-i58n.vercel.app/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/pill-portfolio-dark.svg"><img src="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/pill-portfolio-light.svg" alt="Portfolio"></picture></a>
+  <a href="https://jussmoreira-i58n.vercel.app/JustinMoreiraENG.pdf"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/pill-cv-en-dark.svg"><img src="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/pill-cv-en-light.svg" alt="CV in English"></picture></a>
+  <a href="https://jussmoreira-i58n.vercel.app/JustinMoreira.pdf"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/pill-cv-es-dark.svg"><img src="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/pill-cv-es-light.svg" alt="CV en Español"></picture></a>
+  <a href="mailto:jus111moreiramatarrita@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/pill-email-dark.svg"><img src="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/pill-email-light.svg" alt="Email"></picture></a>
+  <a href="https://www.linkedin.com/in/justin-moreira-matarrita/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/pill-linkedin-dark.svg"><img src="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/pill-linkedin-light.svg" alt="LinkedIn"></picture></a>
 </p>
 
-<h4 align="left">Languages</h4>
+<p>
+  <kbd>NOW</kbd> Building <strong>backend web applications and management systems</strong><br>
+  <kbd>LOOKING FOR</kbd> <strong>My first professional opportunity as a backend developer</strong><br>
+  <kbd>OPEN TO</kbd> Open source projects · backend applications · automation with RPA<br>
+  <kbd>FUN FACT</kbd> I build robots, teach young people how to code, and inspire them to pursue STEAM careers
+</p>
+
+<h3 align="left">Selected work</h3>
+<p>
+  <strong>Veterinary management system</strong> · Laravel · MySQL · Scrum<br>
+  <sub>Appointments, product catalog and role-based access for a veterinary clinic. University capstone, 2025.</sub>
+</p>
+<p>
+  <strong>REST API with Spring Boot</strong> · Java · JPA · MySQL<br>
+  <sub>Layered architecture, DTO mapping and bean validation. 2024.</sub>
+</p>
+
+<h3 align="left">Stack</h3>
 <p align="left">
+  <sub>LANGUAGES</sub><br>
   <img src="https://skillicons.dev/icons?i=java,php,python,cpp,c,cs" alt="languages" />
 </p>
-
-<h4 align="left">Frameworks</h4>
 <p align="left">
+  <sub>FRAMEWORKS</sub><br>
   <img src="https://skillicons.dev/icons?i=laravel,spring,dotnet,react,bootstrap" alt="frameworks" />
 </p>
-
-<h4 align="left">Databases</h4>
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=mysql,postgres,oracle" alt="databases" />
+  <sub>DATABASES</sub><br>
+  <img src="https://skillicons.dev/icons?i=mysql,postgres" alt="databases" /><img src="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/oracle-icon.svg" alt="Oracle" height="48" />
 </p>
-
-<h4 align="left">Tools</h4>
 <p align="left">
+  <sub>TOOLS</sub><br>
   <img src="https://skillicons.dev/icons?i=git,github,docker,linux,postman,figma" alt="tools" />
 </p>
-
-<h4 align="left">Other</h4>
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=arduino" alt="other" />
+  <sub>ROBOTICS &amp; IOT</sub><br>
+  <img src="https://skillicons.dev/icons?i=arduino" alt="Arduino" /><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/leds-board-dark.svg"><img src="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/leds-board-light.svg" alt="Protoboard with five LEDs" height="48"></picture>
 </p>
 
 <h3 align="left">📊 GitHub Stats & Activity</h3>
