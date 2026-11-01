@@ -24,12 +24,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-10">
           <div>
             <div className="flex items-center gap-3">
-              <span className="w-10 h-10 rounded-full bg-[hsl(var(--accent))] text-[hsl(var(--inverse))] flex items-center justify-center font-display">
+              <span className="w-10 h-10 rounded bg-[hsl(var(--accent))] text-[hsl(var(--inverse))] flex items-center justify-center font-display">
                 {profile.initials}
               </span>
               <div>
                 <div className="font-display text-xl">{profile.shortName}</div>
-                <div className="text-xs uppercase tracking-[0.16em] text-[hsl(var(--inverse-muted))]">
+                <div className="text-sm text-[hsl(var(--inverse-muted))]">
                   {profile.title}
                 </div>
               </div>
@@ -39,7 +39,7 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <div className="text-xs uppercase tracking-[0.18em] text-[hsl(var(--inverse-muted))] mb-3">
+            <div className="text-sm text-[hsl(var(--inverse-muted))] mb-3">
               {footer.reachOut}
             </div>
             <ul className="space-y-2 text-sm">
@@ -57,7 +57,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <div className="text-xs uppercase tracking-[0.18em] text-[hsl(var(--inverse-muted))] mb-3">
+            <div className="text-sm text-[hsl(var(--inverse-muted))] mb-3">
               {footer.elsewhere}
             </div>
             <div className="flex items-center gap-3">
@@ -113,7 +113,7 @@ export default function Footer() {
           </p>
           <button
             onClick={top}
-            className="text-xs uppercase tracking-[0.18em] text-[hsl(var(--inverse-muted))] hover:text-white inline-flex items-center gap-2"
+            className="text-sm text-[hsl(var(--inverse-muted))] hover:text-white inline-flex items-center gap-2"
           >
             {footer.backToTop} <ArrowUp className="w-4 h-4" />
           </button>

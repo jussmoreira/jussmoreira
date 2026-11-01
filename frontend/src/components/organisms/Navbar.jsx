@@ -70,7 +70,7 @@ export default function Navbar() {
           className="flex items-center gap-2 group"
           aria-label={t("nav.homeAria")}
         >
-          <span className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-display text-sm tracking-wider">
+          <span className="w-9 h-9 rounded bg-primary text-primary-foreground flex items-center justify-center font-display text-sm">
             {profile.initials}
           </span>
           <span className="font-display text-lg leading-none">{profile.shortName}</span>
@@ -81,7 +81,7 @@ export default function Navbar() {
             <button
               key={item.id}
               onClick={() => go(item.id)}
-              className={`text-sm tracking-wide link-underline transition-colors ${
+              className={`text-sm link-underline transition-colors ${
                 active === item.id ? "text-primary" : "text-muted-foreground hover:text-primary"
               }`}
             >
@@ -96,7 +96,7 @@ export default function Navbar() {
             variant="outline"
             size="icon"
             onClick={toggleTheme}
-            className="rounded-full border-border bg-card text-foreground hover:bg-accent hover:text-accent-foreground"
+            className="rounded border-border bg-card text-foreground hover:bg-accent hover:text-accent-foreground"
             aria-label={isDark ? t("nav.themeToggleLight") : t("nav.themeToggleDark")}
           >
             {isDark ? <SunMedium className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -105,14 +105,14 @@ export default function Navbar() {
             type="button"
             variant="outline"
             onClick={toggleLanguage}
-            className="h-10 rounded-full px-4 border-border bg-card text-foreground hover:bg-accent hover:text-accent-foreground"
+            className="h-10 rounded px-4 border-border bg-card text-foreground hover:bg-accent hover:text-accent-foreground"
             aria-label={t("nav.language")}
           >
             {languageLabel}
           </Button>
           <Button
             onClick={() => go("contact")}
-            className="btn-warm h-10 px-5 rounded-full font-medium"
+            className="btn-warm h-10 px-5 rounded font-medium"
           >
             {t("nav.cta")}
             <ArrowUpRight className="w-4 h-4 ml-1" />
@@ -145,7 +145,7 @@ export default function Navbar() {
               variant="outline"
               size="icon"
               onClick={toggleTheme}
-              className="rounded-full border-border bg-card text-foreground hover:bg-accent hover:text-accent-foreground"
+              className="rounded border-border bg-card text-foreground hover:bg-accent hover:text-accent-foreground"
               aria-label={isDark ? t("nav.themeToggleLight") : t("nav.themeToggleDark")}
             >
               {isDark ? <SunMedium className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -154,7 +154,7 @@ export default function Navbar() {
               type="button"
               variant="outline"
               onClick={toggleLanguage}
-              className="h-10 rounded-full px-4 border-border bg-card text-foreground hover:bg-accent hover:text-accent-foreground"
+              className="h-10 rounded px-4 border-border bg-card text-foreground hover:bg-accent hover:text-accent-foreground"
               aria-label={t("nav.language")}
             >
               {languageLabel}
@@ -173,7 +173,7 @@ export default function Navbar() {
 
           <Button
             onClick={() => go("contact")}
-            className="btn-warm rounded-full mt-2"
+            className="btn-warm rounded mt-2"
           >
             {t("nav.cta")} <ArrowUpRight className="w-4 h-4 ml-1" />
           </Button>

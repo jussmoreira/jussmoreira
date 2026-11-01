@@ -50,37 +50,32 @@ export default function Hero() {
     }
   };
 
+  const primaryLinks = [
+    { href: siteAssets.socials.linkedin, label: "LinkedIn", Icon: Linkedin },
+    { href: siteAssets.socials.github, label: "GitHub", Icon: Github },
+  ];
+  const secondaryLinks = [
+    { href: siteAssets.socials.whatsapp, label: "WhatsApp", Icon: WhatsappIcon, iconClass: "text-accent" },
+    { href: siteAssets.socials.orcid, label: "ORCID", Icon: OrcidIcon, iconClass: "" },
+    { href: siteAssets.socials.credly, label: "Credly", Icon: CredlyIcon, iconClass: "text-accent" },
+  ];
+
   return (
     <section
       id="home"
-      className="relative pt-32 md:pt-40 pb-8 md:pb-12 overflow-hidden"
+      className="relative pt-24 md:pt-40 pb-8 md:pb-12 overflow-hidden"
     >
-      <div
-        aria-hidden
-        className="animate-float absolute -top-24 -right-24 w-[380px] h-[380px] rounded-full opacity-60 blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle at 30% 30%, hsl(var(--accent) / 0.45) 0%, hsl(var(--secondary) / 0.72) 45%, transparent 70%)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="animate-float-slow absolute -bottom-32 -left-20 w-[320px] h-[320px] rounded-full opacity-40 blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 50%, hsl(var(--accent) / 0.24) 0%, transparent 70%)",
-        }}
-      />
+      <div aria-hidden className="hero-grid absolute inset-0" />
 
       <div className="container-narrow grid lg:grid-cols-12 gap-12 items-start relative">
         <div className="lg:col-span-7 hero-stagger">
           <h1
             ref={h1Ref}
             style={h1MinHeight ? { minHeight: h1MinHeight } : undefined}
-            className="reveal font-display text-[44px] sm:text-6xl lg:text-7xl leading-[1.05] text-foreground"
+            className="reveal font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] text-foreground"
           >
             {t("hero.greeting")} {" "}
-            <span className="italic text-primary">{profile.shortName}</span>.
+            <span className="text-primary">{profile.shortName}</span>.
             <br />
             {t("hero.lead")} {" "}
             <RotatingText
@@ -93,7 +88,7 @@ export default function Hero() {
           <div className="reveal mt-8 flex flex-wrap items-center gap-3">
             <Button
               onClick={() => scrollTo("projects")}
-              className="btn-warm h-12 px-6 rounded-full text-sm font-medium"
+              className="btn-warm h-12 px-6 rounded text-sm font-medium"
             >
               {t("hero.ctaWork")}
               <ArrowDownRight className="w-4 h-4 ml-1" />
@@ -101,7 +96,7 @@ export default function Hero() {
             <Button
               onClick={() => scrollTo("contact")}
               variant="outline"
-              className="btn-ghost-warm h-12 px-6 rounded-full text-sm font-medium"
+              className="btn-ghost-warm h-12 px-6 rounded text-sm font-medium"
             >
               {t("hero.ctaContact")}
             </Button>
@@ -110,14 +105,14 @@ export default function Hero() {
               <Button
                 variant="outline"
                 onClick={() => setCvOpen((o) => !o)}
-                className="btn-ghost-warm h-12 px-6 rounded-full text-sm font-medium"
+                className="btn-ghost-warm h-12 px-6 rounded text-sm font-medium"
               >
                 <Download className="w-4 h-4 mr-1" />
                 {t("hero.ctaCV")}
                 <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${cvOpen ? "rotate-180" : ""}`} />
               </Button>
               {cvOpen && (
-                <div className="absolute left-0 mt-2 w-44 rounded-xl border border-border bg-background shadow-lg z-50 overflow-hidden">
+                <div className="absolute left-0 mt-2 w-44 rounded border border-border bg-background z-50 overflow-hidden">
                   <a
                     href={siteAssets.cv.en}
                     download
@@ -139,68 +134,56 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="reveal mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-accent" />
-              {profile.location}
+          <div className="reveal mt-10 space-y-4 text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <span className="inline-flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-accent" aria-hidden />
+                {profile.location}
+              </span>
+              <a
+                href={`mailto:${profile.email}`}
+                className="inline-flex items-center gap-2 link-underline hover:text-primary break-all"
+              >
+                <Mail className="w-4 h-4 flex-none text-accent" aria-hidden />
+                {profile.email}
+              </a>
             </div>
-            <a
-              href={`mailto:${profile.email}`}
-              className="flex items-center gap-2 link-underline hover:text-primary"
-            >
-              <Mail className="w-4 h-4 text-accent" />
-              {profile.email}
-            </a>
-            <a
-              href={siteAssets.socials.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 link-underline hover:text-primary"
-            >
-              <Linkedin className="w-4 h-4 text-accent" />
-              LinkedIn
-            </a>
-            <a
-              href={siteAssets.socials.github}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 link-underline hover:text-primary"
-            >
-              <Github className="w-4 h-4 text-accent" />
-              GitHub
-            </a>
-            <a
-              href={siteAssets.socials.orcid}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 link-underline hover:text-primary"
-            >
-              <OrcidIcon className="w-4 h-4" />
-              ORCID
-            </a>
-            <a
-              href={siteAssets.socials.whatsapp}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 link-underline hover:text-primary"
-            >
-              <WhatsappIcon className="w-4 h-4 text-accent" />
-              WhatsApp
-            </a>
-            <a
-              href={siteAssets.socials.credly}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 link-underline hover:text-primary"
-            >
-              <CredlyIcon className="w-4 h-4 text-accent" />
-              Credly
-            </a>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              {primaryLinks.map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 link-underline hover:text-primary"
+                >
+                  <Icon className="w-4 h-4 text-accent" aria-hidden />
+                  {label}
+                </a>
+              ))}
+              <span aria-hidden className="h-4 w-px bg-border" />
+              <ul className="flex items-center gap-2">
+                {secondaryLinks.map(({ href, label, Icon, iconClass }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={label}
+                      title={label}
+                      className="flex h-9 w-9 items-center justify-center rounded border border-border bg-card transition-colors hover:border-primary/40 hover:text-primary"
+                    >
+                      <Icon className={`w-4 h-4 ${iconClass}`} aria-hidden />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
         <div className="order-first lg:order-none lg:col-span-5 reveal flex justify-center lg:justify-center lg:pt-4">
-          <div className="relative animate-float">
+          <div className="relative">
             {/* Cometa: arco brillante que orbita la foto */}
             <div
               className="absolute rounded-full"
@@ -213,7 +196,7 @@ export default function Hero() {
               }}
             />
             {/* Foto circular */}
-            <div className="relative w-[240px] h-[240px] sm:w-[290px] sm:h-[290px] lg:w-[320px] lg:h-[320px] rounded-full overflow-hidden ring-[4px] ring-background shadow-[0_20px_60px_-10px_hsl(var(--foreground)/0.35)]">
+            <div className="relative w-[168px] h-[168px] sm:w-[290px] sm:h-[290px] lg:w-[320px] lg:h-[320px] rounded-full overflow-hidden ring-[4px] ring-background">
               <SafeImage
                 src={siteAssets.photo}
                 alt={profile.name}

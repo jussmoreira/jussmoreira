@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: ['"Atkinson Hyperlegible"', 'system-ui', 'sans-serif'],
+  			display: ['"Bricolage Grotesque Variable"', 'system-ui', 'sans-serif'],
+  			mono: ['"JetBrains Mono"', 'ui-monospace', 'Menlo', 'Consolas', 'monospace']
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

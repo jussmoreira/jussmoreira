@@ -35,7 +35,7 @@ export function ScrollProgress() {
   return (
     <div
       aria-hidden
-      className="fixed left-0 top-0 z-[60] h-0.5 bg-gradient-to-r from-accent to-primary"
+      className="fixed left-0 top-0 z-[60] h-0.5 bg-accent"
       style={{ width: `${progress}%` }}
     />
   );

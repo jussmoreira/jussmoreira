@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ArrowUpRight, Github, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -11,6 +11,169 @@ import {
 import { Button } from "@/components/atoms/button";
 import { SafeImage } from "@/components/atoms/image";
 
+const DATABASES = ["MySQL", "PostgreSQL", "Oracle"];
+
+/* Portada dibujada para proyectos sin captura real: muestra las capas de la
+   arquitectura en lugar de una foto genérica de stock. */
+function DiagramCover({ layers, tech, className = "" }) {
+  const database = (tech || []).find((item) => DATABASES.includes(item));
+
+  return (
+    <div
+      aria-hidden
+      className={`flex flex-col items-center justify-center gap-1 sm:gap-2 bg-[hsl(var(--inverse))] text-[hsl(var(--inverse-foreground))] ${className}`}
+      style={{
+        backgroundImage:
+          "radial-gradient(hsl(var(--inverse-foreground) / 0.08) 1px, transparent 1px)",
+        backgroundSize: "18px 18px",
+      }}
+    >
+      <span className="font-mono text-[11px] text-[hsl(var(--inverse-muted))]">
+        HTTP · JSON
+      </span>
+      {layers.map((layer) => (
+        <React.Fragment key={layer}>
+          <span className="h-2 sm:h-4 w-px bg-[hsl(var(--accent))]" />
+          <span className="w-40 sm:w-44 border border-[hsl(var(--inverse-foreground)/0.18)] py-1 sm:py-2 text-center font-mono text-xs sm:text-sm">
+            {layer}
+          </span>
+        </React.Fragment>
+      ))}
+      {database && (
+        <>
+          <span className="h-2 sm:h-4 w-px bg-[hsl(var(--accent))]" />
+          <span className="font-mono text-[11px] text-[hsl(var(--accent))]">
+            {database}
+          </span>
+        </>
+      )}
+    </div>
+  );
+}
+
+function ProjectCover({ project, className }) {
+  if (project.cover) {
+    return (
+      <SafeImage
+        src={project.cover}
+        alt=""
+        width={1200}
+        height={750}
+        className={`object-cover object-top ${className}`}
+        loading="lazy"
+      />
+    );
+  }
+  if (Array.isArray(project.diagram)) {
+    return <DiagramCover layers={project.diagram} tech={project.tech} className={className} />;
+  }
+  return <div aria-hidden className={`bg-secondary ${className}`} />;
+}
+
+function LiveDot() {
+  return (
+    <span aria-hidden className="inline-block h-2 w-2 rounded-full bg-[hsl(142_45%_42%)]" />
+  );
+}
+
+function ProjectCard({ project, featured, labels, onOpen }) {
+  const techList = featured ? project.tech || [] : (project.tech || []).slice(0, 4);
+
+  return (
+    <article
+      className={`reveal card-warm group relative overflow-hidden rounded has-[button:focus-visible]:ring-2 has-[button:focus-visible]:ring-ring ${
+        featured ? "md:col-span-2 lg:grid lg:grid-cols-12" : "flex flex-col"
+      }`}
+    >
+      <div
+        className={`relative overflow-hidden aspect-[16/10] ${
+          featured ? "lg:col-span-7 lg:aspect-auto lg:min-h-[420px]" : ""
+        }`}
+      >
+        <ProjectCover
+          project={project}
+          className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.03]"
+        />
+      </div>
+
+      <div
+        className={`flex flex-1 flex-col p-6 ${
+          featured ? "lg:col-span-5 lg:justify-center lg:p-10" : ""
+        }`}
+      >
+        {/* Metadatos en una línea: sin pastillas, cifras tabulares */}
+        <div className="flex items-center justify-between gap-3 text-sm text-muted-foreground tabular">
+          <span className="font-bold text-primary">{project.subtitle}</span>
+          <span className="inline-flex items-center gap-3">
+            {project.demo && (
+              <span className="inline-flex items-center gap-1.5 font-bold text-foreground">
+                <LiveDot />
+                {labels.live}
+              </span>
+            )}
+            <span>{project.year}</span>
+          </span>
+        </div>
+        <h3
+          className={`font-display text-foreground mt-1 ${
+            featured ? "text-2xl lg:text-[2rem] lg:leading-tight" : "text-2xl"
+          }`}
+        >
+          {/* El botón cubre toda la tarjeta (after:inset-0) para abrir el detalle */}
+          <button
+            type="button"
+            onClick={onOpen}
+            className="text-left after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
+          >
+            {project.title}
+          </button>
+        </h3>
+        <p
+          className={`text-muted-foreground mt-3 text-[15px] leading-relaxed ${
+            featured ? "" : "line-clamp-2"
+          }`}
+        >
+          {project.description}
+        </p>
+        {Array.isArray(project.parts) && project.parts.length > 0 && (
+          <p className="mt-3 font-mono text-xs text-primary">
+            {project.parts.map((part) => part.name).join(" · ")}
+          </p>
+        )}
+        <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1 border-t border-border pt-3 text-sm text-muted-foreground">
+          {techList.map((tech) => (
+            <li key={tech} className="inline-flex items-center gap-1.5">
+              <span aria-hidden className="h-1.5 w-1.5 bg-accent" />
+              {tech}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 pt-1 md:mt-auto md:pt-6">
+          {project.demo && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-warm relative z-10 inline-flex h-10 items-center gap-1 rounded px-5 text-sm font-medium"
+            >
+              {labels.visit}
+              <ArrowUpRight className="w-4 h-4" aria-hidden />
+            </a>
+          )}
+          <span
+            aria-hidden
+            className="inline-flex items-center gap-1 text-sm font-medium text-primary"
+          >
+            {labels.details}
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </span>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function Projects() {
   const { t } = useTranslation();
   const projects = t("projects", { returnObjects: true });
@@ -20,6 +183,11 @@ export default function Projects() {
   if (!projects || typeof projects !== "object") return null;
 
   const projectItems = Array.isArray(projects.items) ? projects.items : [];
+  const labels = {
+    live: projects.liveLabel,
+    visit: projects.viewSite,
+    details: projects.details,
+  };
 
   const openProject = (project) => {
     setActive(project);
@@ -27,77 +195,26 @@ export default function Projects() {
   };
 
   return (
-    <section
-      id="projects"
-      className="section-pad bg-secondary/40 border-y border-border"
-    >
+    <section id="projects" className="section-pad bg-secondary/40 border-y border-border">
       <div className="container-narrow">
-        <div className="reveal mb-12 flex items-end justify-between flex-wrap gap-6">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-3">
-              <span className="divider-dot" />
-              <span className="eyebrow">{projects.eyebrow}</span>
-            </div>
-            <h2 className="section-title font-display text-4xl md:text-5xl text-foreground">
-              {projects.title}
-            </h2>
+        <div className="reveal mb-12 max-w-2xl">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="eyebrow eyebrow-index">{projects.eyebrow}</span>
           </div>
-          <a
-            href="https://github.com/jussmoreira"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 link-underline"
-          >
-            <Github className="w-4 h-4" />
-            {projects.githubCta}
-          </a>
+          <h2 className="section-title font-display text-4xl md:text-5xl text-foreground">
+            {projects.title}
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {projectItems.map((project) => (
-            <button
+          {projectItems.map((project, index) => (
+            <ProjectCard
               key={project.id}
-              onClick={() => openProject(project)}
-              className="reveal text-left card-warm rounded-2xl overflow-hidden group transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl"
-            >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <SafeImage
-                  src={project.cover}
-                  alt={project.title}
-                  width={1200}
-                  height={750}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-background/90 backdrop-blur text-xs text-primary border border-border">
-                  {project.year}
-                </div>
-                <div className="absolute top-3 right-3 w-9 h-9 rounded-full bg-background/90 backdrop-blur border border-border flex items-center justify-center transition-transform duration-300 group-hover:rotate-45">
-                  <ArrowUpRight className="w-4 h-4 text-primary" />
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="text-xs uppercase tracking-[0.16em] text-accent">
-                  {project.subtitle}
-                </div>
-                <h3 className="font-display text-2xl text-foreground mt-1">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground mt-2 text-[15px] leading-relaxed line-clamp-2">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {(project.tech || []).slice(0, 4).map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 py-1 rounded-md text-xs bg-secondary text-primary border border-border"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </button>
+              project={project}
+              featured={index === 0 && Boolean(project.demo)}
+              labels={labels}
+              onOpen={() => openProject(project)}
+            />
           ))}
         </div>
       </div>
@@ -107,29 +224,38 @@ export default function Projects() {
           {active && (
             <div className="flex flex-col min-h-0">
               <div className="relative aspect-[16/9] max-h-[40vh] flex-none overflow-hidden">
-                <SafeImage
-                  src={active.cover}
-                  alt={active.title}
-                  width={1200}
-                  height={675}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
+                <ProjectCover project={active} className="h-full w-full" />
               </div>
               <div className="p-6 overflow-y-auto min-h-0">
                 <DialogHeader>
                   <DialogTitle className="font-display text-2xl text-foreground">
                     {active.title}
                   </DialogTitle>
-                  <DialogDescription className="text-accent uppercase tracking-[0.16em] text-xs">
-                    {active.subtitle} - {active.year}
+                  <DialogDescription className="text-primary font-bold text-xs">
+                    {active.subtitle} · {active.year}
                   </DialogDescription>
                 </DialogHeader>
-                <p className="text-muted-foreground mt-4 leading-relaxed">
-                  {active.description}
-                </p>
+                <p className="text-muted-foreground mt-4 leading-relaxed">{active.description}</p>
+                {Array.isArray(active.parts) && active.parts.length > 0 && (
+                  <div className="mt-5">
+                    <div className="text-xs text-primary font-bold mb-2">
+                      {projects.partsLabel}
+                    </div>
+                    <ul className="divide-y divide-border border-y border-border">
+                      {active.parts.map((part) => (
+                        <li key={part.name} className="py-3">
+                          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                            <span className="font-display text-foreground">{part.name}</span>
+                            <span className="font-mono text-xs text-muted-foreground">{part.stack}</span>
+                          </div>
+                          <p className="mt-1 text-[15px] text-muted-foreground">{part.role}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 <div className="mt-5">
-                  <div className="text-xs uppercase tracking-[0.16em] text-accent mb-2">
+                  <div className="text-xs text-primary font-bold mb-2">
                     {projects.highlightsLabel}
                   </div>
                   <ul className="space-y-1.5 text-muted-foreground text-[15px]">
@@ -141,31 +267,31 @@ export default function Projects() {
                     ))}
                   </ul>
                 </div>
-                <div className="flex flex-wrap gap-2 mt-5">
+                <ul className="flex flex-wrap gap-2 mt-5">
                   {(active.tech || []).map((tech) => (
-                    <span
+                    <li
                       key={tech}
                       className="px-2.5 py-1 rounded-md text-xs bg-secondary text-primary border border-border"
                     >
                       {tech}
-                    </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
                 <div className="mt-6 flex flex-wrap gap-3">
-                  {active.repo && (
-                    <a href={active.repo} target="_blank" rel="noreferrer">
-                      <Button className="btn-warm rounded-full">
-                        <Github className="w-4 h-4 mr-2" />
-                        {projects.viewRepo}
-                      </Button>
-                    </a>
+                  {active.demo && (
+                    <Button asChild className="btn-warm rounded">
+                      <a href={active.demo} target="_blank" rel="noreferrer">
+                        {projects.viewSite}
+                        <ArrowUpRight className="w-4 h-4" aria-hidden />
+                      </a>
+                    </Button>
                   )}
                   <Button
                     variant="outline"
-                    className="btn-ghost-warm rounded-full"
+                    className="btn-ghost-warm rounded"
                     onClick={() => setOpen(false)}
                   >
-                    <X className="w-4 h-4 mr-2" />
+                    <X className="w-4 h-4" aria-hidden />
                     {projects.close}
                   </Button>
                 </div>

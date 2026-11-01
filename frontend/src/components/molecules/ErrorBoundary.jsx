@@ -10,15 +10,12 @@ function ErrorFallback({ copy, error, onRetry, onHome }) {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-background text-foreground">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(120,92,68,0.18),_transparent_38%),radial-gradient(circle_at_bottom_right,_rgba(198,163,117,0.16),_transparent_34%)]" />
-      <div className="absolute -left-24 top-8 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
-      <div className="absolute -right-24 bottom-8 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
 
       <div className="relative mx-auto flex min-h-screen w-full max-w-4xl items-center px-6 py-16">
-        <section className="w-full rounded-3xl border border-border bg-card/90 p-8 shadow-2xl backdrop-blur md:p-10">
+        <section className="w-full rounded border border-border bg-card p-8 md:p-10">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/70 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              <div className="inline-flex items-center gap-2 text-sm font-bold text-muted-foreground">
                 <AlertTriangle className="h-4 w-4 text-primary" />
                 {copy?.eyebrow || "Error"}
               </div>
@@ -35,7 +32,7 @@ function ErrorFallback({ copy, error, onRetry, onHome }) {
                 <button
                   type="button"
                   onClick={onRetry}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                  className="inline-flex items-center justify-center gap-2 rounded bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                 >
                   <RotateCcw className="h-4 w-4" />
                   {retryLabel}
@@ -43,7 +40,7 @@ function ErrorFallback({ copy, error, onRetry, onHome }) {
                 <button
                   type="button"
                   onClick={onHome}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                  className="inline-flex items-center justify-center gap-2 rounded border border-border bg-background px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
                 >
                   <House className="h-4 w-4" />
                   {homeLabel}

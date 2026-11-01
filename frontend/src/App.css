@@ -13,49 +13,54 @@
   padding-right: 1.5rem;
 }
 
+/* Etiqueta de rol del Hero: texto simple, sin mayúsculas ni tracking */
 .eyebrow {
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: hsl(var(--accent));
-  font-weight: 500;
+  font-size: 0.9rem;
+  color: hsl(var(--muted-foreground));
+  font-weight: 700;
+}
+
+/* Índice de sección: "01 — Proyectos". Numera solo las secciones de <main>
+   en el orden en que aparecen, así no hay números que mantener a mano. */
+main { counter-reset: section; }
+.eyebrow-index::before {
+  counter-increment: section;
+  content: counter(section, decimal-leading-zero) " \2014  ";
+  color: hsl(var(--primary));
+  white-space: pre;
 }
 
 .btn-warm {
   background: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
-  transition: background-color 250ms ease, transform 250ms ease, box-shadow 250ms ease;
+  transition: background-color 200ms ease, color 200ms ease;
 }
 .btn-warm:hover {
-  background: hsl(var(--primary) / 0.9);
-  transform: translateY(-1px);
-  box-shadow: 0 10px 24px -12px hsl(var(--primary) / 0.55);
+  background: hsl(var(--primary) / 0.88);
 }
 
 .btn-ghost-warm {
   border: 1px solid hsl(var(--primary));
   color: hsl(var(--primary));
   background: transparent;
-  transition: background-color 250ms ease, color 250ms ease, transform 250ms ease;
+  transition: background-color 200ms ease, color 200ms ease;
 }
 .btn-ghost-warm:hover {
   background: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
-  transform: translateY(-1px);
 }
 
+/* Tarjeta plana: el hover cambia el borde y subraya el título, no la levanta */
 .card-warm {
   background: hsl(var(--card));
-  border: 1px solid hsl(var(--border) / 0.9);
-  transition: transform 350ms ease, box-shadow 350ms ease, border-color 350ms ease;
+  border: 1px solid hsl(var(--border));
+  transition: border-color 200ms ease;
 }
 .card-warm:hover {
-  transform: translateY(-4px);
-  border-color: hsl(var(--primary) / 0.35);
-  box-shadow: 0 24px 60px -28px hsl(var(--foreground) / 0.28);
+  border-color: hsl(var(--primary) / 0.6);
 }
-
-.divider-dot {
-  width: 6px; height: 6px; border-radius: 9999px; background: hsl(var(--accent));
-  display: inline-block;
+.card-warm:hover h3 button {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
 }

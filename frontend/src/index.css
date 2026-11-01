@@ -2,8 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Las fuentes (Playfair Display + Inter) se cargan en public/index.html con
-   <link> y preconnect; evitamos @import en CSS porque bloquea el render. */
+/* Atkinson Hyperlegible, la misma tipografía del sitio de Robótica UNA.
+   Van en src/fonts y se empaquetan con la app (sin servidores externos). */
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/atkinson-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/atkinson-700.woff2") format("woff2");
+}
 
 html {
   scroll-behavior: smooth;
@@ -16,7 +30,7 @@ html {
   top: -3rem;
   z-index: 100;
   padding: 0.5rem 0.875rem;
-  border-radius: 0.5rem;
+  border-radius: 4px;
   background: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
   font-size: 0.875rem;
@@ -30,7 +44,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: hsl(var(--background));
@@ -38,11 +52,21 @@ body {
 }
 
 h1, h2, h3, .font-display {
-  font-family: 'Playfair Display', Georgia, serif;
-  letter-spacing: -0.01em;
+  font-family: "Bricolage Grotesque Variable", "Atkinson Hyperlegible", system-ui, sans-serif;
+  font-weight: 700;
+  font-optical-sizing: auto;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 
-code {
+p { text-wrap: pretty; }
+
+/* Cifras alineadas en columnas: años, contadores, índices */
+.tabular, .eyebrow-index, .stat-number { font-variant-numeric: tabular-nums; }
+.eyebrow-index, .tabular { font-family: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace; }
+
+code, .font-mono {
   font-family: 'JetBrains Mono', source-code-pro, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -62,9 +86,13 @@ code {
   mix-blend-mode: multiply;
 }
 
-/* Animated underline link */
+/* Animated underline link.
+   El display va en :where() (especificidad 0) para que utilidades como
+   `flex` o `inline-flex` ganen y el ícono quede al lado del texto. */
 .link-underline {
   position: relative;
+}
+:where(.link-underline) {
   display: inline-block;
 }
 .link-underline::after {
@@ -80,7 +108,7 @@ code {
 /* Reveal on scroll */
 .reveal {
   opacity: 0;
-  transform: translateY(18px) scale(0.985);
+  transform: translateY(12px);
   transition: opacity 700ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal.in-view {
@@ -93,6 +121,17 @@ code {
 .hero-stagger > .reveal:nth-child(3) { transition-delay: 160ms; }
 .hero-stagger > .reveal:nth-child(4) { transition-delay: 240ms; }
 .hero-stagger > .reveal:nth-child(5) { transition-delay: 320ms; }
+
+/* Retícula fina del Hero: reemplaza los blobs difusos */
+.hero-grid {
+  pointer-events: none;
+  background-image:
+    linear-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--border) / 0.5) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 70% 30%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 70% at 70% 30%, #000 0%, transparent 75%);
+}
 
 /* Marquee */
 @keyframes marquee {
@@ -147,7 +186,7 @@ code {
 
 /* Staggered chip pop-in: cada chip de Skills aparece en cascada al entrar la card */
 @keyframes chipIn {
-  from { opacity: 0; transform: scale(0.8) translateY(4px); }
+  from { opacity: 0; }
   to   { opacity: 1; transform: none; }
 }
 .reveal.in-view .skill-chip {
@@ -172,7 +211,8 @@ code {
   width: 45%;
   background: linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.18), transparent);
   transform: translateX(-250%);
-  animation: btnShimmer 4s ease-in-out infinite;
+  /* una sola pasada al cargar; antes se repetía cada 4 s */
+  animation: btnShimmer 1.8s ease-out 1.2s 1 both;
   pointer-events: none;
 }
 
@@ -247,7 +287,7 @@ code {
     --inverse: 22 14% 14%;
     --inverse-foreground: 36 38% 96%;
     --inverse-muted: 30 12% 72%;
-    --radius: 0.5rem;
+    --radius: 4px;
   }
   .dark {
     --background: 22 14% 9%;

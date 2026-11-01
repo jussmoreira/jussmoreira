@@ -14,13 +14,34 @@
   },
   "nav": {
     "items": [
-      { "id": "home", "label": "Inicio" },
-      { "id": "about", "label": "Sobre mí" },
-      { "id": "skills", "label": "Habilidades" },
-      { "id": "experience", "label": "Experiencia" },
-      { "id": "projects", "label": "Proyectos" },
-      { "id": "education", "label": "Educación" },
-      { "id": "contact", "label": "Contacto" }
+      {
+        "id": "home",
+        "label": "Inicio"
+      },
+      {
+        "id": "about",
+        "label": "Sobre mí"
+      },
+      {
+        "id": "projects",
+        "label": "Proyectos"
+      },
+      {
+        "id": "experience",
+        "label": "Experiencia"
+      },
+      {
+        "id": "skills",
+        "label": "Habilidades"
+      },
+      {
+        "id": "education",
+        "label": "Educación"
+      },
+      {
+        "id": "contact",
+        "label": "Contacto"
+      }
     ],
     "cta": "Hablemos",
     "language": "Idioma",
@@ -34,13 +55,19 @@
     "eyebrow": "Portafolio",
     "greeting": "Hola, soy",
     "lead": "Construyo software con",
-    "rotatingWords": ["cuidado", "intención", "propósito", "foco"],
+    "rotatingWords": [
+      "cuidado",
+      "intención",
+      "propósito",
+      "foco"
+    ],
     "closing": "y claridad.",
     "ctaWork": "Ver mi trabajo",
     "ctaContact": "Contáctame",
     "ctaCV": "Descargar CV",
     "cvEN": "English",
-    "cvES": "Español"
+    "cvES": "Español",
+    "role": "Desarrollo backend · Laravel · Spring Boot"
   },
   "about": {
     "eyebrow": "Sobre mí",
@@ -53,15 +80,33 @@
       "Valoro la artesanía, la comunicación honesta y entregar trabajo que yo mismo mantendría con gusto dentro de un año."
     ],
     "stats": [
-      { "label": "Años estudiando", "value": "4+" },
-      { "label": "Stack técnicos", "value": "6+" },
-      { "label": "Estudiantes acompañados", "value": "30+" },
-      { "label": "Idiomas", "value": "2" }
+      {
+        "label": "Años estudiando",
+        "value": "4+"
+      },
+      {
+        "label": "Stacks técnicos",
+        "value": "6+"
+      },
+      {
+        "label": "Estudiantes acompañados",
+        "value": "30+"
+      },
+      {
+        "label": "Idiomas",
+        "value": "2"
+      }
     ],
     "languagesLabel": "Idiomas",
     "languages": [
-      { "name": "Español", "level": "Nativo" },
-      { "name": "Inglés", "level": "Lectura técnica / profesional" }
+      {
+        "name": "Español",
+        "level": "Nativo"
+      },
+      {
+        "name": "Inglés",
+        "level": "Lectura técnica / profesional"
+      }
     ]
   },
   "skills": {
@@ -69,12 +114,60 @@
     "title": "Las herramientas a las que recurro.",
     "description": "Un conjunto de herramientas forjado entre cursos universitarios, mentorías y proyectos reales de ingeniería. Siempre aprendiendo, siempre afinando.",
     "groups": [
-      { "title": "Lenguajes", "items": ["Java", "C#", "C++", "C", "Python", "PHP", "Kotlin"] },
-      { "title": "Frameworks y Web", "items": ["Spring Boot", "Laravel", ".NET", "React"] },
-      { "title": "Bases de datos", "items": ["PostgreSQL", "MySQL", "Oracle"] },
-      { "title": "Herramientas y control de versiones", "items": ["Git", "GitHub", "UiPath (RPA)"] },
-      { "title": "Metodologías", "items": ["Scrum", "Kanban", "Coordinación de proyectos"] },
-      { "title": "Interpersonales", "items": ["Comunicación efectiva", "Trabajo en equipo", "Adaptabilidad", "Mentoría"] }
+      {
+        "title": "Lenguajes",
+        "items": [
+          "Java",
+          "C#",
+          "C++",
+          "C",
+          "Python",
+          "PHP",
+          "Kotlin"
+        ]
+      },
+      {
+        "title": "Frameworks y Web",
+        "items": [
+          "Spring Boot",
+          "Laravel",
+          ".NET",
+          "React"
+        ]
+      },
+      {
+        "title": "Bases de datos",
+        "items": [
+          "PostgreSQL",
+          "MySQL",
+          "Oracle"
+        ]
+      },
+      {
+        "title": "Herramientas y control de versiones",
+        "items": [
+          "Git",
+          "GitHub",
+          "UiPath (RPA)"
+        ]
+      },
+      {
+        "title": "Metodologías",
+        "items": [
+          "Scrum",
+          "Kanban",
+          "Coordinación de proyectos"
+        ]
+      },
+      {
+        "title": "Interpersonales",
+        "items": [
+          "Comunicación efectiva",
+          "Trabajo en equipo",
+          "Adaptabilidad",
+          "Mentoría"
+        ]
+      }
     ]
   },
   "experience": {
@@ -91,7 +184,12 @@
           "Apliqué prácticas de ingeniería de software para análisis de requisitos, diseño arquitectónico y modelado de datos.",
           "Guié al equipo en la adopción de Scrum: planificación de sprints, dailies, revisiones y retrospectivas."
         ],
-        "tags": ["Laravel", "MySQL", "Scrum", "Arquitectura"]
+        "tags": [
+          "Laravel",
+          "MySQL",
+          "Scrum",
+          "Arquitectura"
+        ]
       },
       {
         "role": "Asistente estudiantil - Robótica educativa",
@@ -103,7 +201,11 @@
           "Construí robots y adapté material didáctico a distintos niveles de aprendizaje.",
           "Acompañé equipos con resolución práctica de problemas e iteración continua."
         ],
-        "tags": ["Enseñanza", "Robótica", "Mentoría"]
+        "tags": [
+          "Enseñanza",
+          "Robótica",
+          "Mentoría"
+        ]
       },
       {
         "role": "Mentor estudiantil - RPA con UiPath",
@@ -115,51 +217,221 @@
           "Atendí dudas y expliqué conceptos del curso para reforzar el aprendizaje.",
           "Orienté en los ejercicios y en el avance de sus automatizaciones."
         ],
-        "tags": ["UiPath", "RPA", "Mentoría"]
+        "tags": [
+          "UiPath",
+          "RPA",
+          "Mentoría"
+        ]
       }
     ]
   },
   "projects": {
     "eyebrow": "Trabajo seleccionado",
-    "title": "Proyectos que he trabajado.",
-    "githubCta": "Ver todo en GitHub",
+    "title": "Proyectos en los que he trabajado.",
     "highlightsLabel": "Destacados",
-    "viewRepo": "Ver repositorio",
     "close": "Cerrar",
     "items": [
       {
+        "id": "la-vueltica",
+        "title": "La VuelTica",
+        "subtitle": "UNA · equipo de 5",
+        "description": "Plataforma de recomendación gastronómica para Android: API en .NET y app nativa en Kotlin, con mapa de negocios cercanos, menú digital, promociones y calificaciones.",
+        "tech": [
+          "C#",
+          ".NET",
+          "PostgreSQL",
+          "PostGIS",
+          "Kotlin",
+          "Jetpack Compose",
+          "Docker"
+        ],
+        "highlights": [
+          "Modelos geoespaciales en PostgreSQL y PostGIS con filtros de cercanía por tipo y calificación",
+          "Servicios en contenedores Docker para un despliegue consistente",
+          "Sprint reviews y code reviews dentro de un equipo de 5"
+        ],
+        "year": "2026",
+        "demo": null,
+        "cover": null,
+        "diagram": [
+          "App Android",
+          "API .NET",
+          "PostGIS"
+        ],
+        "parts": [
+          {
+            "name": "API",
+            "stack": "C# · .NET 8 · EF Core · PostgreSQL + PostGIS · JWT · Docker",
+            "role": "Autenticación, publicaciones del feed, promociones, dado gastronómico, consultas del mapa con filtros, validadores, migraciones y documentación de contratos."
+          },
+          {
+            "name": "App móvil",
+            "stack": "Android nativo · Kotlin · Jetpack Compose · Hilt · Retrofit · Room",
+            "role": "Autenticación, feed (crear y editar publicaciones), mapa, menú digital y perfil del negocio, dado de promociones y calificación de productos."
+          }
+        ]
+      },
+      {
+        "id": "event-booking",
+        "title": "EventBooking",
+        "subtitle": "UNA · equipo de 5",
+        "description": "Sistema de reservas de eventos: un negocio publica y administra eventos y los clientes buscan, reservan y cancelan desde la app. API en FastAPI y app móvil en Expo.",
+        "tech": [
+          "Python",
+          "FastAPI",
+          "PostgreSQL",
+          "React Native",
+          "TypeScript",
+          "Expo",
+          "Docker"
+        ],
+        "highlights": [
+          "Contratos OpenAPI como fuente de verdad entre API y app móvil",
+          "Rutas separadas para administrador y cliente, con pruebas automatizadas",
+          "Pull requests, code reviews y CI en un equipo de 5"
+        ],
+        "year": "2026",
+        "demo": null,
+        "cover": null,
+        "diagram": [
+          "App móvil",
+          "API FastAPI",
+          "PostgreSQL"
+        ],
+        "parts": [
+          {
+            "name": "API",
+            "stack": "Python · FastAPI · SQLAlchemy 2 · PostgreSQL · Alembic · JWT · Docker",
+            "role": "Definición y mantenimiento de los contratos OpenAPI de eventos y reservas."
+          },
+          {
+            "name": "App móvil",
+            "stack": "Expo · React Native · TypeScript · Expo Router · Jest",
+            "role": "Detalle de evento del administrador, feed y detalle de eventos, pruebas unitarias y de funcionalidad, documentación de módulos y arquitectura."
+          }
+        ]
+      },
+      {
+        "id": "safezone",
+        "title": "SafeZone",
+        "subtitle": "Proyecto en equipo · 4 integrantes",
+        "description": "Plataforma colaborativa de seguridad urbana: reportes de incidentes en tiempo real, corroboración espacio-temporal y puntaje de riesgo por zonas. Incluye API, portal web de administración y app móvil.",
+        "tech": [
+          ".NET",
+          "PostgreSQL",
+          "PostGIS",
+          "React",
+          "TypeScript",
+          "React Native",
+          "Docker"
+        ],
+        "highlights": [
+          "Backend en .NET con puerta de enlace (YARP) y servicios separados",
+          "Contratos OpenAPI como fuente de verdad entre API, web y móvil",
+          "Portal de administración en React y app móvil con Expo",
+          "Flujo de trabajo con ramas, pull requests y code reviews"
+        ],
+        "year": "2026",
+        "demo": null,
+        "cover": null,
+        "diagram": [
+          "App móvil",
+          "Gateway",
+          "Servicios"
+        ],
+        "parts": [
+          {
+            "name": "API",
+            "stack": ".NET · YARP · PostgreSQL + PostGIS · Docker",
+            "role": "Puerta de enlace (gateway), servicio de puntaje de riesgo, contratos OpenAPI de autenticación y comunidad, y documentación."
+          },
+          {
+            "name": "Web",
+            "stack": "React · TypeScript",
+            "role": "Autenticación, panel de administración y flujos de CI."
+          },
+          {
+            "name": "App móvil",
+            "stack": "Expo · React Native · TypeScript",
+            "role": "Autenticación, manejo de sesión, CI y documentación de arquitectura."
+          }
+        ]
+      },
+      {
         "id": "vet-system",
         "title": "Sistema de gestión veterinaria",
-        "subtitle": "Proyecto final universitario",
-        "description": "Plataforma para clínicas veterinarias: agenda de citas, historial de citas, catálogo de productos y servicios. Construida con Laravel y MySQL usando una arquitectura MVC limpia.",
-        "tech": ["Laravel", "PHP", "MySQL", "Blade", "Bootstrap"],
-        "highlights": [
-          "Modelado relacional de citas, servicios y catálogo de productos",
-          "Implementación de control de acceso por roles",
-          "Capa de servicios modular para facilitar pruebas"
+        "subtitle": "UNA · equipo de 5",
+        "description": "Sistema para la Agroveterinaria Río Frío: agenda de citas, carrito de compras y control de inventario con permisos por usuario. Entregado y desplegado en un entorno real como proyecto final.",
+        "tech": [
+          "Laravel",
+          "PHP",
+          "MySQL",
+          "JavaScript",
+          "Blade"
         ],
-        "year": "2025",
-        "repo": "https://github.com/jussmoreira",
+        "highlights": [
+          "Módulos de backend en Laravel: citas, inventario y lógica de negocio",
+          "Interfaz en JavaScript para la agenda de citas y el carrito",
+          "Trabajo en equipo de 5 con metodología Scrum",
+          "Despliegue en un entorno en vivo como entrega final"
+        ],
+        "year": "2025–2026",
         "demo": null,
         "cover": "/projects/agroveterinaria-rio-frio.png"
+      },
+      {
+        "id": "robotica-steam",
+        "title": "Sitio web de Robótica STEAM",
+        "subtitle": "UNA · Sede Sarapiquí",
+        "description": "Sitio del curso Robótica para el Desarrollo de Habilidades STEAM de la Universidad Nacional. Reúne recursos y simuladores para docentes y estudiantes de colegios rurales, y guías semanales interactivas para el curso.",
+        "tech": [
+          "Jekyll",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "GitHub Actions",
+          "GitHub Pages"
+        ],
+        "highlights": [
+          "Recursos y simuladores para LEGO EV3, SPIKE Prime, Open Roberta y Arduino",
+          "Guías semanales interactivas que arman la estructura del documento de entrega",
+          "Publicación automática con GitHub Actions: el código fuente queda privado y solo se publica el sitio",
+          "Modo oscuro y diseño adaptable a móvil"
+        ],
+        "year": "2026",
+        "demo": "https://roboticaunasarapiqui.github.io",
+        "cover": "/projects/robotica-una-sarapiqui.jpg"
       },
       {
         "id": "spring-api",
         "title": "API REST con Spring Boot",
         "subtitle": "Curso de backend en Java",
         "description": "Servicio RESTful construido en Spring Boot con endpoints CRUD, arquitectura por capas (controlador, servicio, repositorio) y validación.",
-        "tech": ["Java", "Spring Boot", "JPA", "MySQL"],
+        "tech": [
+          "Java",
+          "Spring Boot",
+          "JPA",
+          "MySQL"
+        ],
         "highlights": [
           "Arquitectura por capas con mapeo DTO",
           "Validación de beans y manejo global de errores",
           "Colección de Postman para pruebas"
         ],
         "year": "2024",
-        "repo": "https://github.com/jussmoreira",
         "demo": null,
-        "cover": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80&auto=format&fit=crop"
+        "cover": null,
+        "diagram": [
+          "Controller",
+          "Service",
+          "Repository"
+        ]
       }
-    ]
+    ],
+    "viewSite": "Visitar sitio",
+    "liveLabel": "En vivo",
+    "details": "Ver detalles",
+    "partsLabel": "Partes del proyecto"
   },
   "education": {
     "eyebrow": "Educación",

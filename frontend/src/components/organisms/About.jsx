@@ -10,13 +10,13 @@ function StatCard({ icon: Icon, label, value, suffix, inView }) {
   const animatedValue = useCountUp(value, inView, 850);
 
   return (
-    <div className="card-warm rounded-xl p-4 flex flex-col gap-2">
+    <div className="card-warm rounded p-4 flex flex-col gap-2">
       <Icon className="w-5 h-5 text-accent" />
-      <div className="font-display text-3xl text-foreground">
+      <div className="font-display stat-number text-3xl text-foreground">
         {animatedValue}
         {suffix}
       </div>
-      <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
+      <div className="text-xs text-muted-foreground">
         {label}
       </div>
     </div>
@@ -39,11 +39,10 @@ export default function About() {
       <div className="container-narrow grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5 reveal">
           <div className="flex items-center gap-3 mb-4">
-            <span className="divider-dot" />
-            <span className="eyebrow">{about.eyebrow}</span>
+            <span className="eyebrow eyebrow-index">{about.eyebrow}</span>
           </div>
           <h2 className="section-title font-display text-4xl md:text-5xl leading-tight text-foreground">
-            {about.titleStart} <em className="text-primary">{about.titleEmphasis}</em>{" "}
+            {about.titleStart} <em className="not-italic text-primary">{about.titleEmphasis}</em>{" "}
             {about.titleEnd}
           </h2>
         </div>
@@ -73,14 +72,14 @@ export default function About() {
           </div>
 
           <div className="mt-8">
-            <div className="text-sm uppercase tracking-[0.2em] text-accent mb-3">
+            <div className="text-sm text-primary font-bold mb-3">
               {about.languagesLabel}
             </div>
             <div className="flex flex-wrap gap-3">
               {languages.map((language) => (
                 <span
                   key={language.name}
-                  className="px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm border border-border"
+                  className="px-4 py-2 rounded bg-secondary text-secondary-foreground text-sm border border-border"
                 >
                   <span className="font-medium text-foreground">{language.name}</span>
                   <span className="mx-2 text-accent">•</span>

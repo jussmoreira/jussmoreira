@@ -22,9 +22,9 @@ export default function Portfolio() {
       <main id="main-content">
         <Hero />
         <About />
-        <Skills />
-        <Experience />
         <Projects />
+        <Experience />
+        <Skills />
         <Education />
         <Contact />
       </main>

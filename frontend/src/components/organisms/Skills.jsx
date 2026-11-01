@@ -40,8 +40,7 @@ export default function Skills() {
         <div className="reveal flex items-end justify-between flex-wrap gap-6 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <span className="divider-dot" />
-              <span className="eyebrow">{skills.eyebrow}</span>
+              <span className="eyebrow eyebrow-index">{skills.eyebrow}</span>
             </div>
             <h2 className="section-title font-display text-4xl md:text-5xl text-foreground">
               {skills.title}
@@ -57,7 +56,7 @@ export default function Skills() {
             const Icon = icons[group.title] || Code2;
 
             return (
-              <div key={group.title} className="reveal card-warm rounded-2xl p-6">
+              <div key={group.title} className="reveal card-warm rounded p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center">
                     <Icon className="w-5 h-5 text-primary" />
@@ -68,9 +67,10 @@ export default function Skills() {
                   {group.items.map((item, index) => (
                     <li
                       key={item}
-                      className="skill-chip px-3 py-1.5 rounded-full text-sm bg-background border border-border text-muted-foreground"
+                      className="skill-chip flex items-center gap-2 font-mono text-[13px] text-muted-foreground pr-3"
                       style={{ "--chip-i": index }}
                     >
+                      <span aria-hidden className="h-1.5 w-1.5 bg-accent" />
                       {item}
                     </li>
                   ))}

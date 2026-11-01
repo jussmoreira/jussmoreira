@@ -18,8 +18,7 @@ export default function Experience() {
       <div className="container-narrow">
         <div className="reveal mb-14 max-w-2xl">
           <div className="flex items-center gap-3 mb-3">
-            <span className="divider-dot" />
-            <span className="eyebrow">{experience.eyebrow}</span>
+            <span className="eyebrow eyebrow-index">{experience.eyebrow}</span>
           </div>
           <h2 className="section-title font-display text-4xl md:text-5xl text-foreground">
             {experience.title}
@@ -45,10 +44,10 @@ export default function Experience() {
             >
               <span
                 aria-hidden
-                className="absolute left-[12px] md:left-1/2 top-3 w-3 h-3 rounded-full bg-primary ring-4 ring-background md:-translate-x-1/2"
+                className="absolute left-[12px] md:left-1/2 top-3 w-2 h-2 bg-primary md:-translate-x-1/2"
               />
               <div className="pl-10 md:pl-0 md:pr-10 md:text-right">
-                <div className="text-sm uppercase tracking-[0.18em] text-accent">
+                <div className="text-sm text-primary font-bold">
                   {item.period}
                 </div>
                 <h3 className="font-display text-2xl text-foreground mt-1">
@@ -66,7 +65,7 @@ export default function Experience() {
                 </div>
               </div>
               <div className="pl-10 md:pl-10 mt-4 md:mt-0">
-                <div className="card-warm rounded-2xl p-6">
+                <div className="card-warm rounded p-6">
                   <ul className="space-y-2 text-muted-foreground text-[15px] leading-relaxed">
                     {(item.bullets || []).map((bullet, bulletIndex) => (
                       <li key={bulletIndex} className="flex gap-3">
