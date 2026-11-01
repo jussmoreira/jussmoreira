@@ -460,29 +460,29 @@
         "school": "Universidad Nacional de Costa Rica",
         "period": "En progreso",
         "notes": "Estudiante avanzado. Enfoque en arquitectura de software, modelado de datos y gestión de proyectos."
-      },
-      {
-        "type": "cert",
-        "degree": "Odoo 19 Full Stack Developer",
-        "school": "Udemy",
-        "period": "2026",
-        "notes": "Desarrollo de módulos y vistas en Odoo 19 (backend y frontend)."
-      },
-      {
-        "type": "cert",
-        "degree": "Scrum Fundamentals Certified",
-        "school": "SCRUMstudy",
-        "period": "2026",
-        "notes": "Fundamentos de Scrum y gestión ágil de proyectos."
-      },
-      {
-        "type": "cert",
-        "degree": "AI Fundamentals",
-        "school": "IBM SkillsBuild",
-        "period": "2026",
-        "notes": "Fundamentos de inteligencia artificial."
       }
-    ]
+    ],
+    "certifications": {
+      "title": "Certificaciones",
+      "items": [
+        {
+          "name": "Odoo 19 Full Stack Developer",
+          "issuer": "Udemy",
+          "year": "2026"
+        },
+        {
+          "name": "Scrum Fundamentals Certified",
+          "issuer": "SCRUMstudy",
+          "year": "2026"
+        },
+        {
+          "name": "AI Fundamentals",
+          "issuer": "IBM SkillsBuild",
+          "year": "2026"
+        }
+      ],
+      "more": "Otras certificaciones, en:"
+    }
   },
   "contact": {
     "eyebrow": "Contacto",
