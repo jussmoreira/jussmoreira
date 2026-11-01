@@ -7,9 +7,6 @@
     "tagline": "Building software with intention, clean architecture, and steady focus.",
     "summary": "Advanced Information Systems Engineering student, passionate about analyzing complex problems and building reliable, maintainable solutions. Proactive, collaborative, and quick to adapt to new environments and technologies.",
     "location": "Costa Rica",
-    "email": "jus111moreiramatarrita@gmail.com",
-    "phone": "+506 8625 3757",
-    "phoneRaw": "+50686253757",
     "availability": "Available for work"
   },
   "nav": {
@@ -105,7 +102,7 @@
       },
       {
         "name": "English",
-        "level": "Technical / professional reading"
+        "level": "Intermediate (B2)"
       }
     ]
   },
@@ -118,11 +115,12 @@
         "title": "Languages",
         "items": [
           "Java",
-          "C#",
-          "C++",
-          "C",
-          "Python",
           "PHP",
+          "C#",
+          "Python",
+          "C++",
+          "JavaScript",
+          "C",
           "Kotlin"
         ]
       },
@@ -131,16 +129,19 @@
         "items": [
           "Spring Boot",
           "Laravel",
-          ".NET",
-          "React"
+          "ASP.NET Core",
+          "React",
+          "HTML5",
+          "CSS",
+          "Odoo ERP"
         ]
       },
       {
         "title": "Databases",
         "items": [
-          "PostgreSQL",
           "MySQL",
-          "Oracle"
+          "Oracle",
+          "PostgreSQL"
         ]
       },
       {
@@ -148,15 +149,24 @@
         "items": [
           "Git",
           "GitHub",
+          "Docker",
           "UiPath (RPA)"
         ]
       },
       {
         "title": "Methodologies",
         "items": [
-          "Scrum",
-          "Kanban",
+          "Agile (Scrum, Kanban)",
           "Project coordination"
+        ]
+      },
+      {
+        "title": "Laboratory",
+        "items": [
+          "Arduino",
+          "Sensors & actuators",
+          "Circuit assembly",
+          "Robotics prototyping"
         ]
       },
       {
@@ -194,7 +204,7 @@
       {
         "role": "Student assistant - Educational robotics",
         "org": "National University of Costa Rica",
-        "period": "Oct 2023 - Present",
+        "period": "Oct 2023 - Jun 2026",
         "location": "Heredia, CR",
         "bullets": [
           "Designed and facilitated educational robotics workshops for high school students.",
@@ -232,106 +242,26 @@
     "close": "Close",
     "items": [
       {
-        "id": "la-vueltica",
-        "title": "La VuelTica",
-        "subtitle": "UNA · team of 5",
-        "description": "Food recommendation platform for Android: a .NET API and a native Kotlin app, with a nearby-businesses map, digital menus, promotions and ratings.",
-        "tech": [
-          "C#",
-          ".NET",
-          "PostgreSQL",
-          "PostGIS",
-          "Kotlin",
-          "Jetpack Compose",
-          "Docker"
-        ],
-        "highlights": [
-          "Geospatial models in PostgreSQL and PostGIS with nearby filters by type and rating",
-          "Docker containers for consistent deployment",
-          "Sprint reviews and code reviews within a team of 5"
-        ],
-        "year": "2026",
-        "demo": null,
-        "cover": null,
-        "diagram": [
-          "Android app",
-          ".NET API",
-          "PostGIS"
-        ],
-        "parts": [
-          {
-            "name": "API",
-            "stack": "C# · .NET 8 · EF Core · PostgreSQL + PostGIS · JWT · Docker",
-            "role": "Authentication, feed posts, promotions, gastronomic dice, map queries with filters, validators, migrations and contract documentation."
-          },
-          {
-            "name": "Mobile app",
-            "stack": "Native Android · Kotlin · Jetpack Compose · Hilt · Retrofit · Room",
-            "role": "Authentication, feed (create and edit posts), map, digital menu and business profile, dice promotions and product ratings."
-          }
-        ]
-      },
-      {
-        "id": "event-booking",
-        "title": "EventBooking",
-        "subtitle": "UNA · team of 5",
-        "description": "Event booking system: a business publishes and manages events, and customers search, book and cancel from the app. FastAPI backend and an Expo mobile app.",
-        "tech": [
-          "Python",
-          "FastAPI",
-          "PostgreSQL",
-          "React Native",
-          "TypeScript",
-          "Expo",
-          "Docker"
-        ],
-        "highlights": [
-          "OpenAPI contracts as the source of truth between API and mobile app",
-          "Separate admin and customer routes, with automated tests",
-          "Pull requests, code reviews and CI in a team of 5"
-        ],
-        "year": "2026",
-        "demo": null,
-        "cover": null,
-        "diagram": [
-          "Mobile app",
-          "FastAPI",
-          "PostgreSQL"
-        ],
-        "parts": [
-          {
-            "name": "API",
-            "stack": "Python · FastAPI · SQLAlchemy 2 · PostgreSQL · Alembic · JWT · Docker",
-            "role": "Definition and maintenance of the OpenAPI contracts for events and reservations."
-          },
-          {
-            "name": "Mobile app",
-            "stack": "Expo · React Native · TypeScript · Expo Router · Jest",
-            "role": "Admin event detail, events feed and detail, unit and feature tests, module and architecture documentation."
-          }
-        ]
-      },
-      {
         "id": "safezone",
         "title": "SafeZone",
         "subtitle": "Team project · 4 members",
-        "description": "Crowdsourced urban safety platform: real-time incident reports, spatio-temporal corroboration and zone-based risk scoring. Includes an API, a web admin portal and a mobile app.",
+        "description": "Collaborative urban-safety platform: the community reports incidents in real time and the system corroborates them by zone and time to compute a risk score.",
         "tech": [
-          ".NET",
+          ".NET 8",
+          "C#",
+          "Python",
+          "FastAPI",
           "PostgreSQL",
           "PostGIS",
+          "Redis",
+          "Kafka (Redpanda)",
+          "Docker",
           "React",
           "TypeScript",
-          "React Native",
-          "Docker"
+          "Expo",
+          "React Native"
         ],
-        "highlights": [
-          "Backend in .NET with a YARP gateway and separate services",
-          "OpenAPI contracts as the source of truth between API, web and mobile",
-          "React admin portal and an Expo mobile app",
-          "Branching, pull request and code review workflow"
-        ],
-        "year": "2026",
+        "year": "Aug–Nov 2026",
         "demo": null,
         "cover": null,
         "diagram": [
@@ -342,18 +272,145 @@
         "parts": [
           {
             "name": "API",
-            "stack": ".NET · YARP · PostgreSQL + PostGIS · Docker",
-            "role": "Gateway, risk score service, OpenAPI contracts for authentication and community, and documentation."
+            "stack": ".NET 8 · C# · YARP · EF Core · PostgreSQL + PostGIS · Redis · Kafka (Redpanda) · JWT · Docker · Python · FastAPI · spaCy · scikit-learn",
+            "summary": "Gateway (YARP) and separate services: authentication, incidents, community and a Python risk service that classifies reports (NLP) and computes the score per zone (H3)."
           },
           {
             "name": "Web",
-            "stack": "React · TypeScript",
-            "role": "Authentication, admin panel and CI workflows."
+            "stack": "React 18 · TypeScript · Vite · Tailwind · Radix UI · TanStack Query · Zustand · React Hook Form · Zod · Leaflet · Recharts",
+            "summary": "Admin portal for users, terms and analytics."
           },
           {
             "name": "Mobile app",
-            "stack": "Expo · React Native · TypeScript",
-            "role": "Authentication, session handling, CI and architecture documentation."
+            "stack": "Expo · React Native · TypeScript · Expo Router · MapLibre · TanStack Query · Zustand · Zod · MMKV · Jest",
+            "summary": "App to report incidents and see the risk of the area."
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/safezone/01.webp",
+            "alt": "SafeZone Web: sign-in screen"
+          },
+          {
+            "src": "/projects/safezone/04.webp",
+            "alt": "SafeZone Web: sign-in in dark mode"
+          },
+          {
+            "src": "/projects/safezone/02.webp",
+            "alt": "SafeZone Web: user management in the admin panel"
+          },
+          {
+            "src": "/projects/safezone/05.webp",
+            "alt": "SafeZone Web: user management in dark mode"
+          },
+          {
+            "src": "/projects/safezone/03.webp",
+            "alt": "SafeZone Web: user management on mobile"
+          }
+        ]
+      },
+      {
+        "id": "robotica-steam",
+        "title": "STEAM Robotics website",
+        "subtitle": "UNA · Sarapiquí campus",
+        "description": "Website for the Universidad Nacional course Robotics for the Development of STEAM Skills. It gathers resources and simulators for teachers and students at rural high schools, plus interactive weekly guides for the course.",
+        "tech": [
+          "Jekyll",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "GitHub Actions",
+          "GitHub Pages"
+        ],
+        "highlights": [
+          "Resources and simulators for LEGO EV3, SPIKE Prime, Open Roberta and Arduino",
+          "Interactive weekly guides that build the structure of the assignment document",
+          "Automatic publishing with GitHub Actions: the source stays private and only the site is published",
+          "Dark mode and mobile-friendly layout"
+        ],
+        "year": "Oct 2026",
+        "demo": "https://roboticaunasarapiqui.github.io",
+        "cover": "/projects/robotica-una-sarapiqui.jpg",
+        "images": [
+          {
+            "src": "/projects/robotica-una-sarapiqui.jpg",
+            "alt": "STEAM Robotics: site home page"
+          },
+          {
+            "src": "/projects/robotica-steam/02.webp",
+            "alt": "STEAM Robotics: teaching resources with platform filters"
+          },
+          {
+            "src": "/projects/robotica-steam/03.webp",
+            "alt": "STEAM Robotics: weekly work guides"
+          }
+        ]
+      },
+      {
+        "id": "la-vueltica",
+        "title": "La VuelTica",
+        "subtitle": "UNA · team of 5",
+        "description": "Helps people decide where to eat: shows nearby food businesses on a map, with digital menus, promotions, ratings and a gastronomic dice to pick at random.",
+        "tech": [
+          "C#",
+          ".NET",
+          "PostgreSQL",
+          "PostGIS",
+          "Kotlin",
+          "Jetpack Compose",
+          "Docker"
+        ],
+        "year": "Mar–Jun 2026",
+        "demo": null,
+        "diagram": [
+          "Android app",
+          ".NET API",
+          "PostGIS"
+        ],
+        "parts": [
+          {
+            "name": "API",
+            "stack": "C# · .NET 8 · EF Core · PostgreSQL + PostGIS · JWT · Docker",
+            "summary": "Business logic, geospatial proximity queries and authentication."
+          },
+          {
+            "name": "Mobile app",
+            "stack": "Native Android · Kotlin · Jetpack Compose · Hilt · Retrofit · Room",
+            "summary": "Android app with map, posts feed, digital menu and promotions."
+          }
+        ]
+      },
+      {
+        "id": "event-booking",
+        "title": "EventBooking",
+        "subtitle": "UNA · team of 5",
+        "description": "Event booking system: a business publishes and manages its events, and customers search, book and cancel from their phone.",
+        "tech": [
+          "Python",
+          "FastAPI",
+          "PostgreSQL",
+          "React Native",
+          "TypeScript",
+          "Expo",
+          "Docker"
+        ],
+        "year": "May–Jun 2026",
+        "demo": null,
+        "diagram": [
+          "Mobile app",
+          "FastAPI",
+          "PostgreSQL"
+        ],
+        "parts": [
+          {
+            "name": "API",
+            "stack": "Python · FastAPI · SQLAlchemy 2 · PostgreSQL · Alembic · JWT · Docker",
+            "summary": "Events, reservations, notifications and authentication exposed as a REST API."
+          },
+          {
+            "name": "Mobile app",
+            "stack": "Expo · React Native · TypeScript · Expo Router · Jest",
+            "summary": "Calendar and event management for the business; search, booking and cancellation for customers."
           }
         ]
       },
@@ -378,60 +435,14 @@
         "year": "2025–2026",
         "demo": null,
         "cover": "/projects/agroveterinaria-rio-frio.png"
-      },
-      {
-        "id": "robotica-steam",
-        "title": "STEAM Robotics website",
-        "subtitle": "UNA · Sarapiquí campus",
-        "description": "Website for the Universidad Nacional course Robotics for the Development of STEAM Skills. It gathers resources and simulators for teachers and students at rural high schools, plus interactive weekly guides for the course.",
-        "tech": [
-          "Jekyll",
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "GitHub Actions",
-          "GitHub Pages"
-        ],
-        "highlights": [
-          "Resources and simulators for LEGO EV3, SPIKE Prime, Open Roberta and Arduino",
-          "Interactive weekly guides that build the structure of the assignment document",
-          "Automatic publishing with GitHub Actions: the source stays private and only the site is published",
-          "Dark mode and mobile-friendly layout"
-        ],
-        "year": "2026",
-        "demo": "https://roboticaunasarapiqui.github.io",
-        "cover": "/projects/robotica-una-sarapiqui.jpg"
-      },
-      {
-        "id": "spring-api",
-        "title": "REST API with Spring Boot",
-        "subtitle": "Java backend course",
-        "description": "RESTful service built with Spring Boot featuring CRUD endpoints, layered architecture (controller, service, repository), and validation.",
-        "tech": [
-          "Java",
-          "Spring Boot",
-          "JPA",
-          "MySQL"
-        ],
-        "highlights": [
-          "Layered architecture with DTO mapping",
-          "Bean validation and global error handling",
-          "Postman collection for testing"
-        ],
-        "year": "2024",
-        "demo": null,
-        "cover": null,
-        "diagram": [
-          "Controller",
-          "Service",
-          "Repository"
-        ]
       }
     ],
     "viewSite": "Visit site",
     "liveLabel": "Live",
     "details": "View details",
-    "partsLabel": "Project parts"
+    "partsLabel": "Project parts",
+    "prevImage": "Previous image",
+    "nextImage": "Next image"
   },
   "education": {
     "eyebrow": "Education",
@@ -449,6 +460,27 @@
         "school": "National University of Costa Rica",
         "period": "In progress",
         "notes": "Advanced student. Focused on software architecture, data modeling, and project management."
+      },
+      {
+        "type": "cert",
+        "degree": "Odoo 19 Full Stack Developer",
+        "school": "Udemy",
+        "period": "2026",
+        "notes": "Module and view development in Odoo 19 (backend and frontend)."
+      },
+      {
+        "type": "cert",
+        "degree": "Scrum Fundamentals Certified",
+        "school": "SCRUMstudy",
+        "period": "2026",
+        "notes": "Scrum fundamentals and agile project management."
+      },
+      {
+        "type": "cert",
+        "degree": "AI Fundamentals",
+        "school": "IBM SkillsBuild",
+        "period": "2026",
+        "notes": "Fundamentals of artificial intelligence."
       }
     ]
   },
@@ -457,26 +489,11 @@
     "titleStart": "Let's build something",
     "titleEmphasis": "together",
     "titleEnd": ".",
-    "description": "I'm open to new opportunities and collaborative projects. The fastest way to reach me is by email or phone; I usually reply in under a day.",
-    "socialLabels": {
-      "linkedin": "LinkedIn",
-      "github": "GitHub",
-      "orcid": "ORCID",
-      "whatsapp": "WhatsApp"
-    }
+    "description": "I'm open to new opportunities and collaborative projects. The fastest way to reach me is by email; I usually reply in under a day."
   },
   "footer": {
     "reachOut": "Contact",
-    "elsewhere": "Elsewhere",
-    "backToTop": "Back to top",
-    "copyright": "© {{year}} {{name}}. Crafted with care in Costa Rica.",
-    "socialLabels": {
-      "linkedin": "LinkedIn",
-      "github": "GitHub",
-      "orcid": "ORCID",
-      "whatsapp": "WhatsApp",
-      "email": "Email"
-    }
+    "backToTop": "Back to top"
   },
   "errorBoundary": {
     "eyebrow": "Unexpected error",

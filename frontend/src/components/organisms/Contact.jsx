@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
+import { Mail, MapPin, Linkedin, Github } from "lucide-react";
 import { OrcidIcon } from "@/components/atoms/orcid-icon";
-import { WhatsappIcon } from "@/components/atoms/whatsapp-icon";
-import { siteAssets } from "@/config/site";
+import { CredlyIcon } from "@/components/atoms/credly-icon";
+import { ContactLink } from "@/components/atoms/contact-link";
+import { contactValue } from "@/lib/contact";
 
+const iconBox =
+  "w-10 h-10 flex-none rounded bg-secondary border border-border flex items-center justify-center";
+const cardClass =
+  "flex items-center gap-3 rounded border border-border bg-card px-4 py-3 transition-colors hover:border-primary/40";
+
+const socials = [
+  { key: "linkedin", label: "LinkedIn", Icon: Linkedin },
+  { key: "github", label: "GitHub", Icon: Github },
+  { key: "orcid", label: "ORCID", Icon: OrcidIcon },
+  { key: "credly", label: "Credly", Icon: CredlyIcon },
+];
+
+/* Único lugar del sitio con los datos de contacto. El texto se arma en el
+   cliente, en partes, para que no aparezca completo en el HTML inicial. */
 export default function Contact() {
   const { t } = useTranslation();
   const profile = t("profile", { returnObjects: true });
   const contact = t("contact", { returnObjects: true });
+  const [data, setData] = useState({ user: "", domain: "" });
+
+  useEffect(() => {
+    const [user = "", domain = ""] = contactValue("email").split("@");
+    setData({ user, domain });
+  }, []);
 
   if (!contact || typeof contact !== "object") return null;
-
-  const socialLabels =
-    contact.socialLabels || t("footer.socialLabels", { returnObjects: true }) || {};
 
   return (
     <section id="contact" className="section-pad bg-secondary/40 border-t border-border">
@@ -30,72 +48,42 @@ export default function Contact() {
         </p>
 
         <div className="reveal mt-10 grid sm:grid-cols-2 gap-3 text-left">
-          <a
-            href={`mailto:${profile.email}`}
-            className="flex items-center gap-3 group rounded border border-border bg-card px-4 py-3 hover:border-primary/40 transition-colors"
-          >
-            <span className="w-10 h-10 flex-none rounded-lg bg-secondary border border-border flex items-center justify-center">
-              <Mail className="w-4 h-4 text-primary" />
+          <ContactLink channel="email" className={cardClass}>
+            <span className={iconBox}>
+              <Mail className="w-4 h-4 text-primary" aria-hidden />
             </span>
-            <span className="text-foreground link-underline break-all">{profile.email}</span>
-          </a>
-
-          <a
-            href={`tel:${profile.phoneRaw}`}
-            className="flex items-center gap-3 group rounded border border-border bg-card px-4 py-3 hover:border-primary/40 transition-colors"
-          >
-            <span className="w-10 h-10 flex-none rounded-lg bg-secondary border border-border flex items-center justify-center">
-              <Phone className="w-4 h-4 text-primary" />
+            <span className="text-foreground link-underline break-all">
+              {data.user && (
+                <>
+                  <bdi>{data.user}</bdi>
+                  <span>&#64;</span>
+                  <bdi>{data.domain}</bdi>
+                </>
+              )}
             </span>
-            <span className="text-foreground link-underline">{profile.phone}</span>
-          </a>
+          </ContactLink>
 
-          <div className="flex items-center gap-3 rounded border border-border bg-card px-4 py-3">
-            <span className="w-10 h-10 flex-none rounded-lg bg-secondary border border-border flex items-center justify-center">
-              <MapPin className="w-4 h-4 text-primary" />
+          <div className={`${cardClass}`}>
+            <span className={iconBox}>
+              <MapPin className="w-4 h-4 text-primary" aria-hidden />
             </span>
             <span className="text-foreground">{profile.location}</span>
           </div>
-
-          <div className="flex items-center gap-3 rounded border border-border bg-card px-4 py-3">
-            <a
-              href={siteAssets.socials.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="w-10 h-10 rounded-lg border border-border bg-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-              aria-label={socialLabels.linkedin}
-            >
-              <Linkedin className="w-4 h-4" />
-            </a>
-            <a
-              href={siteAssets.socials.github}
-              target="_blank"
-              rel="noreferrer"
-              className="w-10 h-10 rounded-lg border border-border bg-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-              aria-label={socialLabels.github}
-            >
-              <Github className="w-4 h-4" />
-            </a>
-            <a
-              href={siteAssets.socials.orcid}
-              target="_blank"
-              rel="noreferrer"
-              className="w-10 h-10 rounded-lg border border-border bg-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-              aria-label={socialLabels.orcid}
-            >
-              <OrcidIcon className="w-4 h-4" />
-            </a>
-            <a
-              href={siteAssets.socials.whatsapp}
-              target="_blank"
-              rel="noreferrer"
-              className="w-10 h-10 rounded-lg border border-border bg-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-              aria-label={socialLabels.whatsapp}
-            >
-              <WhatsappIcon className="w-4 h-4" />
-            </a>
-          </div>
         </div>
+
+        <ul className="reveal mt-3 flex flex-wrap justify-center gap-3">
+          {socials.map(({ key, label, Icon }) => (
+            <li key={key}>
+              <ContactLink
+                channel={key}
+                className="inline-flex items-center gap-2 rounded border border-border bg-card px-4 py-2.5 text-sm text-foreground transition-colors hover:border-primary/40 hover:text-primary"
+              >
+                <Icon className="w-4 h-4 text-accent" aria-hidden />
+                {label}
+              </ContactLink>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

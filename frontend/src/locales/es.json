@@ -7,9 +7,6 @@
     "tagline": "Construyendo software con intención, arquitectura limpia y pulso sereno.",
     "summary": "Estudiante avanzado de Ingeniería en Sistemas de Información, apasionado por analizar problemas complejos y crear soluciones confiables y mantenibles. Proactivo, colaborativo y rápido para adaptarme a nuevos entornos y tecnologías.",
     "location": "Costa Rica",
-    "email": "jus111moreiramatarrita@gmail.com",
-    "phone": "+506 8625 3757",
-    "phoneRaw": "+50686253757",
     "availability": "Disponible para trabajar"
   },
   "nav": {
@@ -105,7 +102,7 @@
       },
       {
         "name": "Inglés",
-        "level": "Lectura técnica / profesional"
+        "level": "Intermedio (B2)"
       }
     ]
   },
@@ -118,11 +115,12 @@
         "title": "Lenguajes",
         "items": [
           "Java",
-          "C#",
-          "C++",
-          "C",
-          "Python",
           "PHP",
+          "C#",
+          "Python",
+          "C++",
+          "JavaScript",
+          "C",
           "Kotlin"
         ]
       },
@@ -131,16 +129,19 @@
         "items": [
           "Spring Boot",
           "Laravel",
-          ".NET",
-          "React"
+          "ASP.NET Core",
+          "React",
+          "HTML5",
+          "CSS",
+          "Odoo ERP"
         ]
       },
       {
         "title": "Bases de datos",
         "items": [
-          "PostgreSQL",
           "MySQL",
-          "Oracle"
+          "Oracle",
+          "PostgreSQL"
         ]
       },
       {
@@ -148,15 +149,24 @@
         "items": [
           "Git",
           "GitHub",
+          "Docker",
           "UiPath (RPA)"
         ]
       },
       {
         "title": "Metodologías",
         "items": [
-          "Scrum",
-          "Kanban",
+          "Agile (Scrum, Kanban)",
           "Coordinación de proyectos"
+        ]
+      },
+      {
+        "title": "Laboratorio",
+        "items": [
+          "Arduino",
+          "Sensores y actuadores",
+          "Armado de circuitos",
+          "Prototipado de robótica"
         ]
       },
       {
@@ -194,7 +204,7 @@
       {
         "role": "Asistente estudiantil - Robótica educativa",
         "org": "Universidad Nacional de Costa Rica",
-        "period": "Oct 2023 - Presente",
+        "period": "Oct 2023 - Jun 2026",
         "location": "Heredia, CR",
         "bullets": [
           "Diseñé y facilité talleres de robótica educativa para estudiantes de colegio.",
@@ -232,106 +242,26 @@
     "close": "Cerrar",
     "items": [
       {
-        "id": "la-vueltica",
-        "title": "La VuelTica",
-        "subtitle": "UNA · equipo de 5",
-        "description": "Plataforma de recomendación gastronómica para Android: API en .NET y app nativa en Kotlin, con mapa de negocios cercanos, menú digital, promociones y calificaciones.",
-        "tech": [
-          "C#",
-          ".NET",
-          "PostgreSQL",
-          "PostGIS",
-          "Kotlin",
-          "Jetpack Compose",
-          "Docker"
-        ],
-        "highlights": [
-          "Modelos geoespaciales en PostgreSQL y PostGIS con filtros de cercanía por tipo y calificación",
-          "Servicios en contenedores Docker para un despliegue consistente",
-          "Sprint reviews y code reviews dentro de un equipo de 5"
-        ],
-        "year": "2026",
-        "demo": null,
-        "cover": null,
-        "diagram": [
-          "App Android",
-          "API .NET",
-          "PostGIS"
-        ],
-        "parts": [
-          {
-            "name": "API",
-            "stack": "C# · .NET 8 · EF Core · PostgreSQL + PostGIS · JWT · Docker",
-            "role": "Autenticación, publicaciones del feed, promociones, dado gastronómico, consultas del mapa con filtros, validadores, migraciones y documentación de contratos."
-          },
-          {
-            "name": "App móvil",
-            "stack": "Android nativo · Kotlin · Jetpack Compose · Hilt · Retrofit · Room",
-            "role": "Autenticación, feed (crear y editar publicaciones), mapa, menú digital y perfil del negocio, dado de promociones y calificación de productos."
-          }
-        ]
-      },
-      {
-        "id": "event-booking",
-        "title": "EventBooking",
-        "subtitle": "UNA · equipo de 5",
-        "description": "Sistema de reservas de eventos: un negocio publica y administra eventos y los clientes buscan, reservan y cancelan desde la app. API en FastAPI y app móvil en Expo.",
-        "tech": [
-          "Python",
-          "FastAPI",
-          "PostgreSQL",
-          "React Native",
-          "TypeScript",
-          "Expo",
-          "Docker"
-        ],
-        "highlights": [
-          "Contratos OpenAPI como fuente de verdad entre API y app móvil",
-          "Rutas separadas para administrador y cliente, con pruebas automatizadas",
-          "Pull requests, code reviews y CI en un equipo de 5"
-        ],
-        "year": "2026",
-        "demo": null,
-        "cover": null,
-        "diagram": [
-          "App móvil",
-          "API FastAPI",
-          "PostgreSQL"
-        ],
-        "parts": [
-          {
-            "name": "API",
-            "stack": "Python · FastAPI · SQLAlchemy 2 · PostgreSQL · Alembic · JWT · Docker",
-            "role": "Definición y mantenimiento de los contratos OpenAPI de eventos y reservas."
-          },
-          {
-            "name": "App móvil",
-            "stack": "Expo · React Native · TypeScript · Expo Router · Jest",
-            "role": "Detalle de evento del administrador, feed y detalle de eventos, pruebas unitarias y de funcionalidad, documentación de módulos y arquitectura."
-          }
-        ]
-      },
-      {
         "id": "safezone",
         "title": "SafeZone",
         "subtitle": "Proyecto en equipo · 4 integrantes",
-        "description": "Plataforma colaborativa de seguridad urbana: reportes de incidentes en tiempo real, corroboración espacio-temporal y puntaje de riesgo por zonas. Incluye API, portal web de administración y app móvil.",
+        "description": "Plataforma colaborativa de seguridad urbana: la comunidad reporta incidentes en tiempo real y el sistema los corrobora por zona y hora para calcular un puntaje de riesgo.",
         "tech": [
-          ".NET",
+          ".NET 8",
+          "C#",
+          "Python",
+          "FastAPI",
           "PostgreSQL",
           "PostGIS",
+          "Redis",
+          "Kafka (Redpanda)",
+          "Docker",
           "React",
           "TypeScript",
-          "React Native",
-          "Docker"
+          "Expo",
+          "React Native"
         ],
-        "highlights": [
-          "Backend en .NET con puerta de enlace (YARP) y servicios separados",
-          "Contratos OpenAPI como fuente de verdad entre API, web y móvil",
-          "Portal de administración en React y app móvil con Expo",
-          "Flujo de trabajo con ramas, pull requests y code reviews"
-        ],
-        "year": "2026",
+        "year": "Ago–Nov 2026",
         "demo": null,
         "cover": null,
         "diagram": [
@@ -342,18 +272,145 @@
         "parts": [
           {
             "name": "API",
-            "stack": ".NET · YARP · PostgreSQL + PostGIS · Docker",
-            "role": "Puerta de enlace (gateway), servicio de puntaje de riesgo, contratos OpenAPI de autenticación y comunidad, y documentación."
+            "stack": ".NET 8 · C# · YARP · EF Core · PostgreSQL + PostGIS · Redis · Kafka (Redpanda) · JWT · Docker · Python · FastAPI · spaCy · scikit-learn",
+            "summary": "Gateway (YARP) y servicios separados: autenticación, incidentes, comunidad y un servicio de riesgo en Python que clasifica reportes (NLP) y calcula el puntaje por zona (H3)."
           },
           {
             "name": "Web",
-            "stack": "React · TypeScript",
-            "role": "Autenticación, panel de administración y flujos de CI."
+            "stack": "React 18 · TypeScript · Vite · Tailwind · Radix UI · TanStack Query · Zustand · React Hook Form · Zod · Leaflet · Recharts",
+            "summary": "Portal de administración de usuarios, términos y analíticas."
           },
           {
             "name": "App móvil",
-            "stack": "Expo · React Native · TypeScript",
-            "role": "Autenticación, manejo de sesión, CI y documentación de arquitectura."
+            "stack": "Expo · React Native · TypeScript · Expo Router · MapLibre · TanStack Query · Zustand · Zod · MMKV · Jest",
+            "summary": "App para reportar incidentes y ver el riesgo de la zona."
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/safezone/01.webp",
+            "alt": "SafeZone Web: pantalla de inicio de sesión"
+          },
+          {
+            "src": "/projects/safezone/04.webp",
+            "alt": "SafeZone Web: inicio de sesión en modo oscuro"
+          },
+          {
+            "src": "/projects/safezone/02.webp",
+            "alt": "SafeZone Web: gestión de usuarios en el panel de administración"
+          },
+          {
+            "src": "/projects/safezone/05.webp",
+            "alt": "SafeZone Web: gestión de usuarios en modo oscuro"
+          },
+          {
+            "src": "/projects/safezone/03.webp",
+            "alt": "SafeZone Web: gestión de usuarios en vista móvil"
+          }
+        ]
+      },
+      {
+        "id": "robotica-steam",
+        "title": "Sitio web de Robótica STEAM",
+        "subtitle": "UNA · Sede Sarapiquí",
+        "description": "Sitio del curso Robótica para el Desarrollo de Habilidades STEAM de la Universidad Nacional. Reúne recursos y simuladores para docentes y estudiantes de colegios rurales, y guías semanales interactivas para el curso.",
+        "tech": [
+          "Jekyll",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "GitHub Actions",
+          "GitHub Pages"
+        ],
+        "highlights": [
+          "Recursos y simuladores para LEGO EV3, SPIKE Prime, Open Roberta y Arduino",
+          "Guías semanales interactivas que arman la estructura del documento de entrega",
+          "Publicación automática con GitHub Actions: el código fuente queda privado y solo se publica el sitio",
+          "Modo oscuro y diseño adaptable a móvil"
+        ],
+        "year": "Oct 2026",
+        "demo": "https://roboticaunasarapiqui.github.io",
+        "cover": "/projects/robotica-una-sarapiqui.jpg",
+        "images": [
+          {
+            "src": "/projects/robotica-una-sarapiqui.jpg",
+            "alt": "Robótica STEAM: página de inicio del sitio"
+          },
+          {
+            "src": "/projects/robotica-steam/02.webp",
+            "alt": "Robótica STEAM: recursos didácticos con filtros por plataforma"
+          },
+          {
+            "src": "/projects/robotica-steam/03.webp",
+            "alt": "Robótica STEAM: guías de trabajo semanales"
+          }
+        ]
+      },
+      {
+        "id": "la-vueltica",
+        "title": "La VuelTica",
+        "subtitle": "UNA · equipo de 5",
+        "description": "Ayuda a decidir dónde comer: muestra negocios gastronómicos cercanos en un mapa, con menú digital, promociones, calificaciones y un dado gastronómico para elegir al azar.",
+        "tech": [
+          "C#",
+          ".NET",
+          "PostgreSQL",
+          "PostGIS",
+          "Kotlin",
+          "Jetpack Compose",
+          "Docker"
+        ],
+        "year": "Mar–Jun 2026",
+        "demo": null,
+        "diagram": [
+          "App Android",
+          "API .NET",
+          "PostGIS"
+        ],
+        "parts": [
+          {
+            "name": "API",
+            "stack": "C# · .NET 8 · EF Core · PostgreSQL + PostGIS · JWT · Docker",
+            "summary": "Lógica de negocio, consultas geoespaciales de cercanía y autenticación."
+          },
+          {
+            "name": "App móvil",
+            "stack": "Android nativo · Kotlin · Jetpack Compose · Hilt · Retrofit · Room",
+            "summary": "App Android con mapa, feed de publicaciones, menú digital y promociones."
+          }
+        ]
+      },
+      {
+        "id": "event-booking",
+        "title": "EventBooking",
+        "subtitle": "UNA · equipo de 5",
+        "description": "Sistema de reservas de eventos: el negocio publica y administra sus eventos, y los clientes los buscan, reservan y cancelan desde el celular.",
+        "tech": [
+          "Python",
+          "FastAPI",
+          "PostgreSQL",
+          "React Native",
+          "TypeScript",
+          "Expo",
+          "Docker"
+        ],
+        "year": "May–Jun 2026",
+        "demo": null,
+        "diagram": [
+          "App móvil",
+          "API FastAPI",
+          "PostgreSQL"
+        ],
+        "parts": [
+          {
+            "name": "API",
+            "stack": "Python · FastAPI · SQLAlchemy 2 · PostgreSQL · Alembic · JWT · Docker",
+            "summary": "Eventos, reservas, notificaciones y autenticación expuestos como API REST."
+          },
+          {
+            "name": "App móvil",
+            "stack": "Expo · React Native · TypeScript · Expo Router · Jest",
+            "summary": "Calendario y gestión de eventos para el negocio; búsqueda, reserva y cancelación para clientes."
           }
         ]
       },
@@ -378,60 +435,14 @@
         "year": "2025–2026",
         "demo": null,
         "cover": "/projects/agroveterinaria-rio-frio.png"
-      },
-      {
-        "id": "robotica-steam",
-        "title": "Sitio web de Robótica STEAM",
-        "subtitle": "UNA · Sede Sarapiquí",
-        "description": "Sitio del curso Robótica para el Desarrollo de Habilidades STEAM de la Universidad Nacional. Reúne recursos y simuladores para docentes y estudiantes de colegios rurales, y guías semanales interactivas para el curso.",
-        "tech": [
-          "Jekyll",
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "GitHub Actions",
-          "GitHub Pages"
-        ],
-        "highlights": [
-          "Recursos y simuladores para LEGO EV3, SPIKE Prime, Open Roberta y Arduino",
-          "Guías semanales interactivas que arman la estructura del documento de entrega",
-          "Publicación automática con GitHub Actions: el código fuente queda privado y solo se publica el sitio",
-          "Modo oscuro y diseño adaptable a móvil"
-        ],
-        "year": "2026",
-        "demo": "https://roboticaunasarapiqui.github.io",
-        "cover": "/projects/robotica-una-sarapiqui.jpg"
-      },
-      {
-        "id": "spring-api",
-        "title": "API REST con Spring Boot",
-        "subtitle": "Curso de backend en Java",
-        "description": "Servicio RESTful construido en Spring Boot con endpoints CRUD, arquitectura por capas (controlador, servicio, repositorio) y validación.",
-        "tech": [
-          "Java",
-          "Spring Boot",
-          "JPA",
-          "MySQL"
-        ],
-        "highlights": [
-          "Arquitectura por capas con mapeo DTO",
-          "Validación de beans y manejo global de errores",
-          "Colección de Postman para pruebas"
-        ],
-        "year": "2024",
-        "demo": null,
-        "cover": null,
-        "diagram": [
-          "Controller",
-          "Service",
-          "Repository"
-        ]
       }
     ],
     "viewSite": "Visitar sitio",
     "liveLabel": "En vivo",
     "details": "Ver detalles",
-    "partsLabel": "Partes del proyecto"
+    "partsLabel": "Partes del proyecto",
+    "prevImage": "Imagen anterior",
+    "nextImage": "Imagen siguiente"
   },
   "education": {
     "eyebrow": "Educación",
@@ -449,6 +460,27 @@
         "school": "Universidad Nacional de Costa Rica",
         "period": "En progreso",
         "notes": "Estudiante avanzado. Enfoque en arquitectura de software, modelado de datos y gestión de proyectos."
+      },
+      {
+        "type": "cert",
+        "degree": "Odoo 19 Full Stack Developer",
+        "school": "Udemy",
+        "period": "2026",
+        "notes": "Desarrollo de módulos y vistas en Odoo 19 (backend y frontend)."
+      },
+      {
+        "type": "cert",
+        "degree": "Scrum Fundamentals Certified",
+        "school": "SCRUMstudy",
+        "period": "2026",
+        "notes": "Fundamentos de Scrum y gestión ágil de proyectos."
+      },
+      {
+        "type": "cert",
+        "degree": "AI Fundamentals",
+        "school": "IBM SkillsBuild",
+        "period": "2026",
+        "notes": "Fundamentos de inteligencia artificial."
       }
     ]
   },
@@ -457,26 +489,11 @@
     "titleStart": "Construyamos algo",
     "titleEmphasis": "juntos",
     "titleEnd": ".",
-    "description": "Estoy abierto a nuevas oportunidades y proyectos colaborativos. La forma más rápida de contactarme es por correo o teléfono; normalmente respondo en menos de un día.",
-    "socialLabels": {
-      "linkedin": "LinkedIn",
-      "github": "GitHub",
-      "orcid": "ORCID",
-      "whatsapp": "WhatsApp"
-    }
+    "description": "Estoy abierto a nuevas oportunidades y proyectos colaborativos. La forma más rápida de contactarme es por correo; normalmente respondo en menos de un día."
   },
   "footer": {
     "reachOut": "Contacto",
-    "elsewhere": "Redes",
-    "backToTop": "Volver arriba",
-    "copyright": "© {{year}} {{name}}. Hecho con cuidado en Costa Rica.",
-    "socialLabels": {
-      "linkedin": "LinkedIn",
-      "github": "GitHub",
-      "orcid": "ORCID",
-      "whatsapp": "WhatsApp",
-      "email": "Correo"
-    }
+    "backToTop": "Volver arriba"
   },
   "errorBoundary": {
     "eyebrow": "Error inesperado",

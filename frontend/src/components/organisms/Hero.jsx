@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowDownRight, ChevronDown, Download, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowDownRight, ChevronDown, Download } from "lucide-react";
 import { Button } from "@/components/atoms/button";
 import { SafeImage } from "@/components/atoms/image";
-import { OrcidIcon } from "@/components/atoms/orcid-icon";
-import { WhatsappIcon } from "@/components/atoms/whatsapp-icon";
-import { CredlyIcon } from "@/components/atoms/credly-icon";
 import { RotatingText } from "@/components/atoms/rotating-text";
 import { useTranslation } from "react-i18next";
 import { siteAssets } from "@/config/site";
@@ -49,16 +46,6 @@ export default function Hero() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  const primaryLinks = [
-    { href: siteAssets.socials.linkedin, label: "LinkedIn", Icon: Linkedin },
-    { href: siteAssets.socials.github, label: "GitHub", Icon: Github },
-  ];
-  const secondaryLinks = [
-    { href: siteAssets.socials.whatsapp, label: "WhatsApp", Icon: WhatsappIcon, iconClass: "text-accent" },
-    { href: siteAssets.socials.orcid, label: "ORCID", Icon: OrcidIcon, iconClass: "" },
-    { href: siteAssets.socials.credly, label: "Credly", Icon: CredlyIcon, iconClass: "text-accent" },
-  ];
 
   return (
     <section
@@ -131,53 +118,6 @@ export default function Hero() {
                   </a>
                 </div>
               )}
-            </div>
-          </div>
-
-          <div className="reveal mt-10 space-y-4 text-sm text-muted-foreground">
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-              <span className="inline-flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-accent" aria-hidden />
-                {profile.location}
-              </span>
-              <a
-                href={`mailto:${profile.email}`}
-                className="inline-flex items-center gap-2 link-underline hover:text-primary break-all"
-              >
-                <Mail className="w-4 h-4 flex-none text-accent" aria-hidden />
-                {profile.email}
-              </a>
-            </div>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-              {primaryLinks.map(({ href, label, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 link-underline hover:text-primary"
-                >
-                  <Icon className="w-4 h-4 text-accent" aria-hidden />
-                  {label}
-                </a>
-              ))}
-              <span aria-hidden className="h-4 w-px bg-border" />
-              <ul className="flex items-center gap-2">
-                {secondaryLinks.map(({ href, label, Icon, iconClass }) => (
-                  <li key={label}>
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={label}
-                      title={label}
-                      className="flex h-9 w-9 items-center justify-center rounded border border-border bg-card transition-colors hover:border-primary/40 hover:text-primary"
-                    >
-                      <Icon className={`w-4 h-4 ${iconClass}`} aria-hidden />
-                    </a>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>

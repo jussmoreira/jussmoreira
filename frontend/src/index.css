@@ -230,9 +230,17 @@ code, .font-mono {
   transform: translate(2px, 2px);
 }
 
+/* Cambio de captura en el carrusel: fundido corto */
+@keyframes carouselFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.carousel-fade { animation: carouselFade 220ms ease-out; }
+
 /* Respeta a quienes prefieren menos movimiento (a11y) */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .carousel-fade { animation: none; }
   .reveal {
     opacity: 1;
     transform: none;

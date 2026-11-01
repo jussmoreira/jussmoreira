@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { GraduationCap } from "lucide-react";
+import { Award, GraduationCap } from "lucide-react";
 
 export default function Education() {
   const { t } = useTranslation();
@@ -26,14 +26,16 @@ export default function Education() {
         </div>
 
         <div className="lg:col-span-7 space-y-5">
-          {items.map((item, index) => (
+          {items.map((item, index) => {
+            const Icon = item.type === "cert" ? Award : GraduationCap;
+            return (
             <div
               key={`${item.degree}-${index}`}
               className="reveal card-warm rounded p-6 flex gap-5"
             >
               <div className="flex-none">
                 <div className="w-12 h-12 rounded bg-secondary border border-border flex items-center justify-center">
-                  <GraduationCap className="w-6 h-6 text-primary" />
+                  <Icon className="w-6 h-6 text-primary" />
                 </div>
               </div>
               <div className="flex-1">
@@ -49,7 +51,8 @@ export default function Education() {
                 </p>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

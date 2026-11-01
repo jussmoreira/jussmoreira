@@ -7,6 +7,7 @@ import {
   GitBranch,
   KanbanSquare,
   HeartHandshake,
+  FlaskConical,
 } from "lucide-react";
 
 const icons = {
@@ -19,6 +20,8 @@ const icons = {
   "Herramientas y control de versiones": GitBranch,
   Methodologies: KanbanSquare,
   "Metodologías": KanbanSquare,
+  Laboratorio: FlaskConical,
+  Laboratory: FlaskConical,
   Interpersonal: HeartHandshake,
   "Interpersonales": HeartHandshake,
 };
