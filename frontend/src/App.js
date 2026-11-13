@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Portfolio from "@/components/pages/Portfolio";
+import NotFound from "@/components/pages/NotFound";
 import { useTranslation } from "react-i18next";
 import { ErrorBoundary } from "@/components/molecules/ErrorBoundary";
 import { ScrollProgress } from "@/components/atoms/scroll-progress";
-import { CursorSpotlight } from "@/components/atoms/cursor-spotlight";
 import { useReveal } from "@/hooks/useReveal";
 
 function Page() {
@@ -13,6 +12,10 @@ function Page() {
   useReveal(i18n.resolvedLanguage);
   return <Portfolio />;
 }
+
+/* Una sola página y una 404: no hace falta un enrutador. Vercel reescribe
+   cualquier ruta a index.html (vercel.json) y aquí se decide qué mostrar. */
+const isHome = ["/", "/index.html"].includes(window.location.pathname);
 
 function App() {
   const { i18n, t } = useTranslation();
@@ -26,14 +29,8 @@ function App() {
   return (
     <div className="App">
       <ScrollProgress />
-      <CursorSpotlight />
       <ErrorBoundary language={language} copy={errorCopy}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Page />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </BrowserRouter>
+        {isHome ? <Page /> : <NotFound />}
       </ErrorBoundary>
     </div>
   );

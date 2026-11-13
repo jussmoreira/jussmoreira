@@ -1,13 +1,22 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Briefcase, MapPin } from "lucide-react";
-import { useInViewOnce } from "@/hooks/useInViewOnce";
+import { TestBench } from "@/components/molecules/TestBench";
+import { SectionBar } from "@/components/molecules/SectionBar";
 
+/* "Feb 2025 - May 2026" → "2025–26"; un solo año si empieza y termina igual */
+function yearSpan(period = "") {
+  const years = String(period).match(/\d{4}/g) || [];
+  if (years.length === 0) return "";
+  const [start, end] = [years[0], years[years.length - 1]];
+  if (start === end) return start;
+  return `${start}–${start.slice(0, 2) === end.slice(0, 2) ? end.slice(2) : end}`;
+}
+
+/* Experiencia como registro: fechas y lugar en la columna izquierda,
+   rol y aportes a la derecha. Sin zigzag ni tarjetas. */
 export default function Experience() {
   const { t } = useTranslation();
   const experience = t("experience", { returnObjects: true });
-  const { ref: timelineRef, inView: timelineInView } = useInViewOnce({ threshold: 0.05 });
-  const noMotion = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
   if (!experience || typeof experience !== "object") return null;
 
@@ -16,75 +25,42 @@ export default function Experience() {
   return (
     <section id="experience" className="section-pad">
       <div className="container-narrow">
-        <div className="reveal mb-14 max-w-2xl">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="eyebrow eyebrow-index">{experience.eyebrow}</span>
-          </div>
-          <h2 className="section-title font-display text-4xl md:text-5xl text-foreground">
-            {experience.title}
-          </h2>
-        </div>
+        <SectionBar label={experience.eyebrow} />
 
-        <ol ref={timelineRef} className="relative">
-          <div
-            aria-hidden
-            className="absolute left-[18px] md:left-1/2 top-2 bottom-2 w-px bg-border md:-translate-x-1/2"
-            style={{
-              transformOrigin: "top",
-              transform: noMotion || timelineInView ? "scaleY(1)" : "scaleY(0)",
-              transition: noMotion ? "none" : "transform 1200ms cubic-bezier(0.22, 1, 0.36, 1)",
-            }}
-          />
+        <h2 className="reveal mb-12 max-w-3xl text-[clamp(2.4rem,5vw,4rem)] text-foreground">
+          {experience.title}
+        </h2>
+
+        <ol>
           {items.map((item, index) => (
             <li
               key={`${item.role}-${index}`}
-              className={`reveal relative md:grid md:grid-cols-2 md:gap-12 mb-10 ${
-                index % 2 === 0 ? "" : "md:[&>*:first-child]:order-2"
-              }`}
+              className="reveal ledger-row grid gap-4 py-8 md:grid-cols-12 md:gap-6 md:py-10"
             >
-              <span
-                aria-hidden
-                className="absolute left-[12px] md:left-1/2 top-3 w-2 h-2 bg-primary md:-translate-x-1/2"
-              />
-              <div className="pl-10 md:pl-0 md:pr-10 md:text-right">
-                <div className="text-sm text-primary font-bold">
-                  {item.period}
+              {/* Los años quedan fijos mientras se lee el puesto, como el índice de un plano */}
+              <div className="md:sticky md:top-28 md:col-span-4 md:self-start">
+                <div aria-hidden className="font-display font-condensed text-[clamp(2.6rem,5vw,4.25rem)] leading-[0.9] text-foreground [font-variant-numeric:tabular-nums]">
+                  {yearSpan(item.period)}
                 </div>
-                <h3 className="font-display text-2xl text-foreground mt-1">
-                  {item.role}
-                </h3>
-                <div className="flex items-center gap-3 mt-2 md:justify-end text-muted-foreground text-sm">
-                  <span className="inline-flex items-center gap-1">
-                    <Briefcase className="w-4 h-4 text-accent" />
-                    {item.org}
-                  </span>
-                  <span className="inline-flex items-center gap-1">
-                    <MapPin className="w-4 h-4 text-accent" />
-                    {item.location}
-                  </span>
-                </div>
+                <div className="mt-2 font-mono text-sm text-signal tabular">{item.period}</div>
+                <div className="mt-2 text-sm text-foreground">{item.org}</div>
+                <div className="text-sm text-muted-foreground">{item.location}</div>
               </div>
-              <div className="pl-10 md:pl-10 mt-4 md:mt-0">
-                <div className="card-warm rounded p-6">
-                  <ul className="space-y-2 text-muted-foreground text-[15px] leading-relaxed">
-                    {(item.bullets || []).map((bullet, bulletIndex) => (
-                      <li key={bulletIndex} className="flex gap-3">
-                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-accent flex-none" />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="flex flex-wrap gap-2 mt-5">
-                    {(item.tags || []).map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-1 rounded-md text-xs bg-secondary text-primary border border-border"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+
+              <div className="md:col-span-8">
+                <h3 className="text-2xl text-foreground md:text-[1.75rem]">{item.role}</h3>
+                <ul className="mt-4 space-y-2 text-[16px] leading-relaxed text-muted-foreground">
+                  {(item.bullets || []).map((bullet, bulletIndex) => (
+                    <li key={bulletIndex} className="flex gap-3">
+                      <span aria-hidden className="mt-[0.7em] h-px w-3 flex-none bg-foreground" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+                {item.bench && experience.bench && <TestBench {...experience.bench} />}
+                <p className="mt-5 font-mono text-xs text-muted-foreground">
+                  {(item.tags || []).join("  ·  ")}
+                </p>
               </div>
             </li>
           ))}

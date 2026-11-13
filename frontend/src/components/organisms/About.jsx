@@ -1,24 +1,19 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { GraduationCap, Languages, Sparkles, Users } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useInViewOnce } from "@/hooks/useInViewOnce";
+import { SectionBar } from "@/components/molecules/SectionBar";
 
-const statIcons = [GraduationCap, Sparkles, Users, Languages];
-
-function StatCard({ icon: Icon, label, value, suffix, inView }) {
+function Stat({ label, value, suffix, inView }) {
   const animatedValue = useCountUp(value, inView, 850);
 
   return (
-    <div className="card-warm rounded p-4 flex flex-col gap-2">
-      <Icon className="w-5 h-5 text-accent" />
-      <div className="font-display stat-number text-3xl text-foreground">
+    <div className="border-t border-[hsl(var(--rule))] pt-3">
+      <div className="font-display font-condensed stat-number text-5xl leading-none text-foreground md:text-6xl">
         {animatedValue}
-        {suffix}
+        <span className="text-accent">{suffix}</span>
       </div>
-      <div className="text-xs text-muted-foreground">
-        {label}
-      </div>
+      <div className="mt-2 font-mono text-[11px] text-muted-foreground">{label}</div>
     </div>
   );
 }
@@ -32,62 +27,43 @@ export default function About() {
 
   const paragraphs = Array.isArray(about.paragraphs) ? about.paragraphs : [];
   const stats = Array.isArray(about.stats) ? about.stats : [];
-  const languages = Array.isArray(about.languages) ? about.languages : [];
+  const [lead, ...body] = paragraphs;
 
   return (
-    <section id="about" className="relative pt-10 md:pt-14 pb-24">
-      <div className="container-narrow grid lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-5 reveal">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="eyebrow eyebrow-index">{about.eyebrow}</span>
-          </div>
-          <h2 className="section-title font-display text-4xl md:text-5xl leading-tight text-foreground">
-            {about.titleStart} <em className="not-italic text-primary">{about.titleEmphasis}</em>{" "}
+    <section id="about" className="section-pad">
+      <div className="container-narrow">
+        <SectionBar label={about.eyebrow} />
+
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <h2 className="reveal text-[clamp(2.4rem,5vw,4rem)] text-foreground lg:col-span-5">
+            {about.titleStart} <em className="not-italic text-signal">{about.titleEmphasis}</em>{" "}
             {about.titleEnd}
           </h2>
-        </div>
 
-        <div className="lg:col-span-7 reveal">
-          <div className="space-y-5 text-muted-foreground leading-relaxed text-[17px]">
-            {paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-
-          <div ref={ref} className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {stats.map(({ label, value }, index) => {
-              const match = String(value).match(/^(\d+)(.*)$/);
-
-              return (
-                <StatCard
-                  key={label}
-                  icon={statIcons[index] || GraduationCap}
-                  label={label}
-                  value={Number(match?.[1] || 0)}
-                  suffix={match?.[2] || ""}
-                  inView={inView}
-                />
-              );
-            })}
-          </div>
-
-          <div className="mt-8">
-            <div className="text-sm text-primary font-bold mb-3">
-              {about.languagesLabel}
-            </div>
-            <div className="flex flex-wrap gap-3">
-              {languages.map((language) => (
-                <span
-                  key={language.name}
-                  className="px-4 py-2 rounded bg-secondary text-secondary-foreground text-sm border border-border"
-                >
-                  <span className="font-medium text-foreground">{language.name}</span>
-                  <span className="mx-2 text-accent">•</span>
-                  {language.level}
-                </span>
+          <div className="reveal lg:col-span-6 lg:col-start-7">
+            {lead && <p className="text-xl leading-relaxed text-foreground">{lead}</p>}
+            <div className="mt-5 space-y-5 text-[17px] leading-relaxed text-muted-foreground">
+              {body.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
           </div>
+        </div>
+
+        <div ref={ref} className="reveal mt-16 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
+          {stats.map(({ label, value }) => {
+            const match = String(value).match(/^(\d+)(.*)$/);
+
+            return (
+              <Stat
+                key={label}
+                label={label}
+                value={Number(match?.[1] || 0)}
+                suffix={match?.[2] || ""}
+                inView={inView}
+              />
+            );
+          })}
         </div>
       </div>
     </section>

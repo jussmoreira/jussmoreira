@@ -1,89 +1,133 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Mail, MapPin, Linkedin, Github } from "lucide-react";
-import { OrcidIcon } from "@/components/atoms/orcid-icon";
-import { CredlyIcon } from "@/components/atoms/credly-icon";
+import { ArrowUpRight, Check, Copy } from "lucide-react";
 import { ContactLink } from "@/components/atoms/contact-link";
+import { SocialIcon } from "@/components/atoms/social-icon";
+import { SectionBar } from "@/components/molecules/SectionBar";
 import { contactValue } from "@/lib/contact";
 
-const iconBox =
-  "w-10 h-10 flex-none rounded bg-secondary border border-border flex items-center justify-center";
-const cardClass =
-  "flex items-center gap-3 rounded border border-border bg-card px-4 py-3 transition-colors hover:border-primary/40";
-
 const socials = [
-  { key: "linkedin", label: "LinkedIn", Icon: Linkedin },
-  { key: "github", label: "GitHub", Icon: Github },
-  { key: "orcid", label: "ORCID", Icon: OrcidIcon },
-  { key: "credly", label: "Credly", Icon: CredlyIcon },
+  { key: "linkedin", label: "LinkedIn" },
+  { key: "github", label: "GitHub" },
+  { key: "orcid", label: "ORCID" },
+  { key: "credly", label: "Credly" },
 ];
 
 /* Único lugar del sitio con los datos de contacto. El texto se arma en el
-   cliente, en partes, para que no aparezca completo en el HTML inicial. */
+   cliente, en partes, para que no aparezca completo en el HTML inicial.
+   Es el cierre de la página: un bloque en tinta que continúa en el pie. */
 export default function Contact() {
   const { t } = useTranslation();
-  const profile = t("profile", { returnObjects: true });
   const contact = t("contact", { returnObjects: true });
   const [data, setData] = useState({ user: "", domain: "" });
+
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const [user = "", domain = ""] = contactValue("email").split("@");
     setData({ user, domain });
   }, []);
 
+  useEffect(() => {
+    if (!copied) return undefined;
+    const id = window.setTimeout(() => setCopied(false), 2000);
+    return () => window.clearTimeout(id);
+  }, [copied]);
+
+  const copyEmail = async () => {
+    const email = contactValue("email");
+    if (!email) return;
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+    } catch {
+      /* Sin permiso de portapapeles: el enlace mailto sigue disponible */
+    }
+  };
+
   if (!contact || typeof contact !== "object") return null;
 
   return (
-    <section id="contact" className="section-pad bg-secondary/40 border-t border-border">
-      <div className="container-narrow max-w-3xl mx-auto text-center">
-        <div className="reveal flex items-center justify-center gap-3 mb-3">
-          <span className="eyebrow eyebrow-index">{contact.eyebrow}</span>
-        </div>
-        <h2 className="reveal section-title font-display text-4xl md:text-5xl text-foreground leading-tight">
-          {contact.titleStart} <em className="not-italic text-primary">{contact.titleEmphasis}</em>
-          {contact.titleEnd}
-        </h2>
-        <p className="reveal mt-5 text-muted-foreground leading-relaxed">
-          {contact.description}
-        </p>
+    <section
+      id="contact"
+      className="section-pad bg-[hsl(var(--inverse))] text-[hsl(var(--inverse-foreground))]"
+    >
+      <div className="container-narrow">
+        <SectionBar label={contact.eyebrow} inverse />
 
-        <div className="reveal mt-10 grid sm:grid-cols-2 gap-3 text-left">
-          <ContactLink channel="email" className={cardClass}>
-            <span className={iconBox}>
-              <Mail className="w-4 h-4 text-primary" aria-hidden />
-            </span>
-            <span className="text-foreground link-underline break-all">
-              {data.user && (
-                <>
-                  <bdi>{data.user}</bdi>
-                  <span>&#64;</span>
-                  <bdi>{data.domain}</bdi>
-                </>
-              )}
-            </span>
-          </ContactLink>
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="reveal lg:col-span-7">
+            <h2 className="text-[clamp(2.8rem,7vw,6rem)] leading-[0.92]">
+              {contact.titleStart} <em className="not-italic text-[hsl(var(--inverse-accent))]">{contact.titleEmphasis}</em>
+              {contact.titleEnd}
+            </h2>
+            <p className="mt-6 max-w-lg leading-relaxed text-[hsl(var(--inverse-muted))]">
+              {contact.description}
+            </p>
+          </div>
 
-          <div className={`${cardClass}`}>
-            <span className={iconBox}>
-              <MapPin className="w-4 h-4 text-primary" aria-hidden />
-            </span>
-            <span className="text-foreground">{profile.location}</span>
+          <div className="reveal lg:col-span-5 lg:self-end">
+            <div className="font-mono text-[11px] text-[hsl(var(--inverse-muted))]">{contact.emailLabel}</div>
+            <ContactLink
+              channel="email"
+              className="arrow-link group mt-2 inline-flex items-start gap-2 font-display text-xl leading-tight [overflow-wrap:anywhere] hover:text-[hsl(var(--inverse-accent))] sm:text-2xl"
+            >
+              <span className="relative">
+                {data.user && (
+                  <>
+                    <bdi>{data.user}</bdi>
+                    <span>&#64;</span>
+                    <bdi>{data.domain}</bdi>
+                  </>
+                )}
+                <span aria-hidden data-on={copied} className="email-rule" />
+              </span>
+              <ArrowUpRight className="mt-1 h-6 w-6 flex-none" aria-hidden />
+            </ContactLink>
+            <div className="mt-3">
+              <button
+                type="button"
+                onClick={copyEmail}
+                aria-label={contact.copyAria}
+                data-copied={copied}
+                className="copy-btn inline-flex min-w-[92px] items-center justify-center gap-1.5 rounded-sm border px-2.5 py-1 font-mono text-[11px]"
+              >
+                {copied ? (
+                  <Check className="check-draw h-3.5 w-3.5" aria-hidden />
+                ) : (
+                  <Copy className="h-3.5 w-3.5" aria-hidden />
+                )}
+                <span key={copied ? "on" : "off"} className={copied ? "copy-swap" : ""}>
+                  {copied ? contact.copied : contact.copy}
+                </span>
+              </button>
+              <span role="status" className="sr-only">
+                {copied ? contact.copied : ""}
+              </span>
+            </div>
+
+            <div className="mt-10 font-mono text-[11px] text-[hsl(var(--inverse-muted))]">{contact.elsewhere}</div>
+            <ul className="mt-2 border-t border-[hsl(var(--inverse-border))]">
+              {socials.map(({ key, label }) => (
+                <li key={key} className="row-sweep border-b border-[hsl(var(--inverse-border))]">
+                  <ContactLink
+                    channel={key}
+                    className="arrow-link group relative flex items-center justify-between px-3 py-3 font-bold transition-colors hover:text-[hsl(var(--inverse-accent))]"
+                  >
+                    <span className="inline-flex items-center gap-3">
+                      <SocialIcon
+                        name={key}
+                        className="h-[18px] w-[18px] text-[hsl(var(--inverse-muted))] transition-colors group-hover:text-[hsl(var(--inverse-accent))]"
+                      />
+                      {label}
+                    </span>
+                    <ArrowUpRight className="h-4 w-4" aria-hidden />
+                  </ContactLink>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-
-        <ul className="reveal mt-3 flex flex-wrap justify-center gap-3">
-          {socials.map(({ key, label, Icon }) => (
-            <li key={key}>
-              <ContactLink
-                channel={key}
-                className="inline-flex items-center gap-2 rounded border border-border bg-card px-4 py-2.5 text-sm text-foreground transition-colors hover:border-primary/40 hover:text-primary"
-              >
-                <Icon className="w-4 h-4 text-accent" aria-hidden />
-                {label}
-              </ContactLink>
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
   );

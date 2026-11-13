@@ -8,7 +8,6 @@
 // (src/lib/contact.js).
 
 export const siteAssets = {
-  photo: "/justin-moreira.jpg",
   cv: {
     en: "/JustinMoreiraENG.pdf",
     es: "/JustinMoreira.pdf",

@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/atoms/button";
 import { SafeImage } from "@/components/atoms/image";
 import { ImageCarousel } from "@/components/molecules/ImageCarousel";
+import { SectionBar } from "@/components/molecules/SectionBar";
 
 const DATABASES = ["MySQL", "PostgreSQL", "Oracle"];
 
@@ -108,11 +109,27 @@ function PhoneStrip({ images, className = "" }) {
 
 function LiveDot() {
   return (
-    <span aria-hidden className="inline-block h-2 w-2 rounded-full bg-[hsl(142_45%_42%)]" />
+    <span aria-hidden className="inline-block h-2 w-2 bg-signal" />
   );
 }
 
-function ProjectCard({ project, featured, labels, onOpen }) {
+const refCode = (index) => `REF-${String(index + 1).padStart(2, "0")}`;
+
+/* Pines del componente: el stack leído como la tabla de pines de una ficha técnica */
+function PinTable({ items }) {
+  return (
+    <ol className="mt-5 grid grid-cols-2 gap-x-6 border-t border-border font-mono text-xs">
+      {items.map((item, index) => (
+        <li key={item} className="flex items-baseline gap-2 border-b border-border py-1.5">
+          <span className="w-6 flex-none text-signal tabular">P{index + 1}</span>
+          <span className="text-foreground">{item}</span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function ProjectCard({ project, index, featured, labels, onOpen }) {
   const techList = featured ? project.tech || [] : (project.tech || []).slice(0, 4);
   const mobile = Boolean(project.portraitImages) && Array.isArray(project.images);
 
@@ -122,6 +139,11 @@ function ProjectCard({ project, featured, labels, onOpen }) {
         featured || mobile ? "md:col-span-2 lg:grid lg:grid-cols-12" : "flex flex-col"
       }`}
     >
+      {/* Pestaña de ficha técnica sobre la esquina de la tarjeta */}
+      <span className="pointer-events-none absolute left-0 top-0 z-10 bg-[hsl(var(--inverse))] px-3 py-1.5 font-mono text-[11px] text-[hsl(var(--inverse-foreground))]">
+        {refCode(index)}
+        <span className="ml-2 text-[hsl(var(--inverse-muted))]">{project.year}</span>
+      </span>
       {mobile ? (
         <PhoneStrip
           images={project.images}
@@ -135,7 +157,7 @@ function ProjectCard({ project, featured, labels, onOpen }) {
         >
           <ProjectCover
             project={project}
-            className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.03]"
+            className="absolute inset-0 h-full w-full "
           />
         </div>
       )}
@@ -147,7 +169,7 @@ function ProjectCard({ project, featured, labels, onOpen }) {
       >
         {/* Metadatos en una línea: sin pastillas, cifras tabulares */}
         <div className="flex items-center justify-between gap-3 text-sm text-muted-foreground tabular">
-          <span className="font-bold text-primary">{project.subtitle}</span>
+          <span className="font-bold text-signal">{project.subtitle}</span>
           <span className="inline-flex items-center gap-3">
             {project.demo && (
               <span className="inline-flex items-center gap-1.5 font-bold text-foreground">
@@ -155,7 +177,6 @@ function ProjectCard({ project, featured, labels, onOpen }) {
                 {labels.live}
               </span>
             )}
-            <span>{project.year}</span>
           </span>
         </div>
         <h3
@@ -180,7 +201,7 @@ function ProjectCard({ project, featured, labels, onOpen }) {
           {project.description}
         </p>
         {Array.isArray(project.parts) && project.parts.length > 0 && (
-          <p className="mt-3 font-mono text-xs text-primary">
+          <p className="mt-3 font-mono text-xs text-foreground">
             {project.parts.map((part) => part.name).join(" · ")}
           </p>
         )}
@@ -207,7 +228,7 @@ function ProjectCard({ project, featured, labels, onOpen }) {
           )}
           <span
             aria-hidden
-            className="inline-flex items-center gap-1 text-sm font-medium text-primary"
+            className="inline-flex items-center gap-1 text-sm font-medium text-foreground"
           >
             {labels.details}
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -239,22 +260,22 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="section-pad bg-secondary/40 border-y border-border">
+    <section id="projects" className="section-pad">
       <div className="container-narrow">
-        <div className="reveal mb-12 max-w-2xl">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="eyebrow eyebrow-index">{projects.eyebrow}</span>
-          </div>
-          <h2 className="section-title font-display text-4xl md:text-5xl text-foreground">
-            {projects.title}
-          </h2>
-        </div>
+        <SectionBar
+          label={projects.eyebrow}
+          aside={projectItems.length > 0 ? `${refCode(0)} — ${refCode(projectItems.length - 1)}` : undefined}
+        />
+        <h2 className="reveal mb-12 max-w-3xl text-[clamp(2.4rem,5vw,4rem)] text-foreground">
+          {projects.title}
+        </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
           {projectItems.map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}
+              index={index}
               featured={index === 0 && Boolean(project.demo)}
               labels={labels}
               onOpen={() => openProject(project)}
@@ -297,14 +318,14 @@ export default function Projects() {
                   <DialogTitle className="font-display text-2xl text-foreground">
                     {active.title}
                   </DialogTitle>
-                  <DialogDescription className="text-primary font-bold text-xs">
-                    {active.subtitle} · {active.year}
+                  <DialogDescription className="text-signal font-bold text-xs">
+                    {refCode(projectItems.findIndex((item) => item.id === active.id))} · {active.subtitle} · {active.year}
                   </DialogDescription>
                 </DialogHeader>
                 <p className="text-muted-foreground mt-4 leading-relaxed">{active.description}</p>
                 {Array.isArray(active.parts) && active.parts.length > 0 && (
                   <div className="mt-5">
-                    <div className="text-xs text-primary font-bold mb-2">
+                    <div className="font-mono text-[11px] text-muted-foreground mb-2">
                       {projects.partsLabel}
                     </div>
                     <ul className="divide-y divide-border border-y border-border">
@@ -322,13 +343,13 @@ export default function Projects() {
                 )}
                 {Array.isArray(active.highlights) && active.highlights.length > 0 && (
                 <div className="mt-5">
-                  <div className="text-xs text-primary font-bold mb-2">
+                  <div className="font-mono text-[11px] text-muted-foreground mb-2">
                     {projects.highlightsLabel}
                   </div>
                   <ul className="space-y-1.5 text-muted-foreground text-[15px]">
                     {(active.highlights || []).map((highlight, index) => (
                       <li key={index} className="flex gap-3">
-                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-accent flex-none" />
+                        <span className="mt-2 h-1.5 w-1.5 bg-accent flex-none" />
                         <span>{highlight}</span>
                       </li>
                     ))}
@@ -336,16 +357,7 @@ export default function Projects() {
                 </div>
                 )}
                 {!(Array.isArray(active.parts) && active.parts.length > 0) && (
-                  <ul className="flex flex-wrap gap-2 mt-5">
-                    {(active.tech || []).map((tech) => (
-                      <li
-                        key={tech}
-                        className="px-2.5 py-1 rounded-md text-xs bg-secondary text-primary border border-border"
-                      >
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
+                  <PinTable items={active.tech || []} />
                 )}
                 <div className="mt-6 flex flex-wrap gap-3">
                   {active.demo && (

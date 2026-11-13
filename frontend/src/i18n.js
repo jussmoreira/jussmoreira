@@ -7,6 +7,10 @@ const STORAGE_KEY = "jm_language_v1";
 
 const savedLanguage =
   typeof window !== "undefined" ? window.localStorage.getItem(STORAGE_KEY) : null;
+/* ?lang=es o ?lang=en fija el idioma al abrir un enlace compartido */
+const urlLanguage =
+  typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("lang") : null;
+const sharedLanguage = ["es", "en"].includes(urlLanguage) ? urlLanguage : null;
 const browserLanguage =
   typeof navigator !== "undefined" && navigator.language?.toLowerCase().startsWith("es")
     ? "es"
@@ -18,7 +22,7 @@ if (!i18n.isInitialized) {
       en: { translation: en },
       es: { translation: es },
     },
-    lng: savedLanguage || browserLanguage,
+    lng: sharedLanguage || savedLanguage || browserLanguage,
     fallbackLng: "en",
     interpolation: {
       escapeValue: false,

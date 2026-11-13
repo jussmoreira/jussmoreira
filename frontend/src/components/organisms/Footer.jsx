@@ -2,30 +2,41 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowUp } from "lucide-react";
 
-/* Pie mínimo: solo accesos rápidos. Los datos de contacto viven en la
-   sección Contacto para no repetirlos. */
-export default function Footer() {
+/* Pie mínimo que continúa el bloque en tinta de Contacto. Los datos de
+   contacto viven en esa sección para no repetirlos. */
+export default function Footer({ onOpenShortcuts }) {
   const { t } = useTranslation();
   const footer = t("footer", { returnObjects: true });
+  const profile = t("profile", { returnObjects: true });
 
   if (!footer || typeof footer !== "object") return null;
 
   const top = () => window.scrollTo({ top: 0, behavior: "smooth" });
-  const toContact = () =>
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <footer className="bg-[hsl(var(--inverse))] text-[hsl(var(--inverse-foreground))]">
-      <div className="container-narrow py-6 flex flex-wrap items-center justify-between gap-4">
-        <button onClick={toContact} className="link-underline text-sm hover:text-white">
-          {footer.reachOut}
-        </button>
+    <footer className="bg-[hsl(var(--inverse))] text-[hsl(var(--inverse-muted))]">
+      <div className="container-narrow">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[hsl(var(--inverse-border))] py-6 font-mono text-xs">
+        <span>
+          © {new Date().getFullYear()} {profile.shortName}. {footer.made}
+        </span>
+        {onOpenShortcuts && (
+          <button
+            type="button"
+            onClick={onOpenShortcuts}
+            className="hidden items-center gap-2 hover:text-[hsl(var(--inverse-foreground))] md:inline-flex"
+          >
+            <kbd className="rounded-sm border border-[hsl(var(--inverse-border))] px-1.5 py-0.5">?</kbd>
+            {t("shortcuts.title")}
+          </button>
+        )}
         <button
           onClick={top}
-          className="text-sm text-[hsl(var(--inverse-muted))] hover:text-white inline-flex items-center gap-2"
+          className="inline-flex items-center gap-2 hover:text-[hsl(var(--inverse-foreground))]"
         >
-          {footer.backToTop} <ArrowUp className="w-4 h-4" />
+          {footer.backToTop} <ArrowUp className="h-4 w-4" aria-hidden />
         </button>
+        </div>
       </div>
     </footer>
   );

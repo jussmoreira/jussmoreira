@@ -64,7 +64,66 @@
     "ctaCV": "Download CV",
     "cvEN": "English",
     "cvES": "Español",
-    "role": "Backend development · Laravel · Spring Boot"
+    "role": "Backend development · Laravel · Spring Boot",
+    "titleBlock": [
+      {
+        "label": "Role",
+        "value": "Information Systems Engineering"
+      },
+      {
+        "label": "Focus",
+        "value": "Backend · Laravel · Spring Boot · .NET"
+      },
+      {
+        "label": "Based in",
+        "value": "Costa Rica"
+      },
+      {
+        "label": "Languages",
+        "value": "Spanish · English (B2)"
+      }
+    ],
+    "code": {
+      "title": "Code panel",
+      "py": [
+        "from workshop import Robot",
+        "",
+        "justin = Robot(based_in=\"Costa Rica\")",
+        "justin.stack = [\"Laravel\", \"Spring Boot\", \".NET\", \"Odoo\"]",
+        "",
+        "while justin.available:",
+        "    justin.build(software, with_care=True)"
+      ],
+      "output": "building software... ok",
+      "terminal": {
+        "label": "Portfolio terminal",
+        "placeholder": "type help",
+        "help": "commands: about, projects, experience, skills, education, contact, cv, github, linkedin, orcid, credly, email, theme, clear · Tab completes, ↑ repeats",
+        "notFound": "command not found: {{cmd}}. Try help.",
+        "opening": "opening {{section}}...",
+        "theme": "theme switched",
+        "downloading": "downloading cv...",
+        "copied": "email copied",
+        "copyFail": "couldn't copy it; it's in the contact section",
+        "names": [
+          "about",
+          "projects",
+          "experience",
+          "skills",
+          "education",
+          "contact",
+          "cv",
+          "github",
+          "linkedin",
+          "orcid",
+          "credly",
+          "email",
+          "theme",
+          "clear",
+          "help"
+        ]
+      }
+    }
   },
   "about": {
     "eyebrow": "About me",
@@ -73,7 +132,7 @@
     "titleEnd": "when ideas become systems that work.",
     "paragraphs": [
       "I am an advanced Information Systems Engineering student in Costa Rica. My work sits at the intersection of clean architecture, practical problem-solving, and constant collaboration—whether modeling data in MySQL, building a Laravel backend, or composing a React interface.",
-      "Beyond coding, I enjoy teaching. I have facilitated robotics workshops for high school students and supported classmates in Robotic Process Automation courses with UiPath. Explaining complex ideas in simple, calm language makes me a better engineer.",
+      "Beyond coding, I enjoy teaching. I have trained about 45 students from 3 schools in educational robotics and supported classmates in Robotic Process Automation courses with UiPath. Explaining complex ideas in simple, calm language makes me a better engineer.",
       "I value craftsmanship, honest communication, and delivering work I would still be happy to maintain a year from now."
     ],
     "stats": [
@@ -86,8 +145,8 @@
         "value": "6+"
       },
       {
-        "label": "Students supported",
-        "value": "30+"
+        "label": "Students from 3 schools",
+        "value": "45"
       },
       {
         "label": "Languages",
@@ -207,7 +266,7 @@
         "period": "Oct 2023 - Jun 2026",
         "location": "Heredia, CR",
         "bullets": [
-          "Designed and facilitated educational robotics workshops for high school students.",
+          "Trained about 45 students from 3 schools in educational robotics, preparing and teaching the classes.",
           "Built robots and adapted teaching material to different learning levels.",
           "Supported teams with practical problem-solving and continuous iteration."
         ],
@@ -215,7 +274,8 @@
           "Teaching",
           "Robotics",
           "Mentoring"
-        ]
+        ],
+        "bench": true
       },
       {
         "role": "Student mentor - RPA with UiPath",
@@ -233,7 +293,15 @@
           "Mentoring"
         ]
       }
-    ]
+    ],
+    "bench": {
+      "title": "Working parts",
+      "parts": [
+        "Lego",
+        "Arduino",
+        "Sensors & actuators"
+      ]
+    }
   },
   "projects": {
     "eyebrow": "Selected work",
@@ -489,11 +557,17 @@
     "titleStart": "Let's build something",
     "titleEmphasis": "together",
     "titleEnd": ".",
-    "description": "I'm open to new opportunities and collaborative projects. The fastest way to reach me is by email; I usually reply in under a day."
+    "description": "I'm open to new opportunities and collaborative projects. The fastest way to reach me is by email; I usually reply in under a day.",
+    "emailLabel": "Email",
+    "elsewhere": "Also on",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyAria": "Copy email to clipboard"
   },
   "footer": {
     "reachOut": "Contact",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "made": "Made in Costa Rica."
   },
   "errorBoundary": {
     "eyebrow": "Unexpected error",
@@ -506,5 +580,37 @@
   },
   "a11y": {
     "skipToContent": "Skip to content"
+  },
+  "notFound": {
+    "sheet": "Error · 404",
+    "title": "Sheet not found",
+    "body": "This page does not exist or has moved. The rest of the portfolio is right where it was.",
+    "back": "Back to home"
+  },
+  "shortcuts": {
+    "title": "Keyboard shortcuts",
+    "close": "Close",
+    "items": [
+      {
+        "key": "0",
+        "label": "Go to the top"
+      },
+      {
+        "key": "1 – 6",
+        "label": "Jump to a section"
+      },
+      {
+        "key": "T",
+        "label": "Switch theme"
+      },
+      {
+        "key": "/",
+        "label": "Type in the terminal"
+      },
+      {
+        "key": "?",
+        "label": "Show or hide this help"
+      }
+    ]
   }
 }

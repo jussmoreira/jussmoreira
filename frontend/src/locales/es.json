@@ -64,7 +64,66 @@
     "ctaCV": "Descargar CV",
     "cvEN": "English",
     "cvES": "Español",
-    "role": "Desarrollo backend · Laravel · Spring Boot"
+    "role": "Desarrollo backend · Laravel · Spring Boot",
+    "titleBlock": [
+      {
+        "label": "Rol",
+        "value": "Ingeniería en Sistemas de Información"
+      },
+      {
+        "label": "Enfoque",
+        "value": "Backend · Laravel · Spring Boot · .NET"
+      },
+      {
+        "label": "Base",
+        "value": "Costa Rica"
+      },
+      {
+        "label": "Idiomas",
+        "value": "Español · Inglés (B2)"
+      }
+    ],
+    "code": {
+      "title": "Panel de código",
+      "py": [
+        "from taller import Robot",
+        "",
+        "justin = Robot(base=\"Costa Rica\")",
+        "justin.stack = [\"Laravel\", \"Spring Boot\", \".NET\", \"Odoo\"]",
+        "",
+        "while justin.disponible:",
+        "    justin.construir(software, con=\"intención\")"
+      ],
+      "output": "construyendo software... ok",
+      "terminal": {
+        "label": "Terminal del portafolio",
+        "placeholder": "escribe ayuda",
+        "help": "comandos: sobre, proyectos, experiencia, habilidades, educacion, contacto, cv, github, linkedin, orcid, credly, correo, tema, limpiar · Tab completa, ↑ repite",
+        "notFound": "comando no encontrado: {{cmd}}. Prueba con ayuda.",
+        "opening": "abriendo {{section}}...",
+        "theme": "tema cambiado",
+        "downloading": "descargando cv...",
+        "copied": "correo copiado",
+        "copyFail": "no pude copiarlo; está en la sección contacto",
+        "names": [
+          "sobre",
+          "proyectos",
+          "experiencia",
+          "habilidades",
+          "educacion",
+          "contacto",
+          "cv",
+          "github",
+          "linkedin",
+          "orcid",
+          "credly",
+          "correo",
+          "tema",
+          "limpiar",
+          "ayuda"
+        ]
+      }
+    }
   },
   "about": {
     "eyebrow": "Sobre mí",
@@ -73,7 +132,7 @@
     "titleEnd": "cuando las ideas se convierten en sistemas que funcionan.",
     "paragraphs": [
       "Soy un estudiante avanzado de Ingeniería en Sistemas de Información en Costa Rica. Mi trabajo está en la intersección de la arquitectura limpia, la resolución práctica de problemas y la colaboración constante, ya sea modelando datos en MySQL, construyendo un backend en Laravel o componiendo una interfaz en React.",
-      "Más allá de programar, me gusta enseñar. He facilitado talleres de robótica para estudiantes de colegio y he acompañado a otros compañeros en cursos de Automatización Robótica de Procesos con UiPath. Explicar ideas complejas en un lenguaje simple y tranquilo me convierte en un mejor ingeniero.",
+      "Más allá de programar, me gusta enseñar. He capacitado a unos 45 estudiantes de 3 colegios en robótica educativa y he acompañado a otros compañeros en cursos de Automatización Robótica de Procesos con UiPath. Explicar ideas complejas en un lenguaje simple y tranquilo me convierte en un mejor ingeniero.",
       "Valoro la artesanía, la comunicación honesta y entregar trabajo que yo mismo mantendría con gusto dentro de un año."
     ],
     "stats": [
@@ -86,8 +145,8 @@
         "value": "6+"
       },
       {
-        "label": "Estudiantes acompañados",
-        "value": "30+"
+        "label": "Estudiantes de 3 colegios",
+        "value": "45"
       },
       {
         "label": "Idiomas",
@@ -207,7 +266,7 @@
         "period": "Oct 2023 - Jun 2026",
         "location": "Heredia, CR",
         "bullets": [
-          "Diseñé y facilité talleres de robótica educativa para estudiantes de colegio.",
+          "Capacité a unos 45 estudiantes de 3 colegios en robótica educativa, preparando e impartiendo las clases.",
           "Construí robots y adapté material didáctico a distintos niveles de aprendizaje.",
           "Acompañé equipos con resolución práctica de problemas e iteración continua."
         ],
@@ -215,7 +274,8 @@
           "Enseñanza",
           "Robótica",
           "Mentoría"
-        ]
+        ],
+        "bench": true
       },
       {
         "role": "Mentor estudiantil - RPA con UiPath",
@@ -233,7 +293,15 @@
           "Mentoría"
         ]
       }
-    ]
+    ],
+    "bench": {
+      "title": "Piezas de trabajo",
+      "parts": [
+        "Lego",
+        "Arduino",
+        "Sensores y actuadores"
+      ]
+    }
   },
   "projects": {
     "eyebrow": "Trabajo seleccionado",
@@ -489,11 +557,17 @@
     "titleStart": "Construyamos algo",
     "titleEmphasis": "juntos",
     "titleEnd": ".",
-    "description": "Estoy abierto a nuevas oportunidades y proyectos colaborativos. La forma más rápida de contactarme es por correo; normalmente respondo en menos de un día."
+    "description": "Estoy abierto a nuevas oportunidades y proyectos colaborativos. La forma más rápida de contactarme es por correo; normalmente respondo en menos de un día.",
+    "emailLabel": "Correo",
+    "elsewhere": "También en",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "copyAria": "Copiar correo al portapapeles"
   },
   "footer": {
     "reachOut": "Contacto",
-    "backToTop": "Volver arriba"
+    "backToTop": "Volver arriba",
+    "made": "Hecho en Costa Rica."
   },
   "errorBoundary": {
     "eyebrow": "Error inesperado",
@@ -506,5 +580,37 @@
   },
   "a11y": {
     "skipToContent": "Saltar al contenido"
+  },
+  "notFound": {
+    "sheet": "Error · 404",
+    "title": "Lámina no encontrada",
+    "body": "Esta página no existe o cambió de lugar. El resto del portafolio sigue donde estaba.",
+    "back": "Volver al inicio"
+  },
+  "shortcuts": {
+    "title": "Atajos de teclado",
+    "close": "Cerrar",
+    "items": [
+      {
+        "key": "0",
+        "label": "Ir al inicio"
+      },
+      {
+        "key": "1 – 6",
+        "label": "Ir a una sección"
+      },
+      {
+        "key": "T",
+        "label": "Cambiar el tema"
+      },
+      {
+        "key": "/",
+        "label": "Escribir en la terminal"
+      },
+      {
+        "key": "?",
+        "label": "Mostrar u ocultar esta ayuda"
+      }
+    ]
   }
 }

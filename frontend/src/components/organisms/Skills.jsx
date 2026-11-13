@@ -1,31 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import {
-  Code2,
-  Layers,
-  Database,
-  GitBranch,
-  KanbanSquare,
-  HeartHandshake,
-  FlaskConical,
-} from "lucide-react";
+import { SectionBar } from "@/components/molecules/SectionBar";
 
-const icons = {
-  Languages: Code2,
-  "Frameworks & Web": Layers,
-  Frameworks: Layers,
-  "Bases de datos": Database,
-  Databases: Database,
-  "Tools & Version Control": GitBranch,
-  "Herramientas y control de versiones": GitBranch,
-  Methodologies: KanbanSquare,
-  "Metodologías": KanbanSquare,
-  Laboratorio: FlaskConical,
-  Laboratory: FlaskConical,
-  Interpersonal: HeartHandshake,
-  "Interpersonales": HeartHandshake,
-};
-
+/* Habilidades como tabla de especificaciones: grupo a la izquierda, piezas
+   en línea a la derecha. Sin tarjetas ni chips. */
 export default function Skills() {
   const { t } = useTranslation();
   const skills = t("skills", { returnObjects: true });
@@ -35,53 +13,41 @@ export default function Skills() {
   const groups = Array.isArray(skills.groups) ? skills.groups : [];
 
   return (
-    <section
-      id="skills"
-      className="section-pad relative bg-secondary/40 border-y border-border"
-    >
+    <section id="skills" className="section-pad">
       <div className="container-narrow">
-        <div className="reveal flex items-end justify-between flex-wrap gap-6 mb-12">
-          <div>
-            <div className="flex items-center gap-3 mb-3">
-              <span className="eyebrow eyebrow-index">{skills.eyebrow}</span>
-            </div>
-            <h2 className="section-title font-display text-4xl md:text-5xl text-foreground">
-              {skills.title}
-            </h2>
-          </div>
-          <p className="max-w-md text-muted-foreground text-[15px] leading-relaxed">
+        <SectionBar label={skills.eyebrow} />
+
+        <div className="reveal mb-12 grid gap-6 lg:grid-cols-12">
+          <h2 className="text-[clamp(2.4rem,5vw,4rem)] text-foreground lg:col-span-6">{skills.title}</h2>
+          <p className="max-w-md text-[15px] leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8 lg:self-end">
             {skills.description}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {groups.map((group) => {
-            const Icon = icons[group.title] || Code2;
-
-            return (
-              <div key={group.title} className="reveal card-warm rounded p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-primary" />
-                  </span>
-                  <h3 className="font-display text-xl text-foreground">{group.title}</h3>
-                </div>
-                <ul className="flex flex-wrap gap-2">
-                  {group.items.map((item, index) => (
-                    <li
-                      key={item}
-                      className="skill-chip flex items-center gap-2 font-mono text-[13px] text-muted-foreground pr-3"
-                      style={{ "--chip-i": index }}
-                    >
-                      <span aria-hidden className="h-1.5 w-1.5 bg-accent" />
+        <dl>
+          {groups.map((group, index) => (
+            <div key={group.title} className="reveal ledger-row grid gap-2 py-5 md:grid-cols-12 md:gap-6">
+              <dt className="flex items-baseline gap-3 md:col-span-4">
+                <span className="font-mono text-[11px] text-muted-foreground tabular">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="font-display text-lg text-foreground">{group.title}</span>
+              </dt>
+              <dd className="md:col-span-8">
+                <ul className="flex flex-wrap gap-x-1 gap-y-1 text-[17px] text-foreground">
+                  {group.items.map((item, itemIndex) => (
+                    <li key={item} className="inline-flex items-baseline">
                       {item}
+                      {itemIndex < group.items.length - 1 && (
+                        <span aria-hidden className="mx-2 text-accent">/</span>
+                      )}
                     </li>
                   ))}
                 </ul>
-              </div>
-            );
-          })}
-        </div>
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

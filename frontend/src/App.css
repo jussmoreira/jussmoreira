@@ -1,66 +1,76 @@
 /* Portfolio-specific helpers */
 
 .section-pad {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 4rem;
+  padding-bottom: 4.75rem;
+}
+@media (min-width: 768px) {
+  .section-pad { padding-top: 4.5rem; padding-bottom: 5.25rem; }
 }
 
 .container-narrow {
-  max-width: 1200px;
+  max-width: 1240px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media (min-width: 768px) {
+  .container-narrow { padding-left: 2rem; padding-right: 2rem; }
 }
 
-/* Etiqueta de rol del Hero: texto simple, sin mayúsculas ni tracking */
-.eyebrow {
-  font-size: 0.9rem;
-  color: hsl(var(--muted-foreground));
-  font-weight: 700;
-}
-
-/* Índice de sección: "01 — Proyectos". Numera solo las secciones de <main>
+/* Número de sección: las secciones de <main> se numeran solas (01, 02...)
    en el orden en que aparecen, así no hay números que mantener a mano. */
 main { counter-reset: section; }
-.eyebrow-index::before {
+.section-index::before {
   counter-increment: section;
-  content: counter(section, decimal-leading-zero) " \2014  ";
-  color: hsl(var(--primary));
-  white-space: pre;
+  content: counter(section, decimal-leading-zero);
 }
 
+/* Botón principal: relleno cobalto */
 .btn-warm {
-  background: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
-  transition: background-color 200ms ease, color 200ms ease;
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  transition: background-color 200ms ease, color 200ms ease, transform 120ms ease;
 }
 .btn-warm:hover {
-  background: hsl(var(--primary) / 0.88);
+  background: hsl(var(--foreground));
+  color: hsl(var(--background));
 }
+.btn-warm:active,
+.btn-ghost-warm:active { transform: translateY(1px); }
 
 .btn-ghost-warm {
-  border: 1px solid hsl(var(--primary));
-  color: hsl(var(--primary));
+  border: 1px solid hsl(var(--foreground));
+  color: hsl(var(--foreground));
   background: transparent;
-  transition: background-color 200ms ease, color 200ms ease;
+  transition: background-color 200ms ease, color 200ms ease, transform 120ms ease;
 }
 .btn-ghost-warm:hover {
-  background: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
+  background: hsl(var(--foreground));
+  color: hsl(var(--background));
 }
 
-/* Tarjeta plana: el hover cambia el borde y subraya el título, no la levanta */
+/* Tarjeta de proyecto: plana; el hover marca el borde con el acento */
 .card-warm {
   background: hsl(var(--card));
   border: 1px solid hsl(var(--border));
   transition: border-color 200ms ease;
 }
 .card-warm:hover {
-  border-color: hsl(var(--primary) / 0.6);
+  border-color: hsl(var(--foreground));
 }
 .card-warm:hover h3 button {
   text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.2em;
+  text-decoration-color: hsl(var(--accent));
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.18em;
+}
+
+/* Filas tipo "registro" (experiencia, habilidades, educación) */
+.ledger-row {
+  border-top: 1px solid hsl(var(--border));
+}
+.ledger-row:last-child {
+  border-bottom: 1px solid hsl(var(--border));
 }

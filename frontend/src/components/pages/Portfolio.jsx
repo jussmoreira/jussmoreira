@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/organisms/Navbar";
 import Hero from "@/components/organisms/Hero";
@@ -9,12 +9,16 @@ import Projects from "@/components/organisms/Projects";
 import Education from "@/components/organisms/Education";
 import Contact from "@/components/organisms/Contact";
 import Footer from "@/components/organisms/Footer";
+import { ShortcutsHelp } from "@/components/molecules/ShortcutsHelp";
+import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
 
 export default function Portfolio() {
   const { t } = useTranslation();
+  const [helpOpen, setHelpOpen] = useState(false);
+  useKeyboardShortcuts({ onToggleHelp: () => setHelpOpen((open) => !open) });
 
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <a href="#main-content" className="skip-link">
         {t("a11y.skipToContent")}
       </a>
@@ -28,7 +32,8 @@ export default function Portfolio() {
         <Education />
         <Contact />
       </main>
-      <Footer />
+      <Footer onOpenShortcuts={() => setHelpOpen(true)} />
+      <ShortcutsHelp open={helpOpen} onClose={() => setHelpOpen(false)} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Anima un valor numérico de 0 a `target` con easing, usando requestAnimationFrame.
@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
  */
 export function useCountUp(target, start, duration = 900) {
   const [value, setValue] = useState(0);
+  const printing = useRef(false);
 
   useEffect(() => {
     if (!start) {
@@ -25,6 +26,7 @@ export function useCountUp(target, start, duration = 900) {
     const tick = (now) => {
       const progress = Math.min((now - startedAt) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
+      if (printing.current) return;
       setValue(Math.round(target * eased));
 
       if (progress < 1) {
@@ -35,6 +37,30 @@ export function useCountUp(target, start, duration = 900) {
     frameId = window.requestAnimationFrame(tick);
     return () => window.cancelAnimationFrame(frameId);
   }, [target, start, duration]);
+
+  /* Al imprimir (Ctrl+P) se muestra la cifra final aunque la animación no
+     haya corrido: en papel un contador a medias o en 0 sería un dato falso. */
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+    const showFinal = () => {
+      printing.current = true;
+      setValue(target);
+    };
+    const hideFinal = () => {
+      printing.current = false;
+    };
+    const query = typeof window.matchMedia === "function" ? window.matchMedia("print") : null;
+    const onQuery = (event) => (event.matches ? showFinal() : hideFinal());
+
+    window.addEventListener("beforeprint", showFinal);
+    window.addEventListener("afterprint", hideFinal);
+    query?.addEventListener?.("change", onQuery);
+    return () => {
+      window.removeEventListener("beforeprint", showFinal);
+      window.removeEventListener("afterprint", hideFinal);
+      query?.removeEventListener?.("change", onQuery);
+    };
+  }, [target]);
 
   return value;
 }
