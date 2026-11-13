@@ -13,42 +13,48 @@ import { SafeImage } from "@/components/atoms/image";
 import { ImageCarousel } from "@/components/molecules/ImageCarousel";
 import { SectionBar } from "@/components/molecules/SectionBar";
 
-const DATABASES = ["MySQL", "PostgreSQL", "Oracle"];
+/* Flecha vertical entre capas, con el protocolo al lado si lo hay */
+function Link({ label }) {
+  return (
+    <span
+      aria-hidden
+      className="relative flex h-3 w-px justify-center bg-[hsl(var(--inverse-accent))] sm:h-5 after:absolute after:-bottom-px after:left-1/2 after:-translate-x-1/2 after:border-x-[3px] after:border-t-[5px] after:border-x-transparent after:border-t-[hsl(var(--inverse-accent))] after:content-['']"
+    >
+      {label && (
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 whitespace-nowrap font-mono text-[10px] text-[hsl(var(--inverse-muted))]">
+          {label}
+        </span>
+      )}
+    </span>
+  );
+}
 
-/* Portada dibujada para proyectos sin captura real: muestra las capas de la
-   arquitectura en lugar de una foto genérica de stock. */
-function DiagramCover({ layers, tech, className = "" }) {
-  const database = (tech || []).find((item) => DATABASES.includes(item));
-
+/* Portada dibujada para proyectos sin captura real: las capas de la
+   arquitectura como un esquema, con lo que corre en cada una y el
+   cajetín de plano con el nombre del proyecto. */
+function DiagramCover({ layers, title, className = "" }) {
   return (
     <div
       aria-hidden
-      className={`flex flex-col items-center justify-center gap-1 sm:gap-2 bg-[hsl(var(--inverse))] text-[hsl(var(--inverse-foreground))] ${className}`}
+      className={`relative flex flex-col items-center justify-center bg-[hsl(var(--inverse))] pb-6 text-[hsl(var(--inverse-foreground))] ${className}`}
       style={{
         backgroundImage:
           "radial-gradient(hsl(var(--inverse-foreground) / 0.08) 1px, transparent 1px)",
         backgroundSize: "18px 18px",
       }}
     >
-      <span className="font-mono text-[11px] text-[hsl(var(--inverse-muted))]">
-        HTTP · JSON
-      </span>
-      {layers.map((layer) => (
-        <React.Fragment key={layer}>
-          <span className="h-2 sm:h-4 w-px bg-[hsl(var(--accent))]" />
-          <span className="w-40 sm:w-44 border border-[hsl(var(--inverse-foreground)/0.18)] py-1 sm:py-2 text-center font-mono text-xs sm:text-sm">
-            {layer}
+      {layers.map((layer, index) => (
+        <React.Fragment key={layer.name}>
+          {index > 0 && <Link label={layer.link} />}
+          <span className="w-44 border border-[hsl(var(--inverse-foreground)/0.22)] bg-[hsl(var(--inverse))] px-2 py-1 text-center sm:w-56 sm:py-1.5">
+            <span className="block font-mono text-xs sm:text-sm">{layer.name}</span>
+            <span className="block font-mono text-[10px] text-[hsl(var(--inverse-muted))]">{layer.detail}</span>
           </span>
         </React.Fragment>
       ))}
-      {database && (
-        <>
-          <span className="h-2 sm:h-4 w-px bg-[hsl(var(--accent))]" />
-          <span className="font-mono text-[11px] text-[hsl(var(--accent))]">
-            {database}
-          </span>
-        </>
-      )}
+      <span className="absolute bottom-0 right-0 border-l border-t border-[hsl(var(--inverse-foreground)/0.22)] px-2 py-1 font-mono text-[10px] uppercase text-[hsl(var(--inverse-muted))]">
+        {title}
+      </span>
     </div>
   );
 }
@@ -80,18 +86,19 @@ function ProjectCover({ project, className }) {
     );
   }
   if (Array.isArray(project.diagram)) {
-    return <DiagramCover layers={project.diagram} tech={project.tech} className={className} />;
+    return <DiagramCover layers={project.diagram} title={project.title} className={className} />;
   }
   return <div aria-hidden className={`bg-secondary ${className}`} />;
 }
 
 /* Proyectos móviles: las pantallas van en vertical, una al lado de otra, a toda la altura */
-function PhoneStrip({ images, className = "" }) {
+function PhoneStrip({ images, tab, className = "" }) {
   return (
     <div
       aria-hidden
-      className={`flex items-center justify-center gap-3 bg-[hsl(var(--inverse))] p-5 sm:p-8 ${className}`}
+      className={`relative flex items-center justify-center gap-3 bg-[hsl(var(--inverse))] p-5 sm:p-8 ${className}`}
     >
+      {tab}
       {images.slice(0, 3).map((image, i) => (
         <SafeImage
           key={image.src}
@@ -115,6 +122,17 @@ function LiveDot() {
 
 const refCode = (index) => `REF-${String(index + 1).padStart(2, "0")}`;
 
+/* Pestaña de ficha técnica: abajo a la izquierda de la imagen, donde no tapa
+   las barras de navegación de las capturas. */
+function RefTab({ code, year }) {
+  return (
+    <span className="pointer-events-none absolute bottom-0 left-0 z-10 bg-[hsl(var(--inverse))] px-3 py-1.5 font-mono text-[11px] text-[hsl(var(--inverse-foreground))]">
+      {code}
+      <span className="ml-2 text-[hsl(var(--inverse-muted))]">{year}</span>
+    </span>
+  );
+}
+
 /* Pines del componente: el stack leído como la tabla de pines de una ficha técnica */
 function PinTable({ items }) {
   return (
@@ -130,22 +148,21 @@ function PinTable({ items }) {
 }
 
 function ProjectCard({ project, index, featured, labels, onOpen }) {
-  const techList = featured ? project.tech || [] : (project.tech || []).slice(0, 4);
+  const allTech = project.tech || [];
+  const techLimit = featured ? 8 : 4;
+  const techList = allTech.slice(0, techLimit);
+  const extraTech = allTech.length - techList.length;
   const mobile = Boolean(project.portraitImages) && Array.isArray(project.images);
 
   return (
     <article
       className={`reveal card-warm group relative overflow-hidden rounded has-[button:focus-visible]:ring-2 has-[button:focus-visible]:ring-ring ${
         featured || mobile ? "md:col-span-2 lg:grid lg:grid-cols-12" : "flex flex-col"
-      }`}
+      } w-[86%] flex-none snap-center md:w-auto`}
     >
-      {/* Pestaña de ficha técnica sobre la esquina de la tarjeta */}
-      <span className="pointer-events-none absolute left-0 top-0 z-10 bg-[hsl(var(--inverse))] px-3 py-1.5 font-mono text-[11px] text-[hsl(var(--inverse-foreground))]">
-        {refCode(index)}
-        <span className="ml-2 text-[hsl(var(--inverse-muted))]">{project.year}</span>
-      </span>
       {mobile ? (
         <PhoneStrip
+          tab={<RefTab code={refCode(index)} year={project.year} />}
           images={project.images}
           className="h-[360px] lg:order-2 lg:col-span-6 lg:h-auto lg:min-h-[480px]"
         />
@@ -159,6 +176,7 @@ function ProjectCard({ project, index, featured, labels, onOpen }) {
             project={project}
             className="absolute inset-0 h-full w-full "
           />
+          <RefTab code={refCode(index)} year={project.year} />
         </div>
       )}
 
@@ -212,6 +230,9 @@ function ProjectCard({ project, index, featured, labels, onOpen }) {
               {tech}
             </li>
           ))}
+          {extraTech > 0 && (
+            <li className="font-mono text-xs text-muted-foreground">+{extraTech}</li>
+          )}
         </ul>
 
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 pt-1 md:mt-auto md:pt-6">
@@ -270,13 +291,20 @@ export default function Projects() {
           {projects.title}
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* En móvil las tarjetas van en una fila con snap (se ve un borde de la
+            siguiente); desde md vuelven a la rejilla. */}
+        <div
+          role="region"
+          aria-label={projects.title}
+          tabIndex={0}
+          className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0"
+        >
           {projectItems.map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}
               index={index}
-              featured={index === 0 && Boolean(project.demo)}
+              featured={index === 0}
               labels={labels}
               onOpen={() => openProject(project)}
             />

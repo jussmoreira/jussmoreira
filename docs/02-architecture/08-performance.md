@@ -26,7 +26,7 @@ Objetivo: **Core Web Vitals** en verde (LCP < 2.5s, CLS < 0.1, INP < 200ms) y bu
 
 ## Impresión
 - `@media print` (en `index.css`) deja una versión limpia para Ctrl+P: sin navegación, terminal, formularios ni botones, con todo visible y en tinta.
-- Los contadores animados (`useCountUp`) muestran su cifra final en `beforeprint`: nunca imprimir un valor a medias.
+- Los contadores animados (`useCountUp`) muestran su cifra final en `beforeprint` y con `prefers-reduced-motion`: nunca un valor a medias.
 
 ## Carga diferida: decisión
 - No se usa `React.lazy` para las secciones. La numeración 01–06 es un contador CSS por orden en el DOM y las secciones diferidas quedarían fuera del `IntersectionObserver` de `useReveal` (se quedarían invisibles) y fuera de los atajos `5`/`6` hasta cargar. El bundle ya es pequeño (~127 kB gzip).

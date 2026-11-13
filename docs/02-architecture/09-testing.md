@@ -19,7 +19,7 @@ Para una SPA de contenido estático, priorizar **valor sobre cantidad**:
 |-------|------------|----------|
 | Unit | Lógica pura y utilidades | `cn()`, `buildMailtoLink()`, `useCountUp` |
 | Contrato de datos | Integridad del contenido | **paridad de claves** `en.json` ↔ `es.json` |
-| Comportamiento | Estado e interacción | `ThemeContext`, `useKeyboardShortcuts` (no actúa al escribir), terminal de `CodePanel` (Tab, historial), `useCountUp` al imprimir |
+| Comportamiento | Estado e interacción | `ThemeContext`, `useKeyboardShortcuts` (no actúa al escribir), terminal de `CodePanel` (Tab, historial), `useCountUp` al imprimir y con movimiento reducido |
 | Smoke | La vista monta sin romper | render de `Portfolio`/organisms (con mocks de observers) |
 
 ### Reglas

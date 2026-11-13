@@ -301,7 +301,9 @@
         "Arduino",
         "Sensores y actuadores"
       ]
-    }
+    },
+    "more": "Ver más",
+    "less": "Ver menos"
   },
   "projects": {
     "eyebrow": "Trabajo seleccionado",
@@ -333,9 +335,20 @@
         "demo": null,
         "cover": null,
         "diagram": [
-          "App móvil",
-          "Gateway",
-          "Servicios"
+          {
+            "name": "App móvil",
+            "detail": "React Native · Expo"
+          },
+          {
+            "name": "Gateway",
+            "detail": ".NET 8",
+            "link": "HTTP · JSON"
+          },
+          {
+            "name": "Servicios",
+            "detail": "C# · Python · FastAPI",
+            "link": "HTTP · JSON"
+          }
         ],
         "parts": [
           {
@@ -431,9 +444,20 @@
         "year": "Mar–Jun 2026",
         "demo": null,
         "diagram": [
-          "App Android",
-          "API .NET",
-          "PostGIS"
+          {
+            "name": "App Android",
+            "detail": "Kotlin · Jetpack Compose"
+          },
+          {
+            "name": "API .NET",
+            "detail": "C# · .NET",
+            "link": "HTTP · JSON"
+          },
+          {
+            "name": "PostGIS",
+            "detail": "extensión de PostgreSQL",
+            "link": "SQL"
+          }
         ],
         "parts": [
           {
@@ -465,9 +489,20 @@
         "year": "May–Jun 2026",
         "demo": null,
         "diagram": [
-          "App móvil",
-          "API FastAPI",
-          "PostgreSQL"
+          {
+            "name": "App móvil",
+            "detail": "React Native · Expo"
+          },
+          {
+            "name": "API FastAPI",
+            "detail": "Python",
+            "link": "HTTP · JSON"
+          },
+          {
+            "name": "PostgreSQL",
+            "detail": "base de datos",
+            "link": "SQL"
+          }
         ],
         "parts": [
           {

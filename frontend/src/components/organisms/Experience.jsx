@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { TestBench } from "@/components/molecules/TestBench";
 import { SectionBar } from "@/components/molecules/SectionBar";
@@ -10,6 +11,44 @@ function yearSpan(period = "") {
   const [start, end] = [years[0], years[years.length - 1]];
   if (start === end) return start;
   return `${start}–${start.slice(0, 2) === end.slice(0, 2) ? end.slice(2) : end}`;
+}
+
+/* En móvil solo se ve el primer aporte; el resto se despliega. Desde md
+   se muestran todos y el botón desaparece. */
+function Bullets({ bullets, labels }) {
+  const [open, setOpen] = useState(false);
+  const id = React.useId();
+
+  return (
+    <>
+      <ul id={id} className="mt-4 space-y-2 text-[16px] leading-relaxed text-muted-foreground">
+        {bullets.map((bullet, bulletIndex) => (
+          <li
+            key={bulletIndex}
+            className={`gap-3 ${bulletIndex === 0 || open ? "flex" : "hidden md:flex print:flex"}`}
+          >
+            <span aria-hidden className="mt-[0.7em] h-px w-3 flex-none bg-foreground" />
+            <span>{bullet}</span>
+          </li>
+        ))}
+      </ul>
+      {bullets.length > 1 && (
+        <button
+          type="button"
+          onClick={() => setOpen((value) => !value)}
+          aria-expanded={open}
+          aria-controls={id}
+          className="mt-3 inline-flex min-h-11 items-center gap-1.5 font-mono text-xs font-bold text-foreground md:hidden"
+        >
+          {open ? labels.less : labels.more}
+          <ChevronDown
+            aria-hidden
+            className={`h-4 w-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          />
+        </button>
+      )}
+    </>
+  );
 }
 
 /* Experiencia como registro: fechas y lugar en la columna izquierda,
@@ -49,14 +88,10 @@ export default function Experience() {
 
               <div className="md:col-span-8">
                 <h3 className="text-2xl text-foreground md:text-[1.75rem]">{item.role}</h3>
-                <ul className="mt-4 space-y-2 text-[16px] leading-relaxed text-muted-foreground">
-                  {(item.bullets || []).map((bullet, bulletIndex) => (
-                    <li key={bulletIndex} className="flex gap-3">
-                      <span aria-hidden className="mt-[0.7em] h-px w-3 flex-none bg-foreground" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
+                <Bullets
+                  bullets={item.bullets || []}
+                  labels={{ more: experience.more, less: experience.less }}
+                />
                 {item.bench && experience.bench && <TestBench {...experience.bench} />}
                 <p className="mt-5 font-mono text-xs text-muted-foreground">
                   {(item.tags || []).join("  ·  ")}

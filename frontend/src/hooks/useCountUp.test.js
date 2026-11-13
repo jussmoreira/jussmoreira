@@ -7,6 +7,21 @@ describe("useCountUp", () => {
     expect(result.current).toBe(0);
   });
 
+  it("con movimiento reducido muestra la cifra final sin animar", () => {
+    const original = window.matchMedia;
+    window.matchMedia = (query) => ({
+      matches: query.includes("prefers-reduced-motion"),
+      media: query,
+      addEventListener: () => {},
+      removeEventListener: () => {},
+    });
+
+    const { result } = renderHook(() => useCountUp(45, true));
+    expect(result.current).toBe(45);
+
+    window.matchMedia = original;
+  });
+
   it("muestra la cifra final al imprimir aunque no haya empezado", () => {
     const { result } = renderHook(() => useCountUp(45, false));
 

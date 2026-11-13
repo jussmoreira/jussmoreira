@@ -14,7 +14,13 @@ export function useCountUp(target, start, duration = 900) {
       return undefined;
     }
 
-    if (typeof window === "undefined" || typeof window.requestAnimationFrame !== "function") {
+    /* Con movimiento reducido no hay conteo: se muestra la cifra final */
+    const reduceMotion =
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion || typeof window === "undefined" || typeof window.requestAnimationFrame !== "function") {
       // Sin rAF disponible: fijar el valor final de forma determinista.
       setValue(target);
       return undefined;
