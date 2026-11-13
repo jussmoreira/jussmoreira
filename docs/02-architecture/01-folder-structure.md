@@ -8,8 +8,8 @@ frontend/
 │   └── index.html              # Shell HTML, meta, fuentes
 ├── src/
 │   ├── index.js                # Punto de entrada: providers + boot de tema
-│   ├── App.js                  # Router + ErrorBoundary + Toaster
-│   ├── i18n.js                 # Configuración de i18next
+│   ├── App.js                  # Página o 404 + ErrorBoundary + barra de progreso
+│   ├── i18n.js                 # Configuración de i18next (idioma: ?lang → guardado → navegador)
 │   ├── index.css / App.css     # Estilos globales + design tokens
 │   ├── components/
 │   │   ├── atoms/              # Elementos UI mínimos (button, input, label…)
@@ -17,7 +17,7 @@ frontend/
 │   │   ├── organisms/          # Secciones de página (Navbar, Hero, Contact…)
 │   │   └── pages/              # Ensamblaje de organisms (Portfolio)
 │   ├── contexts/               # Estado global por React Context (ThemeContext)
-│   ├── hooks/                  # Hooks reutilizables (un hook = un archivo)
+│   ├── hooks/                  # Hooks reutilizables (un hook = un archivo): useCountUp, useReveal, useKeyboardShortcuts…
 │   ├── lib/                    # Utilidades puras (cn…)
 │   ├── config/                 # Constantes/assets de sitio (no contenido visible)
 │   └── locales/                # Contenido i18n (en.json, es.json)
@@ -27,8 +27,8 @@ frontend/
 
 | Capa | Responsabilidad | Ejemplos | Puede importar |
 |------|-----------------|----------|----------------|
-| **atoms** | Elemento UI indivisible, sin lógica de negocio | `button`, `input`, `label`, `badge`, `SafeImage` | `lib/`, librerías |
-| **molecules** | Composición pequeña y reutilizable de atoms | `card`, `dialog`, `tabs`, `ErrorBoundary` | atoms, `lib/` |
+| **atoms** | Elemento UI indivisible, sin lógica de negocio | `button`, `input`, `label`, `social-icon`, `scroll-progress` | `lib/`, librerías |
+| **molecules** | Composición pequeña y reutilizable de atoms | `dialog`, `ErrorBoundary`, `SectionBar`, `CodePanel`, `ShortcutsHelp`, `ImageCarousel` | atoms, `lib/` |
 | **organisms** | Sección autónoma de la página, con datos i18n y hooks | `Navbar`, `Hero`, `Contact`, `Footer` | molecules, atoms, `hooks/`, `contexts/`, `config/`, `locales` (vía i18n) |
 | **pages** | Ensamblaje de organisms en una vista | `Portfolio` | organisms |
 

@@ -20,6 +20,10 @@ La accesibilidad es un **requisito de aceptación**, no un extra. Todo PR debe c
 - [ ] `<img>` con `alt` descriptivo; `alt=""` solo si es decorativa.
 - [ ] Toggles expandibles (`menú`, acordeones) exponen `aria-expanded` y `aria-controls`.
 
+### Atajos de teclado
+- [ ] Los atajos de una sola tecla (`0`–`6`, `T`, `/`, `?`, ver `useKeyboardShortcuts`) **no actúan** al escribir en un campo, con Ctrl/Alt/Meta ni con un diálogo abierto (WCAG 2.1.4). Hay un botón visible que abre la ayuda.
+- [ ] La terminal del hero no atrapa el foco: `Tab` sin coincidencia sigue el orden normal.
+
 ### Formularios
 - [ ] Cada control tiene `<label htmlFor>` asociado por `id`.
 - [ ] Errores de validación se asocian al campo con `aria-invalid` + `aria-describedby`, además de cualquier notificación visual (`toast`).

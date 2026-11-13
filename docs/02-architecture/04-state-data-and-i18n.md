@@ -21,7 +21,7 @@
 
 ## Internacionalización (i18n)
 
-- `i18next` con recursos `en` y `es`; idioma inicial: guardado (`jm_language_v1`) → idioma del navegador → `en` (fallback).
+- `i18next` con recursos `en` y `es`; idioma inicial: `?lang=es|en` de la URL (para enlaces compartidos) → guardado (`jm_language_v1`) → idioma del navegador → `en` (fallback).
 - **Todo texto visible vive en los locales.** Esto incluye contenido generado dinámicamente: el asunto y cuerpo de un `mailto:` también se traducen (claves `contact.mailto.*`).
 - Acceso a objetos/listas con `t("clave", { returnObjects: true })` + guard de tipo.
 - Interpolación con `{{var}}` (`footer.copyright`). `escapeValue: false` es correcto porque React ya escapa; **nunca** inyectar contenido de locale con `dangerouslySetInnerHTML`.

@@ -24,6 +24,14 @@ Objetivo: **Core Web Vitals** en verde (LCP < 2.5s, CLS < 0.1, INP < 200ms) y bu
 - Usar `display=swap` en las fuentes (ya presente) para evitar texto invisible.
 - Purga de Tailwind activa (`content` en `tailwind.config.js`) para no enviar CSS sin usar.
 
+## Impresión
+- `@media print` (en `index.css`) deja una versión limpia para Ctrl+P: sin navegación, terminal, formularios ni botones, con todo visible y en tinta.
+- Los contadores animados (`useCountUp`) muestran su cifra final en `beforeprint`: nunca imprimir un valor a medias.
+
+## Carga diferida: decisión
+- No se usa `React.lazy` para las secciones. La numeración 01–06 es un contador CSS por orden en el DOM y las secciones diferidas quedarían fuera del `IntersectionObserver` de `useReveal` (se quedarían invisibles) y fuera de los atajos `5`/`6` hasta cargar. El bundle ya es pequeño (~127 kB gzip).
+- Cualquier carga diferida futura debe resolver primero esos dos puntos.
+
 ## Medición
 - `yarn build` y revisar el tamaño de los chunks.
 - Lighthouse (Performance ≥ 90) en móvil y escritorio antes de desplegar cambios grandes.

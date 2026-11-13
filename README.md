@@ -52,6 +52,24 @@
   <img src="https://skillicons.dev/icons?i=arduino" alt="Arduino" /><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/leds-board-dark.svg"><img src="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/leds-board-light.svg" alt="Protoboard with five LEDs" height="48"></picture>
 </p>
 
+<h3 align="left">This portfolio</h3>
+<p>
+  <a href="https://jussmoreira-i58n.vercel.app/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/portfolio-dark.png"><img src="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/portfolio-light.png" alt="Portfolio home: name, justin.py panel and terminal" width="720"></picture></a>
+</p>
+<p>
+  The site in this repository is built with <strong>React 19</strong>, <strong>Tailwind CSS</strong>, Radix UI and i18next (EN/ES), and deployed on Vercel. It has no backend and no router: one page plus a 404.
+</p>
+<ul>
+  <li><strong>Terminal in the hero.</strong> Type <code>help</code>. <kbd>Tab</kbd> completes, <kbd>↑</kbd>/<kbd>↓</kbd> repeat, and it can open sections, download the CV or open my profiles.</li>
+  <li><strong>Keyboard shortcuts.</strong> <kbd>0</kbd>–<kbd>6</kbd> sections, <kbd>T</kbd> theme, <kbd>/</kbd> terminal, <kbd>?</kbd> help. They never fire while typing.</li>
+  <li><strong>Bilingual and themed.</strong> Light/dark and EN/ES, shareable with <code>?lang=es</code>.</li>
+  <li><strong>Print-ready.</strong> <kbd>Ctrl</kbd>+<kbd>P</kbd> gives a clean one-column version.</li>
+  <li><strong>Quality bar.</strong> WCAG 2.1 AA checked with axe-core, ~127 kB gzipped JavaScript, tests for shortcuts, terminal and locale parity.</li>
+</ul>
+<p>
+  <sub>Run it: <code>cd frontend &amp;&amp; yarn install &amp;&amp; yarn start</code> (more in <a href="comandos.md">comandos.md</a>). Architecture and conventions: <a href="docs/README.md">docs/</a> (in Spanish).</sub>
+</p>
+
 <h3 align="left">📊 GitHub Stats & Activity</h3>
 <p align="left">
   <img height="165" src="https://github-readme-streak-stats.herokuapp.com/?user=jussmoreira&theme=tokyonight&hide_border=true" alt="GitHub Streak" />

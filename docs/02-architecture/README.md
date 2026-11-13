@@ -9,7 +9,7 @@ SPA (Single Page Application) de portafolio personal construida con **React 19**
 | Capa | Tecnología |
 |------|------------|
 | UI | React 19, JSX |
-| Routing | react-router-dom 7 |
+| Routing | Ninguno: una sola página y una 404 decididas en `App.js` (Vercel reescribe toda ruta a `index.html`) |
 | Estilos | Tailwind CSS 3 + design tokens HSL (CSS variables) |
 | Primitivas UI | Radix UI / shadcn-style |
 | Internacionalización | i18next + react-i18next (en/es) |
@@ -30,7 +30,7 @@ SPA (Single Page Application) de portafolio personal construida con **React 19**
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  index.js  → ThemeProvider → App (Router + ErrorBoundary) │
+│  index.js  → ThemeProvider → App (ErrorBoundary, 404)     │
 │                                   │                        │
 │                                pages/Portfolio             │
 │                                   │                        │
