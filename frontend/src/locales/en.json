@@ -1,7 +1,7 @@
 {
   "profile": {
     "shortName": "Justin Moreira",
-    "title": "Information Systems Engineer",
+    "title": "Software Developer · Information Systems Engineer",
     "location": "Costa Rica",
     "availability": "Available for work"
   },
@@ -580,24 +580,7 @@
     "elsewhere": "Also on",
     "copy": "Copy",
     "copied": "Copied",
-    "copyAria": "Copy email to clipboard",
-    "status": {
-      "title": "Current status",
-      "items": [
-        {
-          "label": "Now",
-          "value": "Building backend web applications and management systems."
-        },
-        {
-          "label": "Looking for",
-          "value": "My first professional opportunity as a backend developer."
-        },
-        {
-          "label": "Open to",
-          "value": "Open source projects, backend applications and RPA automation."
-        }
-      ]
-    }
+    "copyAria": "Copy email to clipboard"
   },
   "footer": {
     "backToTop": "Back to top",

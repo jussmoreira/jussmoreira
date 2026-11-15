@@ -1,7 +1,7 @@
 {
   "profile": {
     "shortName": "Justin Moreira",
-    "title": "Ingeniero en Sistemas de Información",
+    "title": "Desarrollador de software · Ingeniero en Sistemas de Información",
     "location": "Costa Rica",
     "availability": "Disponible para trabajar"
   },
@@ -580,24 +580,7 @@
     "elsewhere": "También en",
     "copy": "Copiar",
     "copied": "Copiado",
-    "copyAria": "Copiar correo al portapapeles",
-    "status": {
-      "title": "Estado actual",
-      "items": [
-        {
-          "label": "Ahora",
-          "value": "Construyendo aplicaciones web backend y sistemas de gestión."
-        },
-        {
-          "label": "Busco",
-          "value": "Mi primera oportunidad profesional como desarrollador backend."
-        },
-        {
-          "label": "Abierto a",
-          "value": "Proyectos open source, aplicaciones backend y automatización con RPA."
-        }
-      ]
-    }
+    "copyAria": "Copiar correo al portapapeles"
   },
   "footer": {
     "backToTop": "Volver arriba",

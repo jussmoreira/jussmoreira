@@ -1,6 +1,6 @@
 <!-- Generado por assets/readme/build.js a partir del portafolio. No editar a mano: cd frontend && yarn readme -->
 <p align="center">
-  <a href="https://jussmoreira-i58n.vercel.app/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/hero-dark.svg"><img src="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/hero-light.svg" alt="Justin Moreira, Information Systems Engineer in Costa Rica. Focus: Web apps, Mobile apps, Backend, Databases." width="100%"></picture></a>
+  <a href="https://jussmoreira-i58n.vercel.app/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/hero-dark.svg"><img src="https://raw.githubusercontent.com/jussmoreira/jussmoreira/main/assets/readme/hero-light.svg" alt="Justin Moreira, Software Developer · Information Systems Engineer in Costa Rica. Focus: Web apps, Mobile apps, Backend, Databases." width="100%"></picture></a>
 </p>
 
 <p align="center">

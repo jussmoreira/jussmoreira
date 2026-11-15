@@ -18,15 +18,3 @@ describe("paridad de locales en/es", () => {
     expect(esKeys).toEqual(enKeys);
   });
 });
-
-describe("contenido que la interfaz oculta si falta", () => {
-  it.each(["en", "es"])("%s: la placa de estado de Contacto tiene sus 3 filas", (lang) => {
-    const { contact } = require(`./${lang}.json`);
-    expect(contact.status.title).toBeTruthy();
-    expect(contact.status.items).toHaveLength(3);
-    contact.status.items.forEach((row) => {
-      expect(row.label).toBeTruthy();
-      expect(row.value).toBeTruthy();
-    });
-  });
-});
