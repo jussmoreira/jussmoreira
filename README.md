@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <picture><source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=java,php,cs,python,cpp,js,c,kotlin,spring,laravel,dotnet,react,html,css,mysql,postgres,git,github,docker,arduino,fastapi,redis,kafka,ts,githubactions,androidstudio&theme=dark&perline=13"><img src="https://skillicons.dev/icons?i=java,php,cs,python,cpp,js,c,kotlin,spring,laravel,dotnet,react,html,css,mysql,postgres,git,github,docker,arduino,fastapi,redis,kafka,ts,githubactions,androidstudio&theme=light&perline=13" alt="Technologies across my projects"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=java%2Cphp%2Ccs%2Cpython%2Ccpp%2Cjs%2Cc%2Ckotlin%2Cspring%2Claravel%2Cdotnet%2Creact%2Chtml%2Ccss%2Cmysql%2Cpostgres%2Cgit%2Cgithub%2Cdocker%2Carduino%2Cfastapi%2Credis%2Ckafka%2Cts%2Cgithubactions%2Candroidstudio&theme=dark&perline=13"><img src="https://skillicons.dev/icons?i=java%2Cphp%2Ccs%2Cpython%2Ccpp%2Cjs%2Cc%2Ckotlin%2Cspring%2Claravel%2Cdotnet%2Creact%2Chtml%2Ccss%2Cmysql%2Cpostgres%2Cgit%2Cgithub%2Cdocker%2Carduino%2Cfastapi%2Credis%2Ckafka%2Cts%2Cgithubactions%2Candroidstudio&theme=light&perline=13" alt="Technologies across my projects"></picture>
 </p>
 
 <p align="center">

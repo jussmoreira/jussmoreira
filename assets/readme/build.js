@@ -284,7 +284,9 @@ function readme(asset) {
   // Filas parejas (máximo 13 íconos por fila) para que ninguna quede casi vacía
   const rows = Math.ceil(icons.length / 13);
   const perLine = Math.ceil(icons.length / rows);
-  const skills = (theme) => `https://skillicons.dev/icons?i=${icons.join(",")}&theme=${theme}&perline=${perLine}`;
+  /* Las comas van como %2C: dentro de srcset una coma separa candidatos, y
+     GitHub cortaría la URL en "i=java" (en modo oscuro solo salía Java). */
+  const skills = (theme) => `https://skillicons.dev/icons?i=${icons.join("%2C")}&theme=${theme}&perline=${perLine}`;
   const accent = hex(palette(THEMES.light).accent);
 
   return `<!-- Generado por assets/readme/build.js a partir del portafolio. No editar a mano: cd frontend && yarn readme -->
