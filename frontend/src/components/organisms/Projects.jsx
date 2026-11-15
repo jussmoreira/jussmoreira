@@ -314,6 +314,7 @@ export default function Projects() {
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent
+          closeLabel={projects.close}
           className={`${
             active?.portraitImages ? "max-w-4xl" : "max-w-2xl"
           } max-h-[90dvh] flex flex-col gap-0 bg-card border-border p-0 overflow-hidden`}

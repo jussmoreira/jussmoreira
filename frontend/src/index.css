@@ -208,18 +208,6 @@ code, .font-mono {
 .hero-stagger > .reveal:nth-child(4) { transition-delay: 270ms; }
 .hero-stagger > .reveal:nth-child(5) { transition-delay: 360ms; }
 
-/* Palabra rotativa del Hero: cross-fade suave (no mueve el layout) */
-@keyframes wordIn {
-  0% { opacity: 0; transform: translateY(0.2em); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-@keyframes wordOut {
-  0% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(-0.2em); }
-}
-.rotating-word-in { animation: wordIn 600ms cubic-bezier(0.22, 1, 0.36, 1); }
-.rotating-word-out { animation: wordOut 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-
 /* Regla de sección: la línea se traza de izquierda a derecha al entrar */
 .section-bar .bar-line {
   transform: scaleX(0);
@@ -383,9 +371,7 @@ code, .font-mono {
   .name-letter,
   .check-draw path,
   .copy-swap,
-  .status-dot,
-  .rotating-word-in,
-  .rotating-word-out { animation: none; }
+  .status-dot { animation: none; }
   .reveal {
     opacity: 1;
     transform: none;

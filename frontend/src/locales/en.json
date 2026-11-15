@@ -1,11 +1,7 @@
 {
   "profile": {
-    "name": "Justin Gabriel Moreira Matarrita",
     "shortName": "Justin Moreira",
-    "initials": "JM",
     "title": "Information Systems Engineer",
-    "tagline": "Building software with intention, clean architecture, and steady focus.",
-    "summary": "Advanced Information Systems Engineering student, passionate about analyzing complex problems and building reliable, maintainable solutions. Proactive, collaborative, and quick to adapt to new environments and technologies.",
     "location": "Costa Rica",
     "availability": "Available for work"
   },
@@ -49,7 +45,6 @@
     "themeToggleLight": "Switch to light mode"
   },
   "hero": {
-    "eyebrow": "Portfolio",
     "greeting": "Hi, I'm",
     "lead": "I build software with",
     "rotatingWords": [
@@ -64,7 +59,6 @@
     "ctaCV": "Download CV",
     "cvEN": "English",
     "cvES": "Español",
-    "role": "Backend development · Laravel · Spring Boot",
     "titleBlock": [
       {
         "label": "Role",
@@ -151,17 +145,6 @@
       {
         "label": "Languages",
         "value": "2"
-      }
-    ],
-    "languagesLabel": "Languages",
-    "languages": [
-      {
-        "name": "Spanish",
-        "level": "Native"
-      },
-      {
-        "name": "English",
-        "level": "Intermediate (B2)"
       }
     ]
   },
@@ -617,7 +600,6 @@
     }
   },
   "footer": {
-    "reachOut": "Contact",
     "backToTop": "Back to top",
     "made": "Made in Costa Rica."
   },

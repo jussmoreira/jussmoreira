@@ -12,8 +12,6 @@
 // (src/lib/contact.js).
 import site from "./site.json";
 
-export const siteUrl = site.url;
-
 export const siteAssets = {
   cv: site.cv,
 };
