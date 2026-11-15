@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { prefersReducedMotion } from "@/lib/motion";
 
 /**
  * Anima la entrada de todos los elementos con la clase `.reveal` cuando entran
@@ -13,13 +14,8 @@ export function useReveal(dependency) {
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll(".reveal"));
 
-    const reduceMotion =
-      typeof window !== "undefined" &&
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
     // Sin IntersectionObserver (jsdom) o con movimiento reducido: revelar todo.
-    if (reduceMotion || typeof IntersectionObserver === "undefined") {
+    if (prefersReducedMotion() || typeof IntersectionObserver === "undefined") {
       elements.forEach((element) => element.classList.add("in-view"));
       return undefined;
     }

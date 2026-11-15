@@ -23,7 +23,7 @@
 
 - `i18next` con recursos `en` y `es`; idioma inicial: `?lang=es|en` de la URL (para enlaces compartidos) → guardado (`jm_language_v1`) → idioma del navegador → `en` (fallback).
 - **Todo texto visible vive en los locales.** Esto incluye contenido generado dinámicamente: el asunto y cuerpo de un `mailto:` también se traducen (claves `contact.mailto.*`).
-- Acceso a objetos/listas con `t("clave", { returnObjects: true })` + guard de tipo.
+- Acceso a objetos/listas con `useContent("clave")` (objeto o `null`) y `useList("clave")` (siempre un arreglo), de `hooks/useContent.js`. No repetir `t(…, { returnObjects: true })` + guarda en cada componente. Para listas dentro de un objeto ya leído, `asList` (`lib/content.js`).
 - Interpolación con `{{var}}` (`footer.copyright`). `escapeValue: false` es correcto porque React ya escapa; **nunca** inyectar contenido de locale con `dangerouslySetInnerHTML`.
 - **Paridad de claves:** `en.json` y `es.json` deben tener exactamente la misma estructura de claves. Validado por test (ver [09-testing](09-testing.md)).
 

@@ -12,7 +12,7 @@ Objetivo: **Core Web Vitals** en verde (LCP < 2.5s, CLS < 0.1, INP < 200ms) y bu
 - **Sin dependencias muertas.** Auditar `package.json` contra el uso real; eliminar lo no importado (reduce peso y superficie).
 - Eliminar componentes/archivos no consumidos.
 - Para vistas/markup pesado no críticos, considerar `React.lazy` + `Suspense` (con `react.useSuspense` desactivado en i18n, encapsular adecuadamente).
-- No re-calcular en cada render lo que puede memoizarse: p. ej., no llamar `t("...", { returnObjects: true })` dos veces en el mismo componente; calcular una vez y memoizar listas derivadas.
+- No re-calcular en cada render lo que puede memoizarse: leer el contenido una vez con `useContent`/`useList` y memoizar lo derivado con una dependencia estable (p. ej., el resaltado de `CodePanel` depende del texto, no del arreglo).
 
 ## Render y efectos
 - Desconectar observers/listeners/timers en el cleanup de efectos.
@@ -23,6 +23,10 @@ Objetivo: **Core Web Vitals** en verde (LCP < 2.5s, CLS < 0.1, INP < 200ms) y bu
 - Cargar fuentes vía `<link>` en `index.html` con `preconnect`; evitar `@import` en CSS (bloquea render).
 - Usar `display=swap` en las fuentes (ya presente) para evitar texto invisible.
 - Purga de Tailwind activa (`content` en `tailwind.config.js`) para no enviar CSS sin usar.
+
+## Movimiento
+- La preferencia de movimiento reducido se consulta solo con `prefersReducedMotion()` (`lib/motion.js`); no repetir `matchMedia` en cada componente.
+- Todo timer o intervalo se limpia en el cleanup del efecto, incluidos los timeouts creados dentro de un intervalo (ver `RotatingText`).
 
 ## Impresión
 - `@media print` (en `index.css`) deja una versión limpia para Ctrl+P: sin navegación, terminal, formularios ni botones, con todo visible y en tinta.

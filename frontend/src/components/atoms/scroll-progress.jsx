@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { pad2 } from "@/lib/format";
 
 /**
  * Regla de lectura en el borde superior: marcas finas cada 8 px y una más
@@ -28,7 +29,7 @@ export function ScrollProgress() {
         if (section.getBoundingClientRect().top <= line) current = index;
       });
 
-      setState({ progress, section: current >= 0 ? String(current + 1).padStart(2, "0") : "" });
+      setState({ progress, section: current >= 0 ? pad2(current + 1) : "" });
     };
 
     const onScroll = () => {

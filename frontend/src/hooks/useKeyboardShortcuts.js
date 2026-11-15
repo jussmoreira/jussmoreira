@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useList } from "@/hooks/useContent";
 
 const isTyping = (target) =>
   target instanceof HTMLElement &&
@@ -13,12 +13,11 @@ const isTyping = (target) =>
  * No actúan al escribir en un campo, con Ctrl/Alt/Meta, ni con un diálogo abierto.
  */
 export function useKeyboardShortcuts({ onToggleHelp }) {
-  const { t } = useTranslation();
   const { toggleTheme } = useTheme();
-  const items = t("nav.items", { returnObjects: true });
+  const items = useList("nav.items");
 
   useEffect(() => {
-    const ids = Array.isArray(items) ? items.map((item) => item.id) : [];
+    const ids = items.map((item) => item.id);
 
     const onKeyDown = (event) => {
       if (event.ctrlKey || event.altKey || event.metaKey || event.defaultPrevented) return;

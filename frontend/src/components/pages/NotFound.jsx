@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { useContent } from "@/hooks/useContent";
 
 /* 404 como una lámina faltante: mismo rótulo, regla y cifra condensada que
    el hero, con un solo camino de vuelta. */
 export default function NotFound() {
-  const { t } = useTranslation();
-  const copy = t("notFound", { returnObjects: true });
-  const profile = t("profile", { returnObjects: true });
+  const copy = useContent("notFound") ?? {};
+  const profile = useContent("profile") ?? {};
 
   useEffect(() => {
     const previous = document.title;

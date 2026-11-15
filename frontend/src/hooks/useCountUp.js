@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { prefersReducedMotion } from "@/lib/motion";
 
 /**
  * Anima un valor numérico de 0 a `target` con easing, usando requestAnimationFrame.
@@ -15,12 +16,7 @@ export function useCountUp(target, start, duration = 900) {
     }
 
     /* Con movimiento reducido no hay conteo: se muestra la cifra final */
-    const reduceMotion =
-      typeof window !== "undefined" &&
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (reduceMotion || typeof window === "undefined" || typeof window.requestAnimationFrame !== "function") {
+    if (prefersReducedMotion() || typeof window === "undefined" || typeof window.requestAnimationFrame !== "function") {
       // Sin rAF disponible: fijar el valor final de forma determinista.
       setValue(target);
       return undefined;

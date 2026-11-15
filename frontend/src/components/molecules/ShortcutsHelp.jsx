@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { X } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { useContent } from "@/hooks/useContent";
 
 /* Ayuda de atajos: panel plano en tinta, abajo a la derecha. No es modal
    (no bloquea la página); se cierra con Esc, con "?" o con el botón. */
 export function ShortcutsHelp({ open, onClose }) {
-  const { t } = useTranslation();
-  const copy = t("shortcuts", { returnObjects: true });
+  const copy = useContent("shortcuts");
 
   useEffect(() => {
     if (!open) return undefined;
@@ -17,7 +16,7 @@ export function ShortcutsHelp({ open, onClose }) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open, onClose]);
 
-  if (!open || !copy || typeof copy !== "object") return null;
+  if (!open || !copy) return null;
 
   return (
     <aside

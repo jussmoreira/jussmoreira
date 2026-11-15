@@ -13,12 +13,12 @@ frontend/
 │   ├── index.css / App.css     # Estilos globales + design tokens
 │   ├── components/
 │   │   ├── atoms/              # Elementos UI mínimos (button, input, label…)
-│   │   ├── molecules/          # Composiciones simples (card, dialog, tabs…)
+│   │   ├── molecules/          # Composiciones simples (dialog, ProjectCover, ProjectDialog…)
 │   │   ├── organisms/          # Secciones de página (Navbar, Hero, Contact…)
 │   │   └── pages/              # Ensamblaje de organisms (Portfolio)
 │   ├── contexts/               # Estado global por React Context (ThemeContext)
-│   ├── hooks/                  # Hooks reutilizables (un hook = un archivo): useCountUp, useReveal, useKeyboardShortcuts…
-│   ├── lib/                    # Utilidades puras (cn…)
+│   ├── hooks/                  # Hooks reutilizables (un hook = un archivo): useContent, useCountUp, useReveal, useKeyboardShortcuts…
+│   ├── lib/                    # Utilidades puras: cn, asList (content), pad2/refCode (format), prefersReducedMotion (motion), contacto
 │   ├── config/                 # Constantes/assets de sitio (no contenido visible)
 │   └── locales/                # Contenido i18n (en.json, es.json)
 ```
@@ -27,8 +27,8 @@ frontend/
 
 | Capa | Responsabilidad | Ejemplos | Puede importar |
 |------|-----------------|----------|----------------|
-| **atoms** | Elemento UI indivisible, sin lógica de negocio | `button`, `input`, `label`, `social-icon`, `scroll-progress` | `lib/`, librerías |
-| **molecules** | Composición pequeña y reutilizable de atoms | `dialog`, `ErrorBoundary`, `SectionBar`, `CodePanel`, `ShortcutsHelp`, `ImageCarousel` | atoms, `lib/` |
+| **atoms** | Elemento UI indivisible, sin lógica de negocio | `button`, `image`, `social-icon`, `rotating-text`, `scroll-progress` | `lib/`, librerías |
+| **molecules** | Composición pequeña y reutilizable de atoms | `dialog`, `ErrorBoundary`, `SectionBar`, `ImageCarousel`, `ProjectCover`, `ProjectDialog`, `CodePanel`, `ShortcutsHelp` | atoms, `lib/`; las que muestran contenido propio (`CodePanel`, `ShortcutsHelp`) también `useContent`/`useTranslation` |
 | **organisms** | Sección autónoma de la página, con datos i18n y hooks | `Navbar`, `Hero`, `Contact`, `Footer` | molecules, atoms, `hooks/`, `contexts/`, `config/`, `locales` (vía i18n) |
 | **pages** | Ensamblaje de organisms en una vista | `Portfolio` | organisms |
 

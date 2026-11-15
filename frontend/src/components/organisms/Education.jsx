@@ -1,16 +1,15 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { ArrowUpRight } from "lucide-react";
 import { ContactLink } from "@/components/atoms/contact-link";
 import { SectionBar } from "@/components/molecules/SectionBar";
+import { asList, useContent } from "@/hooks/useContent";
 
 export default function Education() {
-  const { t } = useTranslation();
-  const education = t("education", { returnObjects: true });
+  const education = useContent("education");
 
-  if (!education || typeof education !== "object") return null;
+  if (!education) return null;
 
-  const items = Array.isArray(education.items) ? education.items : [];
+  const items = asList(education.items);
   const certs = education.certifications;
 
   return (

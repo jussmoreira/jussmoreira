@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { useTranslation } from "react-i18next";
 import { TestBench } from "@/components/molecules/TestBench";
 import { SectionBar } from "@/components/molecules/SectionBar";
+import { asList, useContent } from "@/hooks/useContent";
 
 /* "Feb 2025 - May 2026" → "2025–26"; un solo año si empieza y termina igual */
 function yearSpan(period = "") {
@@ -54,12 +54,11 @@ function Bullets({ bullets, labels }) {
 /* Experiencia como registro: fechas y lugar en la columna izquierda,
    rol y aportes a la derecha. Sin zigzag ni tarjetas. */
 export default function Experience() {
-  const { t } = useTranslation();
-  const experience = t("experience", { returnObjects: true });
+  const experience = useContent("experience");
 
-  if (!experience || typeof experience !== "object") return null;
+  if (!experience) return null;
 
-  const items = Array.isArray(experience.items) ? experience.items : [];
+  const items = asList(experience.items);
 
   return (
     <section id="experience" className="section-pad">

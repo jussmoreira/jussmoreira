@@ -4,11 +4,8 @@ import { useInViewOnce } from "@/hooks/useInViewOnce";
 import { useTheme } from "@/contexts/ThemeContext";
 import { siteAssets } from "@/config/site";
 import { contactHref, contactValue } from "@/lib/contact";
-
-const prefersReducedMotion = () =>
-  typeof window !== "undefined" &&
-  typeof window.matchMedia === "function" &&
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+import { prefersReducedMotion } from "@/lib/motion";
+import { asList, useContent, useList } from "@/hooks/useContent";
 
 /* Resaltado mínimo de Python: 1 comentario, 2 texto, 3 palabra clave, 4 número, 5 llamada */
 const GRAMMAR =
@@ -77,9 +74,9 @@ const commonPrefix = (words) =>
 export function CodePanel({ className = "" }) {
   const { t, i18n } = useTranslation();
   const { toggleTheme } = useTheme();
-  const code = t("hero.code", { returnObjects: true });
+  const code = useContent("hero.code");
   const terminal = code?.terminal || {};
-  const navItems = t("nav.items", { returnObjects: true });
+  const navItems = useList("nav.items");
 
   const { ref, inView } = useInViewOnce({ threshold: 0.3 });
   const [typed, setTyped] = useState(() => (prefersReducedMotion() ? Infinity : 0));
@@ -88,17 +85,18 @@ export function CodePanel({ className = "" }) {
   const logRef = useRef(null);
   const historyRef = useRef([]);
   const historyPos = useRef(0);
+  const nextLogId = useRef(0);
 
   useEffect(() => {
     const el = logRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [log]);
 
-  const lines = Array.isArray(code?.py) ? code.py : [];
-  /* El resaltado se calcula una vez por texto, no en cada paso de la escritura */
-  const key = lines.join("\n");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const tokenized = useMemo(() => lines.map(tokenize), [key]);
+  const lines = asList(code?.py);
+  /* El resaltado se calcula una vez por texto, no en cada paso de la escritura:
+     la dependencia es el texto completo, no el arreglo (que cambia de identidad). */
+  const source = lines.join("\n");
+  const tokenized = useMemo(() => (source ? source.split("\n").map(tokenize) : []), [source]);
   const total = lines.reduce((sum, line) => sum + line.length + 1, 0);
   const shownChars = Math.min(typed, total);
   const done = shownChars >= total;
@@ -119,9 +117,13 @@ export function CodePanel({ className = "" }) {
     return () => clearInterval(id);
   }, [inView, total, done]);
 
-  const push = (...entries) => setLog((current) => [...current, ...entries].slice(-3));
+  /* Cada entrada lleva un id propio: el log se recorta a 3 y los índices se desplazan */
+  const push = (...entries) =>
+    setLog((current) =>
+      [...current, ...entries.map((entry) => ({ ...entry, id: nextLogId.current++ }))].slice(-3),
+    );
 
-  const names = Array.isArray(terminal.names) ? terminal.names : [];
+  const names = asList(terminal.names);
 
   /* Tab completa el comando (o su prefijo común); si no hay coincidencia, el
      foco sigue su camino normal para no atrapar a quien navega con teclado. */
@@ -191,7 +193,7 @@ export function CodePanel({ className = "" }) {
     }
     const id = SECTIONS[cmd];
     if (id) {
-      const label = (Array.isArray(navItems) ? navItems : []).find((item) => item.id === id)?.label || id;
+      const label = navItems.find((item) => item.id === id)?.label || id;
       push(entry, { kind: "out", text: t("hero.code.terminal.opening", { section: label.toLowerCase() }) });
       window.setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 350);
       return;
@@ -199,7 +201,7 @@ export function CodePanel({ className = "" }) {
     push(entry, { kind: "err", text: t("hero.code.terminal.notFound", { cmd: raw }) });
   };
 
-  if (!code || typeof code !== "object") return null;
+  if (!code) return null;
 
   let remaining = shownChars;
 
@@ -259,9 +261,9 @@ export function CodePanel({ className = "" }) {
               <span className="text-[hsl(var(--inverse-accent))]">{"<"}</span> {code.output}
             </div>
           )}
-          {log.map((entry, index) => (
+          {log.map((entry) => (
             <div
-              key={index}
+              key={entry.id}
               className={
                 entry.kind === "cmd"
                   ? "text-[hsl(var(--inverse-foreground))]"

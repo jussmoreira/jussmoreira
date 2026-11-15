@@ -5,6 +5,7 @@ import { RotatingText } from "@/components/atoms/rotating-text";
 import { CodePanel } from "@/components/molecules/CodePanel";
 import { useTranslation } from "react-i18next";
 import { siteAssets } from "@/config/site";
+import { useContent, useList } from "@/hooks/useContent";
 
 /* Nombre letra por letra: cada una se asienta con un pequeño desfase y se
    ensancha al pasar el mouse (ver .name-letter en index.css) */
@@ -37,8 +38,9 @@ function Dimension({ label }) {
    cajetín y el panel de código acotado. Cabe en una pantalla. */
 export default function Hero() {
   const { t } = useTranslation();
-  const profile = t("profile", { returnObjects: true });
-  const titleBlock = t("hero.titleBlock", { returnObjects: true });
+  const profile = useContent("profile") ?? {};
+  const titleBlock = useList("hero.titleBlock");
+  const rotatingWords = useList("hero.rotatingWords");
   const [first, ...rest] = String(profile.shortName || "").split(" ");
 
   const [cvOpen, setCvOpen] = useState(false);
@@ -88,7 +90,7 @@ export default function Hero() {
             <p className="reveal text-xl leading-snug text-foreground md:min-h-[2.6em] md:text-2xl">
               {t("hero.lead")}{" "}
               <RotatingText
-                words={t("hero.rotatingWords", { returnObjects: true })}
+                words={rotatingWords}
                 className="underline decoration-[hsl(var(--accent))] decoration-[3px] underline-offset-[6px]"
               />{" "}
               {t("hero.closing")}
@@ -143,7 +145,7 @@ export default function Hero() {
             </div>
 
             {/* Cajetín de la lámina */}
-            {Array.isArray(titleBlock) && (
+            {titleBlock.length > 0 && (
               <dl className="reveal mt-8 grid grid-cols-2 border border-[hsl(var(--rule))] lg:mt-auto">
                 {titleBlock.map(({ label, value }, index) => (
                   <div

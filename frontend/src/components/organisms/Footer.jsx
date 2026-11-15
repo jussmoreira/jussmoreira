@@ -1,15 +1,16 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowUp } from "lucide-react";
+import { useContent } from "@/hooks/useContent";
 
 /* Pie mínimo que continúa el bloque en tinta de Contacto. Los datos de
    contacto viven en esa sección para no repetirlos. */
 export default function Footer({ onOpenShortcuts }) {
   const { t } = useTranslation();
-  const footer = t("footer", { returnObjects: true });
-  const profile = t("profile", { returnObjects: true });
+  const footer = useContent("footer");
+  const profile = useContent("profile") ?? {};
 
-  if (!footer || typeof footer !== "object") return null;
+  if (!footer) return null;
 
   const top = () => window.scrollTo({ top: 0, behavior: "smooth" });
 

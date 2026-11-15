@@ -1,36 +1,39 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { prefersReducedMotion } from "@/lib/motion";
 
+const FADE_MS = 300;
+
+/* Palabra que rota cada `interval` ms: se desvanece, cambia y vuelve a
+   aparecer, así el cambio de ancho ocurre mientras es invisible. Con
+   movimiento reducido cambia sin transición. */
 export function RotatingText({ words = [], interval = 2400, className }) {
   const list = Array.isArray(words) && words.length > 0 ? words : [""];
-  const [cur, setCur] = useState(0);
+  const [current, setCurrent] = useState(0);
   const [fading, setFading] = useState(false);
-  const [motion, setMotion] = useState(true);
-
-  useEffect(() => {
-    const reduce =
-      typeof window !== "undefined" &&
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setMotion(!reduce);
-  }, []);
+  const [motion] = useState(() => !prefersReducedMotion());
+  const swapTimer = useRef(null);
 
   useEffect(() => {
     if (list.length < 2) return undefined;
+    const next = () => setCurrent((index) => (index + 1) % list.length);
+
     const id = setInterval(() => {
       if (!motion) {
-        setCur((c) => (c + 1) % list.length);
+        next();
         return;
       }
-      // Fade out → swap → fade in: el reflow ocurre mientras la palabra es invisible
       setFading(true);
-      const t = setTimeout(() => {
-        setCur((c) => (c + 1) % list.length);
+      swapTimer.current = setTimeout(() => {
+        next();
         setFading(false);
-      }, 300);
-      return () => clearTimeout(t);
+      }, FADE_MS);
     }, interval);
-    return () => clearInterval(id);
+
+    return () => {
+      clearInterval(id);
+      clearTimeout(swapTimer.current);
+    };
   }, [list.length, interval, motion]);
 
   return (
@@ -38,11 +41,11 @@ export function RotatingText({ words = [], interval = 2400, className }) {
       className={cn(className)}
       style={{
         display: "inline",
-        transition: motion ? "opacity 300ms ease" : undefined,
+        transition: motion ? `opacity ${FADE_MS}ms ease` : undefined,
         opacity: fading ? 0 : 1,
       }}
     >
-      {list[cur]}
+      {list[current]}
     </span>
   );
 }

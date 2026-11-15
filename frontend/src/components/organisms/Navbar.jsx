@@ -1,8 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, Moon, SunMedium, X } from "lucide-react";
 import { Button } from "@/components/atoms/button";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@/contexts/ThemeContext";
+import { pad2 } from "@/lib/format";
+import { useContent, useList } from "@/hooks/useContent";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -12,12 +14,8 @@ export default function Navbar() {
   const { t, i18n } = useTranslation();
   const { isDark, toggleTheme } = useTheme();
 
-  const navItems = useMemo(() => {
-    const items = t("nav.items", { returnObjects: true });
-    return Array.isArray(items) ? items : [];
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [t, i18n.resolvedLanguage]);
-  const profile = t("profile", { returnObjects: true });
+  const navItems = useList("nav.items");
+  const profile = useContent("profile") ?? {};
 
   /* Se esconde al bajar y reaparece al subir (o al llegar arriba). Un umbral
      de 8 px evita que el temblor del trackpad lo parpadee. */
@@ -96,7 +94,7 @@ export default function Navbar() {
             >
               {index > 0 && (
                 <span className={`mr-1.5 font-mono text-[11px] ${active === item.id ? "text-signal" : ""}`}>
-                  {String(index).padStart(2, "0")}
+                  {pad2(index)}
                 </span>
               )}
               {item.label}

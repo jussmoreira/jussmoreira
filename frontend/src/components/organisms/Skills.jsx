@@ -1,16 +1,16 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { SectionBar } from "@/components/molecules/SectionBar";
+import { pad2 } from "@/lib/format";
+import { asList, useContent } from "@/hooks/useContent";
 
 /* Habilidades como tabla de especificaciones: grupo a la izquierda, piezas
    en línea a la derecha. Sin tarjetas ni chips. */
 export default function Skills() {
-  const { t } = useTranslation();
-  const skills = t("skills", { returnObjects: true });
+  const skills = useContent("skills");
 
-  if (!skills || typeof skills !== "object") return null;
+  if (!skills) return null;
 
-  const groups = Array.isArray(skills.groups) ? skills.groups : [];
+  const groups = asList(skills.groups);
 
   return (
     <section id="skills" className="section-pad">
@@ -29,7 +29,7 @@ export default function Skills() {
             <div key={group.title} className="reveal ledger-row grid gap-2 py-5 md:grid-cols-12 md:gap-6">
               <dt className="flex items-baseline gap-3 md:col-span-4">
                 <span className="font-mono text-[11px] text-muted-foreground tabular">
-                  {String(index + 1).padStart(2, "0")}
+                  {pad2(index + 1)}
                 </span>
                 <span className="font-display text-lg text-foreground">{group.title}</span>
               </dt>

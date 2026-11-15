@@ -1,8 +1,8 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useInViewOnce } from "@/hooks/useInViewOnce";
 import { SectionBar } from "@/components/molecules/SectionBar";
+import { asList, useContent } from "@/hooks/useContent";
 
 function Stat({ label, value, suffix, inView }) {
   const animatedValue = useCountUp(value, inView, 850);
@@ -19,14 +19,13 @@ function Stat({ label, value, suffix, inView }) {
 }
 
 export default function About() {
-  const { t } = useTranslation();
-  const about = t("about", { returnObjects: true });
+  const about = useContent("about");
   const { ref, inView } = useInViewOnce({ threshold: 0.25 });
 
-  if (!about || typeof about !== "object") return null;
+  if (!about) return null;
 
-  const paragraphs = Array.isArray(about.paragraphs) ? about.paragraphs : [];
-  const stats = Array.isArray(about.stats) ? about.stats : [];
+  const paragraphs = asList(about.paragraphs);
+  const stats = asList(about.stats);
   const [lead, ...body] = paragraphs;
 
   return (

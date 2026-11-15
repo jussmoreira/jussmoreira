@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { ArrowUpRight, Check, Copy } from "lucide-react";
 import { ContactLink } from "@/components/atoms/contact-link";
 import { SocialIcon } from "@/components/atoms/social-icon";
 import { SectionBar } from "@/components/molecules/SectionBar";
 import { contactValue } from "@/lib/contact";
+import { useContent } from "@/hooks/useContent";
 
 const socials = [
   { key: "linkedin", label: "LinkedIn" },
@@ -17,8 +17,7 @@ const socials = [
    cliente, en partes, para que no aparezca completo en el HTML inicial.
    Es el cierre de la página: un bloque en tinta que continúa en el pie. */
 export default function Contact() {
-  const { t } = useTranslation();
-  const contact = t("contact", { returnObjects: true });
+  const contact = useContent("contact");
   const [data, setData] = useState({ user: "", domain: "" });
 
   const [copied, setCopied] = useState(false);
@@ -45,7 +44,7 @@ export default function Contact() {
     }
   };
 
-  if (!contact || typeof contact !== "object") return null;
+  if (!contact) return null;
 
   return (
     <section
