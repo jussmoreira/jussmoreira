@@ -23,7 +23,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "readme": "node ../assets/readme/build.js"
   },
   "browserslist": {
     "production": [

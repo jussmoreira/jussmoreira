@@ -61,3 +61,5 @@ El proyecto define el alias **`@/` → `src/`** en tres lugares que deben manten
 - **Un componente = un archivo.** Un hook = un archivo (ver naming).
 - No crear "barrels" (`index.js` re-exportadores) salvo que reduzcan ruido real; preferir imports explícitos.
 - `config/` contiene constantes y assets (URLs, claves de storage), **nunca** texto visible para el usuario (eso va a `locales/`).
+- `config/site.json` es la **fuente única** de la URL del sitio, los CV y el contacto (codificado en base64). La leen `config/site.js` y el generador del README del perfil (`assets/readme/build.js`); no se copian esos datos a ningún otro lado.
+- El README del perfil se **genera**, no se edita a mano: `cd frontend && yarn readme` (ver `comandos.md`).

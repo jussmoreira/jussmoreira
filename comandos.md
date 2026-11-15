@@ -41,6 +41,15 @@ Si en el futuro agregas pruebas unitarias a tus componentes, puedes ejecutarlas 
 yarn test
 ```
 
+## README del perfil
+
+### Regenerar las imágenes del README
+El banner animado (`justin.py` + robot) y los botones del README salen de los textos de `src/locales/en.json` y de los colores de `src/index.css`. Si cambias el nombre, el enfoque, la ubicación o los colores del portafolio, corre:
+```bash
+yarn readme
+```
+*Reescribe `assets/readme/hero-*.svg` y `assets/readme/pill-*.svg`. Luego haz commit de esos archivos.*
+
 ---
 
 **Nota:** El proyecto utiliza `craco` (Create React App Configuration Override) por debajo, pero los comandos de `yarn` ya están configurados en el `package.json` para usarlo automáticamente.
