@@ -64,6 +64,32 @@ export default function Contact() {
             <p className="mt-6 max-w-lg leading-relaxed text-[hsl(var(--inverse-muted))]">
               {contact.description}
             </p>
+
+            {/* Placa de estado: lo que hago, lo que busco y a qué estoy abierto */}
+            {contact.status && Array.isArray(contact.status.items) && (
+              <section
+                aria-label={contact.status.title}
+                className="mt-10 max-w-lg border border-[hsl(var(--inverse-border))]"
+              >
+                <div className="flex items-center gap-2 border-b border-[hsl(var(--inverse-border))] px-4 py-2 font-mono text-[11px] text-[hsl(var(--inverse-muted))]">
+                  <span aria-hidden className="status-dot h-2 w-2 bg-[hsl(var(--inverse-accent))]" />
+                  {contact.status.title}
+                </div>
+                <dl>
+                  {contact.status.items.map((row) => (
+                    <div
+                      key={row.label}
+                      className="grid gap-1 border-b border-[hsl(var(--inverse-border))] px-4 py-3 last:border-b-0 sm:grid-cols-[7.5rem_1fr] sm:gap-4"
+                    >
+                      <dt className="font-mono text-[11px] uppercase text-[hsl(var(--inverse-accent))]">
+                        {row.label}
+                      </dt>
+                      <dd className="text-[15px] leading-snug">{row.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </section>
+            )}
           </div>
 
           <div className="reveal lg:col-span-5 lg:self-end">

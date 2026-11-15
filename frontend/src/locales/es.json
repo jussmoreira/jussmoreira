@@ -597,7 +597,24 @@
     "elsewhere": "También en",
     "copy": "Copiar",
     "copied": "Copiado",
-    "copyAria": "Copiar correo al portapapeles"
+    "copyAria": "Copiar correo al portapapeles",
+    "status": {
+      "title": "Estado actual",
+      "items": [
+        {
+          "label": "Ahora",
+          "value": "Construyendo aplicaciones web backend y sistemas de gestión."
+        },
+        {
+          "label": "Busco",
+          "value": "Mi primera oportunidad profesional como desarrollador backend."
+        },
+        {
+          "label": "Abierto a",
+          "value": "Proyectos open source, aplicaciones backend y automatización con RPA."
+        }
+      ]
+    }
   },
   "footer": {
     "reachOut": "Contacto",
