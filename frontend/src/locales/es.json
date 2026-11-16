@@ -453,6 +453,16 @@
             "stack": "Android nativo · Kotlin · Jetpack Compose · Hilt · Retrofit · Room",
             "summary": "App Android con mapa, feed de publicaciones, menú digital y promociones."
           }
+        ],
+        "images": [
+          {
+            "src": "/projects/la-vueltica/01.webp",
+            "alt": "La VuelTica: inicio, mapa cercano, dado gastronómico y perfil del negocio"
+          },
+          {
+            "src": "/projects/la-vueltica/02.webp",
+            "alt": "La VuelTica: promociones, menú digital, calificación de platillos y perfil del negocio"
+          }
         ]
       },
       {
