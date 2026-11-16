@@ -508,6 +508,16 @@
             "stack": "Expo · React Native · TypeScript · Expo Router · Jest",
             "summary": "Calendar and event management for the business; search, booking and cancellation for customers."
           }
+        ],
+        "images": [
+          {
+            "src": "/projects/event-booking/01.webp",
+            "alt": "EventBooking: event list, search with filters, booking a ticket and my reservations"
+          },
+          {
+            "src": "/projects/event-booking/02.webp",
+            "alt": "EventBooking: business calendar, create and edit an event, and reservations management"
+          }
         ]
       },
       {
